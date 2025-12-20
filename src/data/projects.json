@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "title": "Research Project 1",
+    "description": "A comprehensive description of this research project, including its goals, methodology, and impact.",
+    "status": "ongoing",
+    "year": "2023 - Present",
+    "tags": ["Topic 1", "Topic 2"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/username/project",
+      "paper": "/publications",
+      "demo": null
+    }
+  },
+  {
+    "id": "2",
+    "title": "Research Project 2",
+    "description": "Description of another research project with details about the problem being solved and the approach taken.",
+    "status": "ongoing",
+    "year": "2022 - Present",
+    "tags": ["Topic 2", "Topic 3"],
+    "image": null,
+    "links": {
+      "github": null,
+      "paper": "/publications",
+      "demo": null
+    }
+  },
+  {
+    "id": "3",
+    "title": "Completed Project",
+    "description": "A past project that has been completed with its outcomes and contributions to the field.",
+    "status": "completed",
+    "year": "2021 - 2022",
+    "tags": ["Topic 1"],
+    "image": null,
+    "links": {
+      "github": "https://github.com/username/completed-project",
+      "paper": null,
+      "demo": "https://demo.example.com"
+    }
+  }
+]
