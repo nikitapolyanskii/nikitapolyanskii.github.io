@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/publications", label: "Publications" },
-  { href: "/research", label: "Research" },
 ];
 
 export default function Header() {

@@ -97,7 +97,13 @@
     "year": 2021,
     "category": "Coding Theory",
     "doi": "10.1109/TIT.2021.3109898",
-    "tags": ["Reed-Solomon", "Lifted Codes"]
+    "tags": ["Reed-Solomon", "Lifted Codes"],
+    "conferenceVersion": {
+      "title": "Lifted Reed-Solomon codes with application to batch codes",
+      "venue": "ISIT",
+      "year": 2020,
+      "doi": "10.1109/ISIT44484.2020.9174402"
+    }
   },
   {
     "id": "11",
@@ -137,7 +143,13 @@
     "year": 2020,
     "category": "Coding Theory",
     "doi": "10.1109/TCOMM.2020.3020959",
-    "tags": ["Polar Codes", "Decoding"]
+    "tags": ["Polar Codes", "Decoding"],
+    "conferenceVersion": {
+      "title": "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
+      "venue": "ACCT",
+      "year": 2018,
+      "pdf": "/papers/polar-weight-distributions-acct-2018.pdf"
+    }
   },
   {
     "id": "15",
@@ -159,7 +171,13 @@
     "category": "Information Theory",
     "doi": "10.1109/TIT.2019.2893234",
     "pdf": "/papers/separable-codes-mac-2019.pdf",
-    "tags": ["Multiple Access", "Separable Codes"]
+    "tags": ["Multiple Access", "Separable Codes"],
+    "conferenceVersion": {
+      "title": "Separable Codes for the Symmetric Multiple Access Channel",
+      "venue": "ISIT",
+      "year": 2018,
+      "pdf": "/papers/separable-codes-isit-2018.pdf"
+    }
   },
   {
     "id": "17",
@@ -170,7 +188,14 @@
     "category": "Combinatorics",
     "doi": "10.1016/j.jcta.2019.01.002",
     "pdf": "/papers/metric-dimension-cartesian-2019.pdf",
-    "tags": ["Graph Theory", "Metric Dimension"]
+    "tags": ["Graph Theory", "Metric Dimension", "Mastermind"],
+    "conferenceVersion": {
+      "title": "How to guess an n-digit number",
+      "venue": "SODA",
+      "year": 2019,
+      "doi": "10.1137/1.9781611975482.74",
+      "pdf": "/papers/guess-n-digit-number-soda-2019.pdf"
+    }
   },
   {
     "id": "18",
@@ -192,7 +217,13 @@
     "category": "Group Testing",
     "doi": "10.1007/s10623-016-0278-4",
     "pdf": "/papers/symmetric-disjunctive-ld-codes-2016.pdf",
-    "tags": ["Disjunctive Codes", "List Decoding"]
+    "tags": ["Disjunctive Codes", "List Decoding"],
+    "conferenceVersion": {
+      "title": "Symmetric disjunctive list-decoding codes",
+      "venue": "ISIT",
+      "year": 2015,
+      "pdf": "/papers/symmetric-disjunctive-isit-2015.pdf"
+    }
   },
   {
     "id": "20",
@@ -203,7 +234,13 @@
     "category": "Group Testing",
     "doi": "10.1007/s10623-016-0279-3",
     "pdf": "/papers/almost-cover-free-designs-dcc-2016.pdf",
-    "tags": ["Cover-Free Codes", "Combinatorial Designs"]
+    "tags": ["Cover-Free Codes", "Combinatorial Designs"],
+    "conferenceVersion": {
+      "title": "Almost cover-free codes and designs",
+      "venue": "ISIT",
+      "year": 2015,
+      "pdf": "/papers/almost-cover-free-isit-2015.pdf"
+    }
   },
   {
     "id": "21",
@@ -270,17 +307,6 @@
     "tags": ["Machine Learning", "Sparse Recovery"]
   },
   {
-    "id": "27",
-    "title": "How to guess an n-digit number",
-    "authors": ["Zilin Jiang", "Nikita Polyanskii"],
-    "venue": "ACM-SIAM Symposium on Discrete Algorithms (SODA)",
-    "year": 2019,
-    "category": "Combinatorics",
-    "doi": "10.1137/1.9781611975482.74",
-    "pdf": "/papers/guess-n-digit-number-soda-2019.pdf",
-    "tags": ["Combinatorics", "Algorithms"]
-  },
-  {
     "id": "28",
     "title": "Optimal Codes Correcting a Burst of Deletions of Variable Length",
     "authors": ["Andreas Lenz", "Nikita Polyanskii"],
@@ -291,16 +317,6 @@
     "tags": ["Deletion Codes", "Burst Errors"]
   },
   {
-    "id": "29",
-    "title": "Lifted Reed-Solomon codes with application to batch codes",
-    "authors": ["Lukas Holzbaur", "Rina Polyanskaya", "Nikita Polyanskii", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2020,
-    "category": "Coding Theory",
-    "doi": "10.1109/ISIT44484.2020.9174402",
-    "tags": ["Reed-Solomon", "Batch Codes"]
-  },
-  {
     "id": "30",
     "title": "Constructions of batch codes via finite geometry",
     "authors": ["Nikita Polyanskii"],
@@ -309,16 +325,6 @@
     "category": "Coding Theory",
     "pdf": "/papers/batch-codes-finite-geometry-isit-2019.pdf",
     "tags": ["Batch Codes", "Finite Geometry"]
-  },
-  {
-    "id": "31",
-    "title": "Separable Codes for the Symmetric Multiple Access Channel",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2018,
-    "category": "Information Theory",
-    "pdf": "/papers/separable-codes-isit-2018.pdf",
-    "tags": ["Multiple Access", "Separable Codes"]
   },
   {
     "id": "32",
@@ -371,26 +377,6 @@
     "tags": ["Cover-Free Codes", "Separating Codes"]
   },
   {
-    "id": "37",
-    "title": "Almost cover-free codes and designs",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2015,
-    "category": "Group Testing",
-    "pdf": "/papers/almost-cover-free-isit-2015.pdf",
-    "tags": ["Cover-Free Codes", "Designs"]
-  },
-  {
-    "id": "38",
-    "title": "Symmetric disjunctive list-decoding codes",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2015,
-    "category": "Group Testing",
-    "pdf": "/papers/symmetric-disjunctive-isit-2015.pdf",
-    "tags": ["Disjunctive Codes", "List Decoding"]
-  },
-  {
     "id": "39",
     "title": "Bounds on the rate of superimposed codes",
     "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
@@ -429,15 +415,5 @@
     "category": "Coding Theory",
     "pdf": "/papers/trivariate-lifted-codes-red-2019.pdf",
     "tags": ["Lifted Codes", "Repair Groups"]
-  },
-  {
-    "id": "43",
-    "title": "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
-    "authors": ["Mars Davletshin", "Rina Polyanskaya", "Nikita Polyanskii"],
-    "venue": "International Workshop on Algebraic and Combinatorial Coding Theory (ACCT)",
-    "year": 2018,
-    "category": "Coding Theory",
-    "pdf": "/papers/polar-weight-distributions-acct-2018.pdf",
-    "tags": ["Polar Codes", "Weight Distribution"]
   }
 ]

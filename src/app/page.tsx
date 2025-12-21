@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -47,34 +48,77 @@ const socialLinks = [
   },
 ];
 
-const selectedPublications = [
+const dagPapers = [
   {
-    title: "Tangle 2.0 Leaderless Nakamoto Consensus on the Heaviest DAG",
-    authors: "S. Muller, N. Polyanskii, A. Penzkofer, J. Theis, W. Sanders, H. Moog",
+    title: "Tangle 2.0",
+    year: "2022",
+    status: "published" as const,
+    challenge: "In traditional blockchains, one node proposes a block and everyone waits. Can we do better?",
+    approach: "We designed a protocol where all nodes can propose blocks simultaneously, building a DAG instead of a chain. This unlocks parallelism while maintaining consensus.",
     venue: "IEEE Access",
-    year: 2022,
     doi: "10.1109/ACCESS.2022.3211422",
   },
   {
-    title: "Reality-based UTXO Ledger",
-    authors: "S. Muller, N. Polyanskii, A. Penzkofer, J. Theis, W. Sanders, H. Moog",
-    venue: "ACM Distributed Ledger Technologies",
-    year: 2023,
-    arxiv: "2205.01345",
+    title: "Slipstream",
+    year: "2024",
+    status: "published" as const,
+    challenge: "Users want fast confirmations, but security often requires waiting. Can we have both?",
+    approach: "We created an \"ebb-and-flow\" protocol — an optimistic ordering confirms quickly (assuming honest majority), while a finalized ordering follows behind with stronger guarantees.",
+    arxiv: "2410.14876",
   },
   {
-    title: "On the metric dimension of Cartesian powers of a graph",
-    authors: "Z. Jiang, N. Polyanskii",
-    venue: "Journal of Combinatorial Theory, Series A",
-    year: 2019,
-    doi: "10.1016/j.jcta.2019.01.002",
+    title: "Starfish",
+    year: "2025",
+    status: "published" as const,
+    challenge: "Uncertified DAG-based protocols achieve low latency, but their liveness was never proven. Communication costs are also high: O(Mn²) for payload and O(κn⁴) for consensus metadata per round.",
+    approach: "We introduce a pacemaker that provably ensures liveness. Using Reed-Solomon coding and threshold signatures, we reduce costs to O(Mn) for payload and O(κn²) for metadata — the first quadratic bound for any full-DAG BFT protocol.",
+    eprint: "2025/567",
   },
   {
-    title: "Binary batch codes with improved redundancy",
-    authors: "R. Polyanskaya, N. Polyanskii, I. Vorobyev",
-    venue: "IEEE Transactions on Information Theory",
-    year: 2020,
-    doi: "10.1109/TIT.2020.3013603",
+    title: "SoK: DAG-based Consensus",
+    year: "2024",
+    status: "published" as const,
+    challenge: "There are many DAG consensus protocols now. How do they compare?",
+    approach: "We systematically analyzed all DAG protocols through the lens of the CAP theorem — what trade-offs does each one make between consistency, availability, and partition tolerance?",
+    arxiv: "2411.10026",
+  },
+];
+
+const researchThemes = [
+  {
+    id: "dag-consensus",
+    name: "DAG Consensus",
+    description: "Making distributed systems agree using DAGs instead of chains.",
+    paperCount: 4,
+    href: "#dag-consensus",
+  },
+  {
+    id: "group-testing",
+    name: "Group Testing",
+    description: "Finding defective items efficiently by testing groups rather than individuals.",
+    paperCount: 12,
+    href: "/publications?category=Group%20Testing",
+  },
+  {
+    id: "polar-codes",
+    name: "Polar Codes / 5G",
+    description: "Error-correcting codes optimized for the 5G standard.",
+    paperCount: 2,
+    href: "/publications?tag=Polar%20Codes",
+  },
+  {
+    id: "dna-storage",
+    name: "DNA Storage",
+    description: "Storing digital data in molecular form for extreme density.",
+    paperCount: 3,
+    href: "/publications?category=DNA%20%26%20Molecular",
+  },
+  {
+    id: "mastermind",
+    name: "Mastermind Game",
+    description: "The mathematics of code-breaking and metric dimension.",
+    paperCount: 1,
+    href: "/publications?tag=Mastermind",
   },
 ];
 
@@ -91,22 +135,24 @@ export default function Home() {
       >
         {/* Profile Photo */}
         <div className="flex-shrink-0">
-          <div className="w-40 h-40 rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
-            <svg className="w-16 h-16 text-neutral-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
+          <div className="w-40 h-40 rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+            <Image
+              src="/photos/NPolianskii_small.jpg"
+              alt="Nikita Polyanskii"
+              width={160}
+              height={160}
+              className="object-cover w-full h-full"
+              priority
+            />
           </div>
         </div>
 
         {/* Name and Contact */}
         <div className="flex-grow">
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-2">
-            Nikita Polyanskii
+            Hi, I&apos;m Nikita
           </h1>
           <p className="text-lg text-indigo-600 dark:text-indigo-400 font-medium mb-4">
-            Senior Applied Research Engineer
-          </p>
-          <p className="text-neutral-600 dark:text-neutral-400 mb-4">
             IOTA Foundation
           </p>
 
@@ -128,127 +174,184 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* About Section */}
+      {/* Personal Intro */}
       <motion.section
         initial="initial"
         animate="animate"
         variants={fadeInUp}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mb-12"
+        className="mb-16"
       >
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
-          About
-        </h2>
         <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            I am a Senior Applied Research Engineer at the{" "}
+          <p className="text-lg text-neutral-800 dark:text-neutral-300 leading-relaxed">
+            I work at the{" "}
             <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">
               IOTA Foundation
             </a>
-            , where I work on DAG-based consensus protocols and distributed ledger technologies.
-            My research interests include <strong>blockchain</strong>, <strong>consensus protocols</strong>,
-            <strong> coding theory</strong>, <strong>combinatorics</strong>, and <strong>information theory</strong>.
+            {" "}where I get to think about how distributed systems can agree on things without anyone being in charge.
+            Before this, I explored the intersection of combinatorics and coding theory at Technion and TU Munich, and worked on practical optimization of error-correcting codes for 5G at Huawei (some of which made it into the 3GPP standard!).
+          </p>
+          <p className="text-lg text-neutral-800 dark:text-neutral-300 leading-relaxed mt-4">
+            I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
           </p>
         </div>
       </motion.section>
 
-      {/* Short Bio Section */}
+      {/* DAG Consensus Section */}
       <motion.section
         initial="initial"
         animate="animate"
         variants={fadeInUp}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mb-12"
+        className="mb-16"
       >
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
-          Short Bio
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+          What I&apos;m Working On
         </h2>
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            I received my Ph.D. in Mathematics from Moscow State University in 2016,
-            where I worked on cover-free codes under the supervision of Prof. Arkady Dyachkov.
-            After my PhD, I held research positions at Technion, Technical University of Munich,
-            and Skoltech. Before academia, I worked at Huawei Technologies where I contributed
-            to the development of polar codes &mdash; my work on the Polar sequence was adopted
-            by 3GPP for 5G New Radio communications.
-          </p>
-        </div>
-      </motion.section>
+        <p className="text-neutral-700 dark:text-neutral-400 mb-8">
+          My main focus is DAG-based consensus protocols — making distributed systems faster and more reliable.
+        </p>
 
-      {/* Selected Publications Section */}
-      <motion.section
-        initial="initial"
-        animate="animate"
-        variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="mb-12"
-      >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-neutral-900 dark:text-white">
-            Selected Publications
-          </h2>
-          <Link
-            href="/publications"
-            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
-          >
-            View all &rarr;
-          </Link>
-        </div>
-
-        <div className="space-y-4">
-          {selectedPublications.map((pub, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-neutral-50 dark:bg-transparent"
+        <div className="grid gap-6">
+          {dagPapers.map((paper, index) => (
+            <motion.div
+              key={paper.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              className="p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50"
             >
-              <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">
-                {pub.title}
-              </h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">
-                {pub.authors}
-              </p>
-              <p className="text-sm text-neutral-500 dark:text-neutral-500">
-                <span className="text-indigo-600 dark:text-indigo-400">{pub.venue}</span>
-                {" "}&bull;{" "}{pub.year}
-                {pub.doi && (
-                  <>
-                    {" "}&bull;{" "}
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
+                  {paper.title}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-neutral-500 dark:text-neutral-500">
+                    {paper.year}
+                  </span>
+                  <span className="px-2 py-1 text-xs rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                    Published
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">
+                    The challenge
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-400">
+                    {paper.challenge}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">
+                    Our approach
+                  </p>
+                  <p className="text-neutral-700 dark:text-neutral-400">
+                    {paper.approach}
+                  </p>
+                </div>
+              </div>
+
+              {(paper.doi || paper.arxiv || paper.eprint || paper.venue) && (
+                <div className="mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center gap-4 text-sm">
+                  {paper.venue && (
+                    <span className="text-neutral-500 dark:text-neutral-500">
+                      {paper.venue}
+                    </span>
+                  )}
+                  {paper.doi && (
                     <a
-                      href={`https://doi.org/${pub.doi}`}
+                      href={`https://doi.org/${paper.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-indigo-600 dark:text-indigo-400 hover:underline"
                     >
                       DOI
                     </a>
-                  </>
-                )}
-                {pub.arxiv && (
-                  <>
-                    {" "}&bull;{" "}
+                  )}
+                  {paper.arxiv && (
                     <a
-                      href={`https://arxiv.org/abs/${pub.arxiv}`}
+                      href={`https://arxiv.org/abs/${paper.arxiv}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-indigo-600 dark:text-indigo-400 hover:underline"
                     >
                       arXiv
                     </a>
-                  </>
-                )}
-              </p>
-            </div>
+                  )}
+                  {paper.eprint && (
+                    <a
+                      href={`https://eprint.iacr.org/${paper.eprint}.pdf`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                    >
+                      ePrint
+                    </a>
+                  )}
+                </div>
+              )}
+            </motion.div>
           ))}
         </div>
       </motion.section>
 
-      {/* Quick Links */}
+      {/* Research Themes for Familiar Visitors */}
       <motion.section
         initial="initial"
         animate="animate"
         variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="mb-16"
       >
+        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+          Research Themes
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-400 mb-6">
+          If you&apos;re here looking for a specific topic, these are my main research areas:
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {researchThemes.map((theme) => (
+            <Link
+              key={theme.id}
+              href={theme.href}
+              className="group p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-white dark:bg-neutral-900/50"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {theme.name}
+                </h3>
+                <span className="text-sm text-neutral-500 dark:text-neutral-500">
+                  {theme.paperCount} {theme.paperCount === 1 ? "paper" : "papers"}
+                </span>
+              </div>
+              <p className="text-sm text-neutral-700 dark:text-neutral-400">
+                {theme.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Other Research */}
+      <motion.section
+        initial="initial"
+        animate="animate"
+        variants={fadeInUp}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="mb-12"
+      >
+        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+          Other Things I Think About
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-400 mb-6">
+          Beyond the themes above, I&apos;ve worked on various problems in coding theory, combinatorics, and information theory.
+          Check out my publications to see the full picture.
+        </p>
+
         <div className="flex flex-wrap gap-4">
           <Link
             href="/publications"
@@ -260,13 +363,7 @@ export default function Home() {
             href="/about"
             className="px-4 py-2 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-medium rounded-lg transition-colors text-sm"
           >
-            Full CV
-          </Link>
-          <Link
-            href="/research"
-            className="px-4 py-2 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-medium rounded-lg transition-colors text-sm"
-          >
-            Research Projects
+            More About Me
           </Link>
         </div>
       </motion.section>

@@ -15,6 +15,13 @@ type Publication = {
   arxiv?: string;
   pdf?: string;
   tags: string[];
+  conferenceVersion?: {
+    title: string;
+    venue: string;
+    year: number;
+    doi?: string;
+    pdf?: string;
+  };
 };
 
 const fadeInUp = {
@@ -22,9 +29,80 @@ const fadeInUp = {
   animate: { opacity: 1, y: 0 },
 };
 
+// Topic descriptions for friendly intros
+const topicDescriptions: { [key: string]: { emoji: string; intro: string } } = {
+  "Blockchain & Consensus": {
+    emoji: "🔗",
+    intro: "How do distributed systems agree on things without a central authority? These papers explore DAG-based protocols and ledger designs.",
+  },
+  "Coding Theory": {
+    emoji: "📡",
+    intro: "The mathematics of reliable communication — how to send messages that survive noise and errors.",
+  },
+  "Group Testing": {
+    emoji: "🔍",
+    intro: "Finding needles in haystacks efficiently. These papers study how to identify defective items with as few tests as possible.",
+  },
+  "Combinatorics": {
+    emoji: "🧮",
+    intro: "Counting, arranging, and understanding discrete structures. Pure math that often finds surprising applications.",
+  },
+  "Information Theory": {
+    emoji: "📊",
+    intro: "The science of information — how much can we compress, transmit, and store?",
+  },
+  "DNA & Molecular": {
+    emoji: "🧬",
+    intro: "Storing and processing data using molecules. Where biology meets information theory.",
+  },
+};
+
 export default function PublicationsPage() {
+  const [viewMode, setViewMode] = useState<"topic" | "year">("topic");
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [expandedTopics, setExpandedTopics] = useState<Set<string>>(new Set());
+  const [expandedYears, setExpandedYears] = useState<Set<number>>(new Set());
+
+  const toggleTopic = (category: string) => {
+    setExpandedTopics((prev) => {
+      const next = new Set(prev);
+      if (next.has(category)) {
+        next.delete(category);
+      } else {
+        next.add(category);
+      }
+      return next;
+    });
+  };
+
+  const toggleYear = (year: number) => {
+    setExpandedYears((prev) => {
+      const next = new Set(prev);
+      if (next.has(year)) {
+        next.delete(year);
+      } else {
+        next.add(year);
+      }
+      return next;
+    });
+  };
+
+  const expandAll = () => {
+    if (viewMode === "topic") {
+      setExpandedTopics(new Set(groupedByTopic.map((g) => g.category)));
+    } else {
+      setExpandedYears(new Set(groupedByYear.map((g) => g.year)));
+    }
+  };
+
+  const collapseAll = () => {
+    if (viewMode === "topic") {
+      setExpandedTopics(new Set());
+    } else {
+      setExpandedYears(new Set());
+    }
+  };
 
   // Get unique years and categories
   const years = useMemo(() => {
@@ -46,8 +124,26 @@ export default function PublicationsPage() {
     });
   }, [selectedYear, selectedCategory]);
 
+  // Group by category/topic
+  const groupedByTopic = useMemo(() => {
+    const groups: { [key: string]: Publication[] } = {};
+    filteredPublications.forEach((pub) => {
+      if (!groups[pub.category]) {
+        groups[pub.category] = [];
+      }
+      groups[pub.category].push(pub);
+    });
+    // Sort by number of publications (most first)
+    return Object.entries(groups)
+      .sort(([, a], [, b]) => b.length - a.length)
+      .map(([category, pubs]) => ({
+        category,
+        publications: pubs.sort((a, b) => b.year - a.year),
+      }));
+  }, [filteredPublications]);
+
   // Group by year
-  const groupedPublications = useMemo(() => {
+  const groupedByYear = useMemo(() => {
     const groups: { [key: number]: Publication[] } = {};
     filteredPublications.forEach((pub) => {
       if (!groups[pub.year]) {
@@ -77,11 +173,11 @@ export default function PublicationsPage() {
           Publications
         </h1>
         <p className="text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl">
-          A collection of my research papers, conference publications, and other academic work.
+          Here&apos;s what I&apos;ve been working on over the years. Click on any topic to explore, or use the filters to find something specific.
         </p>
       </motion.div>
 
-      {/* Filters */}
+      {/* View Mode Toggle & Filters */}
       <motion.div
         initial="initial"
         animate="animate"
@@ -90,9 +186,31 @@ export default function PublicationsPage() {
         className="mb-8 space-y-4"
       >
         <div className="flex flex-wrap items-center gap-4">
-          <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
-            Filter by:
-          </span>
+          {/* View mode toggle */}
+          <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+            <button
+              onClick={() => setViewMode("topic")}
+              className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+                viewMode === "topic"
+                  ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              By Topic
+            </button>
+            <button
+              onClick={() => setViewMode("year")}
+              className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+                viewMode === "year"
+                  ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
+                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              }`}
+            >
+              By Year
+            </button>
+          </div>
+
+          <div className="h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
 
           {/* Year filter */}
           <select
@@ -114,7 +232,7 @@ export default function PublicationsPage() {
             onChange={(e) => setSelectedCategory(e.target.value || null)}
             className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            <option value="">All Categories</option>
+            <option value="">All Topics</option>
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -130,93 +248,139 @@ export default function PublicationsPage() {
               Clear filters
             </button>
           )}
+
+          <div className="h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
+
+          <button
+            onClick={expandAll}
+            className="px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+          >
+            Expand all
+          </button>
+          <button
+            onClick={collapseAll}
+            className="px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+          >
+            Collapse all
+          </button>
         </div>
 
         <p className="text-sm text-neutral-500 dark:text-neutral-500">
-          Showing {filteredPublications.length} of {publications.length} publications
+          {filteredPublications.length} publications
         </p>
       </motion.div>
 
-      {/* Publications List */}
-      <div className="space-y-12">
-        {groupedPublications.map(({ year, publications: pubs }, groupIndex) => (
-          <motion.div
-            key={year}
-            initial="initial"
-            animate="animate"
-            variants={fadeInUp}
-            transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.1 }}
-          >
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {year}
-            </h2>
-            <div className="space-y-6">
-              {pubs.map((pub) => (
-                <article
-                  key={pub.id}
-                  className="p-6 rounded-xl border border-neutral-300 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-neutral-50 dark:bg-transparent"
+      {/* Publications by Topic */}
+      {viewMode === "topic" && (
+        <div className="space-y-4">
+          {groupedByTopic.map(({ category, publications: pubs }, groupIndex) => {
+            const isExpanded = expandedTopics.has(category);
+            return (
+              <motion.div
+                key={category}
+                initial="initial"
+                animate="animate"
+                variants={fadeInUp}
+                transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
+                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
+              >
+                <button
+                  onClick={() => toggleTopic(category)}
+                  className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
                 >
-                  <div className="flex items-start justify-between gap-4 mb-2">
-                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-                      {pub.title}
-                    </h3>
-                    <span className="shrink-0 px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded">
-                      {pub.category}
-                    </span>
-                  </div>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-2">
-                    {pub.authors.join(", ")}
-                  </p>
-                  <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-3">
-                    {pub.venue}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-3">
-                    {pub.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-400 rounded"
-                      >
-                        {tag}
+                  <div>
+                    <h2 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
+                      <span>{topicDescriptions[category]?.emoji || "📄"}</span>
+                      {category}
+                      <span className="text-sm font-normal text-neutral-500 dark:text-neutral-500">
+                        ({pubs.length})
                       </span>
-                    ))}
-                    <div className="flex-grow" />
-                    {pub.pdf && (
-                      <a
-                        href={pub.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
-                      >
-                        PDF
-                      </a>
-                    )}
-                    {pub.doi && (
-                      <a
-                        href={`https://doi.org/${pub.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
-                      >
-                        DOI
-                      </a>
-                    )}
-                    {pub.arxiv && (
-                      <a
-                        href={`https://arxiv.org/abs/${pub.arxiv}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
-                      >
-                        arXiv
-                      </a>
-                    )}
+                    </h2>
+                    <p className="text-neutral-700 dark:text-neutral-400 text-sm mt-1">
+                      {topicDescriptions[category]?.intro || "Research papers in this area."}
+                    </p>
                   </div>
-                </article>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+                  <svg
+                    className={`w-5 h-5 text-neutral-500 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="p-5 pt-0 space-y-4"
+                  >
+                    <div className="pt-4 space-y-4">
+                      {pubs.map((pub) => (
+                        <PublicationCard key={pub.id} pub={pub} />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Publications by Year */}
+      {viewMode === "year" && (
+        <div className="space-y-4">
+          {groupedByYear.map(({ year, publications: pubs }, groupIndex) => {
+            const isExpanded = expandedYears.has(year);
+            return (
+              <motion.div
+                key={year}
+                initial="initial"
+                animate="animate"
+                variants={fadeInUp}
+                transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
+                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
+              >
+                <button
+                  onClick={() => toggleYear(year)}
+                  className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
+                >
+                  <h2 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
+                    {year}
+                    <span className="text-sm font-normal text-neutral-500 dark:text-neutral-500">
+                      ({pubs.length} {pubs.length === 1 ? "paper" : "papers"})
+                    </span>
+                  </h2>
+                  <svg
+                    className={`w-5 h-5 text-neutral-500 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="p-5 pt-0 space-y-4"
+                  >
+                    <div className="pt-4 space-y-4">
+                      {pubs.map((pub) => (
+                        <PublicationCard key={pub.id} pub={pub} />
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
 
       {filteredPublications.length === 0 && (
         <motion.div
@@ -237,5 +401,95 @@ export default function PublicationsPage() {
         </motion.div>
       )}
     </div>
+  );
+}
+
+function PublicationCard({ pub }: { pub: Publication }) {
+  return (
+    <article className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-white dark:bg-transparent">
+      <div className="flex items-start justify-between gap-4 mb-2">
+        <h3 className="font-semibold text-neutral-900 dark:text-white">
+          {pub.title}
+        </h3>
+        <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-500">
+          {pub.year}
+        </span>
+      </div>
+      <p className="text-sm text-neutral-700 dark:text-neutral-400 mb-2">
+        {pub.authors.join(", ")}
+      </p>
+      <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-3">
+        {pub.venue}
+      </p>
+      <div className="flex flex-wrap items-center gap-3">
+        {pub.tags.slice(0, 3).map((tag) => (
+          <span
+            key={tag}
+            className="px-2 py-1 text-xs bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-400 rounded"
+          >
+            {tag}
+          </span>
+        ))}
+        <div className="flex-grow" />
+        {pub.pdf && (
+          <a
+            href={pub.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+          >
+            PDF
+          </a>
+        )}
+        {pub.doi && (
+          <a
+            href={`https://doi.org/${pub.doi}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            DOI
+          </a>
+        )}
+        {pub.arxiv && (
+          <a
+            href={`https://arxiv.org/abs/${pub.arxiv}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            arXiv
+          </a>
+        )}
+      </div>
+      {pub.conferenceVersion && (
+        <div className="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800 text-sm text-neutral-500 dark:text-neutral-500">
+          Also presented at:{" "}
+          <span className="text-neutral-700 dark:text-neutral-300">
+            {pub.conferenceVersion.venue} ({pub.conferenceVersion.year})
+          </span>
+          {pub.conferenceVersion.doi && (
+            <a
+              href={`https://doi.org/${pub.conferenceVersion.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              DOI
+            </a>
+          )}
+          {pub.conferenceVersion.pdf && (
+            <a
+              href={pub.conferenceVersion.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 text-indigo-600 dark:text-indigo-400 hover:underline"
+            >
+              PDF
+            </a>
+          )}
+        </div>
+      )}
+    </article>
   );
 }
