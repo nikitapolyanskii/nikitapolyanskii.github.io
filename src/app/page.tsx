@@ -9,45 +9,6 @@ const fadeInUp = {
   animate: { opacity: 1, y: 0 },
 };
 
-const socialLinks = [
-  {
-    name: "Email",
-    href: "mailto:nikitapolyansky[at]gmail[dot]com".replace("[at]", "@").replace("[dot]", "."),
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Google Scholar",
-    href: "https://scholar[dot]google[dot]com/citations?hl=en&user=4Y8b6l8AAAAJ&view_op=list_works&sortby=pubdate".replace(/\[dot\]/g, "."),
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
-      </svg>
-    ),
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/polinikita",
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin[dot]com/in/nikita-polianskii-770b707b".replace(/\[dot\]/g, "."),
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-];
-
 const dagPapers = [
   {
     title: "Tangle 2.0",
@@ -178,10 +139,91 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Name */}
-        <h1 className="text-3xl md:text-4xl font-bold heading-dark">
-          Hi, I&apos;m Nikita Polyanskii
-        </h1>
+        {/* Name & Role */}
+        <h1 className="text-2xl font-bold heading-dark mb-1">Nikita Polyanskii</h1>
+        <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">Research Scientist and Engineer</p>
+
+        {/* Info */}
+        <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+          <div className="flex items-center justify-center gap-2">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span>IOTA Foundation</span>
+            <span className="text-neutral-400 dark:text-neutral-500">·</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Munich, Germany</span>
+          </div>
+          <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center gap-1.5">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:nikita.polianskii@iota.org" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                nikita.polianskii@iota.org
+              </a>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <a href="mailto:nikitapolyansky@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                nikitapolyansky@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://scholar.google.com/citations?hl=en&user=4Y8b6l8AAAAJ&view_op=list_works&sortby=pubdate"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+            aria-label="Google Scholar"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+            </svg>
+          </a>
+          <a
+            href="https://github.com/polinikita"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+            aria-label="GitHub"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </a>
+          <a
+            href="https://linkedin.com/in/nikita-polianskii-770b707b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+            aria-label="LinkedIn"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a
+            href="https://www.researchgate.net/profile/Nikita-Polyanskii"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+            aria-label="ResearchGate"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.121 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .078.53h-.005a3.334 3.334 0 0 0 .112.438c.243.743.65 1.303 1.213 1.68.565.376 1.256.564 2.073.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82c0-.095-.047-.142-.14-.142h-3.064c-.094 0-.14.047-.14.141v.956c0 .094.046.14.14.14h1.666c.056 0 .084.03.084.086 0 .36 0 .62-.036.865-.038.244-.1.447-.147.606-.108.335-.311.622-.603.853-.29.232-.68.347-1.138.347-.422 0-.787-.09-1.09-.272a1.847 1.847 0 0 1-.74-.802c-.165-.345-.253-.764-.253-1.252v-4.082c0-.495.085-.91.256-1.262.17-.345.426-.617.74-.795.303-.18.67-.27 1.09-.27.488 0 .882.126 1.178.39.296.263.492.615.574 1.067.028.13.096.2.196.2h1.37c.11 0 .165-.072.15-.183a3.897 3.897 0 0 0-.318-1.154 3.706 3.706 0 0 0-.75-1.048 3.344 3.344 0 0 0-1.087-.716A3.755 3.755 0 0 0 19.586 0zM4.414 5.945c-.093 0-.14.047-.14.14v11.778c0 .094.047.14.14.14H5.9c.093 0 .14-.046.14-.14v-4.317c0-.095.046-.14.14-.14h1.728c.093 0 .14.045.14.14v4.317c0 .094.047.14.14.14h1.486c.094 0 .14-.046.14-.14V6.086c0-.094-.046-.14-.14-.14H8.188c-.093 0-.14.046-.14.14v4.226c0 .094-.047.14-.14.14H6.18c-.094 0-.14-.046-.14-.14V6.086c0-.094-.047-.14-.14-.14z"/>
+            </svg>
+          </a>
+        </div>
       </motion.section>
 
       {/* Personal Intro */}
@@ -377,7 +419,7 @@ export default function Home() {
             href="/about"
             className="px-4 py-2 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-900 dark:text-white font-medium rounded-lg transition-colors text-sm"
           >
-            More About Me
+            My Background
           </Link>
         </div>
       </motion.section>
