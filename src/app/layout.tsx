@@ -23,7 +23,11 @@ export const metadata: Metadata = {
   description: "Personal academic website showcasing research, publications, and projects.",
   keywords: ["research", "academic", "publications", "computer science"],
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
