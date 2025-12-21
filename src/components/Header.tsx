@@ -25,9 +25,9 @@ export default function Header() {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 bg-[#fafafa]/50 dark:bg-[#0a0a0a]/50 backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
     >
-      <nav className="max-w-6xl mx-auto px-6 py-2.5 flex items-center justify-between">
-        <Link href="/" className="text-lg font-bold text-neutral-900 dark:text-white">
-          Nikita Polyanskii
+      <nav className="max-w-4xl mx-auto px-6 py-2.5 flex items-center justify-between">
+        <Link href="/" className="text-sm font-semibold tracking-widest text-neutral-900 dark:text-white uppercase">
+          NIKITA POLYANSKII
         </Link>
 
         <div className="flex items-center gap-2">
