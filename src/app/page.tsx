@@ -84,48 +84,72 @@ const dagPapers = [
   },
 ];
 
-const researchThemes = [
+const researchTopics = [
   {
     id: "blockchain-consensus",
     name: "Blockchain & Consensus",
     description: "How distributed systems agree on things without anyone being in charge.",
-    paperCount: 6,
     href: "/publications?category=Blockchain%20%26%20Consensus",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      </svg>
+    ),
   },
   {
     id: "coding-theory",
     name: "Coding Theory",
     description: "The mathematics of reliable communication and error correction.",
-    paperCount: 9,
     href: "/publications?category=Coding%20Theory",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
   },
   {
     id: "group-testing",
     name: "Group Testing",
     description: "Finding needles in haystacks efficiently by testing groups.",
-    paperCount: 11,
     href: "/publications?category=Group%20Testing",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
   },
   {
     id: "combinatorics",
     name: "Combinatorics",
     description: "Counting, arranging, and understanding discrete structures.",
-    paperCount: 3,
     href: "/publications?category=Combinatorics",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+    ),
   },
   {
     id: "information-theory",
     name: "Information Theory",
     description: "The science of quantifying and transmitting information.",
-    paperCount: 6,
     href: "/publications?category=Information%20Theory",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
   },
   {
     id: "dna-molecular",
     name: "DNA & Molecular",
     description: "Storing and processing data using molecules.",
-    paperCount: 3,
     href: "/publications?category=DNA%20%26%20Molecular",
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    ),
   },
 ];
 
@@ -175,7 +199,11 @@ export default function Home() {
               IOTA Foundation
             </a>
             {" "}where I get to think about how distributed systems can agree on things without anyone being in charge.
-            Before this, I explored the intersection of combinatorics and coding theory at Technion and TU Munich, and worked on practical optimization of error-correcting codes for 5G at Huawei (some of which made it into the 3GPP standard!).
+            Before this, I explored the intersection of combinatorics and coding theory at Technion and TU Munich, and worked on practical optimization of error-correcting codes for 5G at Huawei (some of which made it into the{" "}
+            <a href="https://www.3gpp.org/specifications" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+              3GPP standard
+            </a>
+            ).
           </p>
           <p className="text-lg text-dark leading-relaxed mt-4">
             I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
@@ -284,7 +312,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Research Themes for Familiar Visitors */}
+      {/* Research Topics */}
       <motion.section
         initial="initial"
         animate="animate"
@@ -293,29 +321,29 @@ export default function Home() {
         className="mb-16"
       >
         <h2 className="text-xl font-bold heading-dark mb-2">
-          Research Themes
+          Research Topics
         </h2>
         <p className="text-dark mb-6">
           If you&apos;re here looking for a specific topic, these are my main research areas:
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {researchThemes.map((theme) => (
+          {researchTopics.map((topic) => (
             <Link
-              key={theme.id}
-              href={theme.href}
+              key={topic.id}
+              href={topic.href}
               className="group p-4 rounded-lg card-bg border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all"
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {theme.name}
+                  {topic.name}
                 </h3>
-                <span className="text-sm card-muted">
-                  {theme.paperCount} {theme.paperCount === 1 ? "paper" : "papers"}
+                <span className="text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+                  {topic.icon}
                 </span>
               </div>
               <p className="text-sm card-body">
-                {theme.description}
+                {topic.description}
               </p>
             </Link>
           ))}
