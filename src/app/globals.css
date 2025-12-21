@@ -102,6 +102,16 @@ html {
   color: #93c5fd;
 }
 
+.tag-gray {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.dark .tag-gray {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
 ::selection {
   background-color: var(--accent);
   color: white;

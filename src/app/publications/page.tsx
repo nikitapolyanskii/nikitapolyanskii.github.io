@@ -425,7 +425,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
         {pub.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="px-2 py-1 text-xs bg-neutral-200 dark:bg-neutral-800 card-body rounded"
+            className="px-2 py-1 text-xs tag-gray rounded"
           >
             {tag}
           </span>
