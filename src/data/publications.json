@@ -10,6 +10,36 @@
     "tags": ["Blockchain", "DAG", "Consensus"]
   },
   {
+    "id": "43",
+    "title": "Slipstream: Low-Latency Ebb-and-Flow Protocols",
+    "authors": ["Nikita Polyanskii"],
+    "venue": "Preprint",
+    "year": 2024,
+    "category": "Blockchain & Consensus",
+    "arxiv": "2410.14876",
+    "tags": ["Blockchain", "Consensus", "Low Latency"]
+  },
+  {
+    "id": "44",
+    "title": "Starfish: A Full-DAG BFT Protocol with Optimal Communication Complexity",
+    "authors": ["Nikita Polyanskii"],
+    "venue": "Cryptology ePrint Archive",
+    "year": 2025,
+    "category": "Blockchain & Consensus",
+    "eprint": "2025/567",
+    "tags": ["Blockchain", "DAG", "BFT", "Consensus"]
+  },
+  {
+    "id": "45",
+    "title": "SoK: DAG-based Consensus",
+    "authors": ["Nikita Polyanskii"],
+    "venue": "Preprint",
+    "year": 2024,
+    "category": "Blockchain & Consensus",
+    "arxiv": "2411.10026",
+    "tags": ["Blockchain", "DAG", "Consensus", "Survey"]
+  },
+  {
     "id": "2",
     "title": "Reality-based UTXO Ledger",
     "authors": ["Sebastian Muller", "Nikita Polyanskii", "Andreas Penzkofer", "Jonas Theis", "William Sanders", "Hans Moog"],

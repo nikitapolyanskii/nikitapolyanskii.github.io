@@ -13,6 +13,7 @@ type Publication = {
   category: string;
   doi?: string;
   arxiv?: string;
+  eprint?: string;
   pdf?: string;
   tags: string[];
   conferenceVersion?: {
@@ -459,6 +460,16 @@ function PublicationCard({ pub }: { pub: Publication }) {
             className="text-sm card-label hover:underline"
           >
             arXiv
+          </a>
+        )}
+        {pub.eprint && (
+          <a
+            href={`https://eprint.iacr.org/${pub.eprint}.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm card-label hover:underline"
+          >
+            ePrint
           </a>
         )}
       </div>

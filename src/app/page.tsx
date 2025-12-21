@@ -89,7 +89,7 @@ const researchThemes = [
     id: "blockchain-consensus",
     name: "Blockchain & Consensus",
     description: "How distributed systems agree on things without anyone being in charge.",
-    paperCount: 3,
+    paperCount: 6,
     href: "/publications?category=Blockchain%20%26%20Consensus",
   },
   {
