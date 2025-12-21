@@ -16,9 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nikita Polyanskii | Academic Website",
+  title: {
+    default: "Nikita Polyanskii",
+    template: "%s | Nikita Polyanskii",
+  },
   description: "Personal academic website showcasing research, publications, and projects.",
   keywords: ["research", "academic", "publications", "computer science"],
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
