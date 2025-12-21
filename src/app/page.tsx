@@ -138,47 +138,26 @@ export default function Home() {
         animate="animate"
         variants={fadeInUp}
         transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row gap-8 mb-12"
+        className="flex flex-col items-center text-center mb-12"
       >
         {/* Profile Photo */}
-        <div className="flex-shrink-0">
-          <div className="w-40 h-40 rounded-xl overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+        <div className="mb-6">
+          <div className="w-56 h-56 rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800">
             <Image
               src="/photos/NPolianskii_small.jpg"
               alt="Nikita Polyanskii"
-              width={160}
-              height={160}
+              width={224}
+              height={224}
               className="object-cover w-full h-full"
               priority
             />
           </div>
         </div>
 
-        {/* Name and Contact */}
-        <div className="flex-grow">
-          <h1 className="text-3xl md:text-4xl font-bold heading-dark mb-2">
-            Hi, I&apos;m Nikita
-          </h1>
-          <p className="text-lg text-blue-600 dark:text-blue-400 font-medium mb-4">
-            IOTA Foundation
-          </p>
-
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target={link.name !== "Email" ? "_blank" : undefined}
-                rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-              >
-                {link.icon}
-                <span>{link.name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
+        {/* Name */}
+        <h1 className="text-3xl md:text-4xl font-bold heading-dark">
+          Hi, I&apos;m Nikita
+        </h1>
       </motion.section>
 
       {/* Personal Intro */}
