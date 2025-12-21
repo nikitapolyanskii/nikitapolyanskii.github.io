@@ -160,7 +160,7 @@ export default function AboutPage() {
               {researchInterests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm"
+                  className="px-3 py-1 tag-blue rounded-full text-sm"
                 >
                   {interest}
                 </span>

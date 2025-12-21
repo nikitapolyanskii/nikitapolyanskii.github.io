@@ -91,6 +91,17 @@ html {
   color: #6b7280;
 }
 
+/* Tags */
+.tag-blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.dark .tag-blue {
+  background-color: rgba(30, 58, 138, 0.3);
+  color: #93c5fd;
+}
+
 ::selection {
   background-color: var(--accent);
   color: white;
