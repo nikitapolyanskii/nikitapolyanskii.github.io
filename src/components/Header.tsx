@@ -8,9 +8,8 @@ import { useTheme } from "./ThemeProvider";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/publications", label: "Publications" },
+  { href: "/publications", label: "Papers" },
 ];
 
 export default function Header() {
@@ -31,12 +30,12 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <ul className="flex items-center gap-1 p-1 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50">
+          <ul className="flex items-center p-1 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200"
+                  className="relative px-3 py-2 text-sm font-semibold rounded-full transition-all duration-200"
                 >
                   {pathname === link.href && (
                     <motion.div
