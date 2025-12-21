@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --accent: #4338ca;
-  --accent-light: #6366f1;
+  --background: #fafafa;
+  --foreground: #1a1a1a;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --surface: #ffffff;
+  --surface-hover: #f5f5f5;
+  --border: #e5e5e5;
+  --muted: #737373;
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --accent: #818cf8;
-  --accent-light: #a5b4fc;
+  --accent: #60a5fa;
+  --accent-light: #93c5fd;
+  --surface: #171717;
+  --surface-hover: #262626;
+  --border: #262626;
+  --muted: #a3a3a3;
 }
 
 @theme inline {
@@ -31,6 +39,56 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Custom text colors for light/dark mode */
+.heading-dark {
+  color: #111827;
+}
+
+.dark .heading-dark {
+  color: #ffffff;
+}
+
+.text-dark {
+  color: #1f2937;
+}
+
+.dark .text-dark {
+  color: #d1d5db;
+}
+
+/* Card text colors */
+.card-title {
+  color: #111827;
+}
+
+.dark .card-title {
+  color: #ffffff;
+}
+
+.card-body {
+  color: #374151;
+}
+
+.dark .card-body {
+  color: #9ca3af;
+}
+
+.card-label {
+  color: #1d4ed8;
+}
+
+.dark .card-label {
+  color: #60a5fa;
+}
+
+.card-muted {
+  color: #4b5563;
+}
+
+.dark .card-muted {
+  color: #6b7280;
 }
 
 ::selection {

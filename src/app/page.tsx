@@ -86,39 +86,46 @@ const dagPapers = [
 
 const researchThemes = [
   {
-    id: "dag-consensus",
-    name: "DAG Consensus",
-    description: "Making distributed systems agree using DAGs instead of chains.",
-    paperCount: 4,
-    href: "#dag-consensus",
+    id: "blockchain-consensus",
+    name: "Blockchain & Consensus",
+    description: "How distributed systems agree on things without anyone being in charge.",
+    paperCount: 3,
+    href: "/publications?category=Blockchain%20%26%20Consensus",
+  },
+  {
+    id: "coding-theory",
+    name: "Coding Theory",
+    description: "The mathematics of reliable communication and error correction.",
+    paperCount: 9,
+    href: "/publications?category=Coding%20Theory",
   },
   {
     id: "group-testing",
     name: "Group Testing",
-    description: "Finding defective items efficiently by testing groups rather than individuals.",
-    paperCount: 12,
+    description: "Finding needles in haystacks efficiently by testing groups.",
+    paperCount: 11,
     href: "/publications?category=Group%20Testing",
   },
   {
-    id: "polar-codes",
-    name: "Polar Codes / 5G",
-    description: "Error-correcting codes optimized for the 5G standard.",
-    paperCount: 2,
-    href: "/publications?tag=Polar%20Codes",
+    id: "combinatorics",
+    name: "Combinatorics",
+    description: "Counting, arranging, and understanding discrete structures.",
+    paperCount: 3,
+    href: "/publications?category=Combinatorics",
   },
   {
-    id: "dna-storage",
-    name: "DNA Storage",
-    description: "Storing digital data in molecular form for extreme density.",
+    id: "information-theory",
+    name: "Information Theory",
+    description: "The science of quantifying and transmitting information.",
+    paperCount: 6,
+    href: "/publications?category=Information%20Theory",
+  },
+  {
+    id: "dna-molecular",
+    name: "DNA & Molecular",
+    description: "Storing and processing data using molecules.",
     paperCount: 3,
     href: "/publications?category=DNA%20%26%20Molecular",
-  },
-  {
-    id: "mastermind",
-    name: "Mastermind Game",
-    description: "The mathematics of code-breaking and metric dimension.",
-    paperCount: 1,
-    href: "/publications?tag=Mastermind",
   },
 ];
 
@@ -149,10 +156,10 @@ export default function Home() {
 
         {/* Name and Contact */}
         <div className="flex-grow">
-          <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold heading-dark mb-2">
             Hi, I&apos;m Nikita
           </h1>
-          <p className="text-lg text-indigo-600 dark:text-indigo-400 font-medium mb-4">
+          <p className="text-lg text-blue-600 dark:text-blue-400 font-medium mb-4">
             IOTA Foundation
           </p>
 
@@ -164,7 +171,7 @@ export default function Home() {
                 href={link.href}
                 target={link.name !== "Email" ? "_blank" : undefined}
                 rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm"
+                className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
               >
                 {link.icon}
                 <span>{link.name}</span>
@@ -182,16 +189,16 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="mb-16"
       >
-        <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <p className="text-lg text-neutral-800 dark:text-neutral-300 leading-relaxed">
+        <div className="max-w-none">
+          <p className="text-lg text-dark leading-relaxed">
             I work at the{" "}
-            <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">
+            <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
               IOTA Foundation
             </a>
             {" "}where I get to think about how distributed systems can agree on things without anyone being in charge.
             Before this, I explored the intersection of combinatorics and coding theory at Technion and TU Munich, and worked on practical optimization of error-correcting codes for 5G at Huawei (some of which made it into the 3GPP standard!).
           </p>
-          <p className="text-lg text-neutral-800 dark:text-neutral-300 leading-relaxed mt-4">
+          <p className="text-lg text-dark leading-relaxed mt-4">
             I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
           </p>
         </div>
@@ -205,10 +212,10 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="mb-16"
       >
-        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
+        <h2 className="text-2xl font-bold heading-dark mb-2">
           What I&apos;m Working On
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-400 mb-8">
+        <p className="text-dark mb-8">
           My main focus is DAG-based consensus protocols — making distributed systems faster and more reliable.
         </p>
 
@@ -219,14 +226,14 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50"
+              className="p-6 rounded-xl bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-xl font-semibold text-neutral-900 dark:text-white">
+                <h3 className="text-xl font-semibold card-title">
                   {paper.title}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-neutral-500 dark:text-neutral-500">
+                  <span className="text-sm card-muted">
                     {paper.year}
                   </span>
                   <span className="px-2 py-1 text-xs rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
@@ -237,18 +244,18 @@ export default function Home() {
 
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">
+                  <p className="text-sm font-medium card-label mb-1">
                     The challenge
                   </p>
-                  <p className="text-neutral-700 dark:text-neutral-400">
+                  <p className="card-body">
                     {paper.challenge}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">
+                  <p className="text-sm font-medium card-label mb-1">
                     Our approach
                   </p>
-                  <p className="text-neutral-700 dark:text-neutral-400">
+                  <p className="card-body">
                     {paper.approach}
                   </p>
                 </div>
@@ -257,7 +264,7 @@ export default function Home() {
               {(paper.doi || paper.arxiv || paper.eprint || paper.venue) && (
                 <div className="mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center gap-4 text-sm">
                   {paper.venue && (
-                    <span className="text-neutral-500 dark:text-neutral-500">
+                    <span className="card-muted">
                       {paper.venue}
                     </span>
                   )}
@@ -266,7 +273,7 @@ export default function Home() {
                       href={`https://doi.org/${paper.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                      className="card-label hover:underline"
                     >
                       DOI
                     </a>
@@ -276,7 +283,7 @@ export default function Home() {
                       href={`https://arxiv.org/abs/${paper.arxiv}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                      className="card-label hover:underline"
                     >
                       arXiv
                     </a>
@@ -286,7 +293,7 @@ export default function Home() {
                       href={`https://eprint.iacr.org/${paper.eprint}.pdf`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-indigo-600 dark:text-indigo-400 hover:underline"
+                      className="card-label hover:underline"
                     >
                       ePrint
                     </a>
@@ -306,10 +313,10 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.5 }}
         className="mb-16"
       >
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+        <h2 className="text-xl font-bold heading-dark mb-2">
           Research Themes
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-400 mb-6">
+        <p className="text-dark mb-6">
           If you&apos;re here looking for a specific topic, these are my main research areas:
         </p>
 
@@ -318,17 +325,17 @@ export default function Home() {
             <Link
               key={theme.id}
               href={theme.href}
-              className="group p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-white dark:bg-neutral-900/50"
+              className="group p-4 rounded-lg bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:border-blue-500 dark:hover:border-blue-500 transition-all"
             >
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                <h3 className="font-semibold card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {theme.name}
                 </h3>
-                <span className="text-sm text-neutral-500 dark:text-neutral-500">
+                <span className="text-sm card-muted">
                   {theme.paperCount} {theme.paperCount === 1 ? "paper" : "papers"}
                 </span>
               </div>
-              <p className="text-sm text-neutral-700 dark:text-neutral-400">
+              <p className="text-sm card-body">
                 {theme.description}
               </p>
             </Link>
@@ -344,10 +351,10 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.6 }}
         className="mb-12"
       >
-        <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+        <h2 className="text-xl font-bold heading-dark mb-4">
           Other Things I Think About
         </h2>
-        <p className="text-neutral-700 dark:text-neutral-400 mb-6">
+        <p className="text-dark mb-6">
           Beyond the themes above, I&apos;ve worked on various problems in coding theory, combinatorics, and information theory.
           Check out my publications to see the full picture.
         </p>
@@ -355,7 +362,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-4">
           <Link
             href="/publications"
-            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors text-sm"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm shadow-sm"
           >
             All Publications
           </Link>

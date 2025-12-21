@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /publications
+Disallow: /papers/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /publications
+Disallow: /papers/
+
+User-agent: Googlebot-Image
+Disallow: /papers/

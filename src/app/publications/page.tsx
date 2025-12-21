@@ -169,10 +169,10 @@ export default function PublicationsPage() {
         variants={fadeInUp}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold heading-dark mb-4">
           Publications
         </h1>
-        <p className="text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl">
+        <p className="text-dark mb-8 max-w-2xl">
           Here&apos;s what I&apos;ve been working on over the years. Click on any topic to explore, or use the filters to find something specific.
         </p>
       </motion.div>
@@ -216,7 +216,7 @@ export default function PublicationsPage() {
           <select
             value={selectedYear ?? ""}
             onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
-            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All Years</option>
             {years.map((year) => (
@@ -230,7 +230,7 @@ export default function PublicationsPage() {
           <select
             value={selectedCategory ?? ""}
             onChange={(e) => setSelectedCategory(e.target.value || null)}
-            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">All Topics</option>
             {categories.map((category) => (
@@ -243,7 +243,7 @@ export default function PublicationsPage() {
           {(selectedYear || selectedCategory) && (
             <button
               onClick={clearFilters}
-              className="px-3 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+              className="px-3 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
             >
               Clear filters
             </button>
@@ -253,13 +253,13 @@ export default function PublicationsPage() {
 
           <button
             onClick={expandAll}
-            className="px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            className="px-3 py-2 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             Expand all
           </button>
           <button
             onClick={collapseAll}
-            className="px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            className="px-3 py-2 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
             Collapse all
           </button>
@@ -282,21 +282,21 @@ export default function PublicationsPage() {
                 animate="animate"
                 variants={fadeInUp}
                 transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
+                className="bg-white dark:bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm"
               >
                 <button
                   onClick={() => toggleTopic(category)}
                   className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
                 >
                   <div>
-                    <h2 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
+                    <h2 className="text-lg font-bold card-title flex items-center gap-2">
                       <span>{topicDescriptions[category]?.emoji || "📄"}</span>
                       {category}
-                      <span className="text-sm font-normal text-neutral-500 dark:text-neutral-500">
+                      <span className="text-sm font-normal card-muted">
                         ({pubs.length})
                       </span>
                     </h2>
-                    <p className="text-neutral-700 dark:text-neutral-400 text-sm mt-1">
+                    <p className="card-body text-sm mt-1">
                       {topicDescriptions[category]?.intro || "Research papers in this area."}
                     </p>
                   </div>
@@ -341,15 +341,15 @@ export default function PublicationsPage() {
                 animate="animate"
                 variants={fadeInUp}
                 transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
+                className="bg-white dark:bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm"
               >
                 <button
                   onClick={() => toggleYear(year)}
                   className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
                 >
-                  <h2 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
+                  <h2 className="text-lg font-bold card-title flex items-center gap-2">
                     {year}
-                    <span className="text-sm font-normal text-neutral-500 dark:text-neutral-500">
+                    <span className="text-sm font-normal card-muted">
                       ({pubs.length} {pubs.length === 1 ? "paper" : "papers"})
                     </span>
                   </h2>
@@ -394,7 +394,7 @@ export default function PublicationsPage() {
           </p>
           <button
             onClick={clearFilters}
-            className="mt-4 px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="mt-4 px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
           >
             Clear filters
           </button>
@@ -406,26 +406,26 @@ export default function PublicationsPage() {
 
 function PublicationCard({ pub }: { pub: Publication }) {
   return (
-    <article className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-white dark:bg-transparent">
+    <article className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors bg-white dark:bg-neutral-900/30">
       <div className="flex items-start justify-between gap-4 mb-2">
-        <h3 className="font-semibold text-neutral-900 dark:text-white">
+        <h3 className="font-semibold card-title">
           {pub.title}
         </h3>
-        <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-500">
+        <span className="shrink-0 text-sm card-muted">
           {pub.year}
         </span>
       </div>
-      <p className="text-sm text-neutral-700 dark:text-neutral-400 mb-2">
+      <p className="text-sm card-body mb-2">
         {pub.authors.join(", ")}
       </p>
-      <p className="text-sm text-indigo-600 dark:text-indigo-400 mb-3">
+      <p className="text-sm card-label mb-3">
         {pub.venue}
       </p>
       <div className="flex flex-wrap items-center gap-3">
         {pub.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="px-2 py-1 text-xs bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-400 rounded"
+            className="px-2 py-1 text-xs bg-neutral-200 dark:bg-neutral-800 card-body rounded"
           >
             {tag}
           </span>
@@ -436,7 +436,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
             href={pub.pdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+            className="text-sm card-label hover:underline font-medium"
           >
             PDF
           </a>
@@ -446,7 +446,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
             href={`https://doi.org/${pub.doi}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-sm card-label hover:underline"
           >
             DOI
           </a>
@@ -456,16 +456,16 @@ function PublicationCard({ pub }: { pub: Publication }) {
             href={`https://arxiv.org/abs/${pub.arxiv}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-sm card-label hover:underline"
           >
             arXiv
           </a>
         )}
       </div>
       {pub.conferenceVersion && (
-        <div className="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800 text-sm text-neutral-500 dark:text-neutral-500">
+        <div className="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800 text-sm card-muted">
           Also presented at:{" "}
-          <span className="text-neutral-700 dark:text-neutral-300">
+          <span className="card-body">
             {pub.conferenceVersion.venue} ({pub.conferenceVersion.year})
           </span>
           {pub.conferenceVersion.doi && (
@@ -473,7 +473,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
               href={`https://doi.org/${pub.conferenceVersion.doi}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 text-indigo-600 dark:text-indigo-400 hover:underline"
+              className="ml-2 card-label hover:underline"
             >
               DOI
             </a>
@@ -483,7 +483,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
               href={pub.conferenceVersion.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 text-indigo-600 dark:text-indigo-400 hover:underline"
+              className="ml-2 card-label hover:underline"
             >
               PDF
             </a>

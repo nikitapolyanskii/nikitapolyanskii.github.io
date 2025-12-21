@@ -99,14 +99,14 @@ export default function AboutPage() {
               />
             </div>
 
-            <h1 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2 text-center md:text-left">
+            <h1 className="text-2xl font-bold heading-dark mb-2 text-center md:text-left">
               Nikita Polyanskii
             </h1>
-            <p className="text-indigo-600 dark:text-indigo-400 font-medium mb-4 text-center md:text-left">
+            <p className="text-blue-600 dark:text-blue-400 font-medium mb-4 text-center md:text-left">
               Senior Applied Research Engineer
             </p>
 
-            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="space-y-3 text-sm card-muted">
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href={`mailto:${obfuscatedEmail}`} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                <a href={`mailto:${obfuscatedEmail}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   {obfuscatedEmail}
                 </a>
               </div>
@@ -133,16 +133,16 @@ export default function AboutPage() {
           className="md:col-span-2 space-y-8"
         >
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h2 className="text-xl font-bold heading-dark mb-4">
               A Bit About Me
             </h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
-              <p className="text-neutral-800 dark:text-neutral-400 leading-relaxed">
+            <div className="max-w-none">
+              <p className="text-dark leading-relaxed">
                 I spend most of my time thinking about how distributed systems can reach agreement
                 without a central authority. It&apos;s a fascinating puzzle that sits right at the
                 intersection of mathematics and real-world systems.
               </p>
-              <p className="text-neutral-800 dark:text-neutral-400 leading-relaxed">
+              <p className="text-dark leading-relaxed mt-4">
                 My path here has been a bit winding: I started with pure math at Moscow State,
                 then worked at Huawei on practical optimization of error-correcting codes for 5G
                 (some of which made it into the 3GPP standard!). During my postdocs at Technion
@@ -153,14 +153,14 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h2 className="text-xl font-bold heading-dark mb-4">
               What I&apos;m Curious About
             </h2>
             <div className="flex flex-wrap gap-2">
               {researchInterests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm"
+                  className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm"
                 >
                   {interest}
                 </span>
@@ -169,30 +169,30 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h2 className="text-xl font-bold heading-dark mb-4">
               Where I Studied
             </h2>
             <div className="space-y-4">
               {education.map((edu, index) => (
-                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent">
-                  <h3 className="font-semibold text-neutral-900 dark:text-white">
+                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent shadow-sm">
+                  <h3 className="font-semibold card-title">
                     {edu.degree}
                   </h3>
-                  <p className="text-indigo-600 dark:text-indigo-400 text-sm">
+                  <p className="card-label text-sm">
                     {edu.institution} &bull; {edu.period}
                   </p>
                   {edu.thesis && (
-                    <p className="text-neutral-700 dark:text-neutral-400 text-sm mt-1">
+                    <p className="card-body text-sm mt-1">
                       Thesis: &quot;{edu.thesis}&quot;
                     </p>
                   )}
                   {edu.advisor && (
-                    <p className="text-neutral-600 dark:text-neutral-500 text-sm">
+                    <p className="card-muted text-sm">
                       Advisor: {edu.advisor}
                     </p>
                   )}
                   {edu.note && (
-                    <p className="text-neutral-600 dark:text-neutral-500 text-sm italic">
+                    <p className="card-muted text-sm italic">
                       {edu.note}
                     </p>
                   )}
@@ -202,22 +202,22 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h2 className="text-xl font-bold heading-dark mb-4">
               Industry
             </h2>
             <div className="space-y-4">
               {industryExperience.map((exp, index) => (
-                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent">
-                  <h3 className="font-semibold text-neutral-900 dark:text-white">
+                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent shadow-sm">
+                  <h3 className="font-semibold card-title">
                     {exp.organization}
                   </h3>
-                  <p className="text-indigo-600 dark:text-indigo-400 text-sm">
+                  <p className="card-label text-sm">
                     {exp.period}
                   </p>
-                  <p className="text-neutral-600 dark:text-neutral-500 text-xs">
+                  <p className="card-muted text-xs">
                     {exp.department}
                   </p>
-                  <p className="text-neutral-700 dark:text-neutral-400 text-sm mt-2">
+                  <p className="card-body text-sm mt-2">
                     {exp.description}
                   </p>
                 </div>
@@ -226,22 +226,22 @@ export default function AboutPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+            <h2 className="text-xl font-bold heading-dark mb-4">
               Academia
             </h2>
             <div className="space-y-4">
               {academiaExperience.map((exp, index) => (
-                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent">
-                  <h3 className="font-semibold text-neutral-900 dark:text-white">
+                <div key={index} className="p-4 rounded-lg bg-white dark:bg-neutral-800/50 border border-neutral-200 dark:border-transparent shadow-sm">
+                  <h3 className="font-semibold card-title">
                     {exp.organization}
                   </h3>
-                  <p className="text-indigo-600 dark:text-indigo-400 text-sm">
+                  <p className="card-label text-sm">
                     {exp.period}
                   </p>
-                  <p className="text-neutral-600 dark:text-neutral-500 text-xs">
+                  <p className="card-muted text-xs">
                     {exp.department}
                   </p>
-                  <p className="text-neutral-700 dark:text-neutral-400 text-sm mt-2">
+                  <p className="card-body text-sm mt-2">
                     {exp.description}
                   </p>
                 </div>

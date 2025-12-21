@@ -160,7 +160,13 @@
     "category": "Group Testing",
     "doi": "10.1109/TSP.2019.2940120",
     "pdf": "/papers/hypothesis-test-defective-set-2019.pdf",
-    "tags": ["Group Testing", "Hypothesis Testing"]
+    "tags": ["Group Testing", "Hypothesis Testing"],
+    "conferenceVersion": {
+      "title": "Hypothesis Test for Upper Bound on the Size of Random Defective Set",
+      "venue": "ISIT",
+      "year": 2017,
+      "pdf": "/papers/hypothesis-test-isit-2017.pdf"
+    }
   },
   {
     "id": "16",
@@ -251,7 +257,13 @@
     "category": "Group Testing",
     "doi": "10.1007/s10623-016-0265-9",
     "pdf": "/papers/cover-free-separating-2016.pdf",
-    "tags": ["Cover-Free Codes", "Separating Systems"]
+    "tags": ["Cover-Free Codes", "Separating Systems"],
+    "conferenceVersion": {
+      "title": "Cover-free and separating codes",
+      "venue": "ISIT",
+      "year": 2015,
+      "pdf": "/papers/cover-free-separating-isit-2015.pdf"
+    }
   },
   {
     "id": "22",
@@ -327,16 +339,6 @@
     "tags": ["Batch Codes", "Finite Geometry"]
   },
   {
-    "id": "32",
-    "title": "Hypothesis Test for Upper Bound on the Size of Random Defective Set",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2017,
-    "category": "Group Testing",
-    "pdf": "/papers/hypothesis-test-isit-2017.pdf",
-    "tags": ["Group Testing", "Hypothesis Testing"]
-  },
-  {
     "id": "33",
     "title": "Learning hidden hypergraph",
     "authors": ["Nikita Polyanskii"],
@@ -365,16 +367,6 @@
     "category": "Group Testing",
     "pdf": "/papers/threshold-decoding-disjunctive-acct-2016.pdf",
     "tags": ["Disjunctive Codes", "Threshold Decoding"]
-  },
-  {
-    "id": "36",
-    "title": "Cover-free and separating codes",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "year": 2015,
-    "category": "Group Testing",
-    "pdf": "/papers/cover-free-separating-isit-2015.pdf",
-    "tags": ["Cover-Free Codes", "Separating Codes"]
   },
   {
     "id": "39",

@@ -20,7 +20,7 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-neutral-50/90 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-300 dark:border-neutral-800"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 shadow-sm"
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-neutral-900 dark:text-white">
@@ -35,7 +35,7 @@ export default function Header() {
                   href={link.href}
                   className={`relative py-2 text-sm font-medium transition-colors ${
                     pathname === link.href
-                      ? "text-indigo-600 dark:text-indigo-400"
+                      ? "text-blue-600 dark:text-blue-400"
                       : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                   }`}
                 >
@@ -43,7 +43,7 @@ export default function Header() {
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
