@@ -283,11 +283,11 @@ export default function PublicationsPage() {
                 animate="animate"
                 variants={fadeInUp}
                 transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
-                className="bg-white dark:bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm"
+                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => toggleTopic(category)}
-                  className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
+                  className="w-full p-5 flex items-center justify-between card-bg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-left"
                 >
                   <div>
                     <h2 className="text-lg font-bold card-title flex items-center gap-2">
@@ -342,11 +342,11 @@ export default function PublicationsPage() {
                 animate="animate"
                 variants={fadeInUp}
                 transition={{ duration: 0.5, delay: 0.2 + groupIndex * 0.05 }}
-                className="bg-white dark:bg-transparent border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden shadow-sm"
+                className="border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => toggleYear(year)}
-                  className="w-full p-5 flex items-center justify-between bg-white dark:bg-neutral-900/50 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors text-left"
+                  className="w-full p-5 flex items-center justify-between card-bg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors text-left"
                 >
                   <h2 className="text-lg font-bold card-title flex items-center gap-2">
                     {year}
@@ -407,7 +407,7 @@ export default function PublicationsPage() {
 
 function PublicationCard({ pub }: { pub: Publication }) {
   return (
-    <article className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors bg-white dark:bg-neutral-900/30">
+    <article className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors card-bg">
       <div className="flex items-start justify-between gap-4 mb-2">
         <h3 className="font-semibold card-title">
           {pub.title}

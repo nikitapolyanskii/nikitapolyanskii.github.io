@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
+import SearchModal from "./SearchModal";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -14,39 +16,42 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 shadow-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#fafafa]/50 dark:bg-[#0a0a0a]/50 backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
     >
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-neutral-900 dark:text-white">
+      <nav className="max-w-6xl mx-auto px-6 py-2.5 flex items-center justify-between">
+        <Link href="/" className="text-lg font-bold text-neutral-900 dark:text-white">
           Nikita Polyanskii
         </Link>
 
-        <div className="flex items-center gap-8">
-          <ul className="flex items-center gap-6">
+        <div className="flex items-center gap-2">
+          <ul className="flex items-center gap-1 p-1 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`relative py-2 text-sm font-medium transition-colors ${
-                    pathname === link.href
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
-                  }`}
+                  className="relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200"
                 >
-                  {link.label}
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                      className="absolute inset-0 bg-[#fafafa] dark:bg-[#0a0a0a] rounded-full shadow-sm"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
+                  <span className={`relative z-10 ${
+                    pathname === link.href
+                      ? "text-neutral-900 dark:text-white"
+                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                  }`}>
+                    {link.label}
+                  </span>
                 </Link>
               </li>
             ))}
@@ -54,7 +59,7 @@ export default function Header() {
 
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+            className="p-2.5 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-300/50 dark:hover:bg-neutral-600/50 transition-all duration-200"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
@@ -77,8 +82,25 @@ export default function Header() {
               </svg>
             )}
           </button>
+
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="p-2.5 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-300/50 dark:hover:bg-neutral-600/50 transition-all duration-200"
+            aria-label="Search"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
         </div>
       </nav>
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </motion.header>
   );
 }

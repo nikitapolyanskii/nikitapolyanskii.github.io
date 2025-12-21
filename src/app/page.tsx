@@ -156,7 +156,7 @@ export default function Home() {
 
         {/* Name */}
         <h1 className="text-3xl md:text-4xl font-bold heading-dark">
-          Hi, I&apos;m Nikita
+          Hi, I&apos;m Nikita Polyanskii
         </h1>
       </motion.section>
 
@@ -205,7 +205,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              className="p-6 rounded-xl bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow"
+              className="p-6 rounded-xl card-bg border border-neutral-200 dark:border-neutral-800"
             >
               <div className="flex items-start justify-between gap-4 mb-4">
                 <h3 className="text-xl font-semibold card-title">
@@ -304,7 +304,7 @@ export default function Home() {
             <Link
               key={theme.id}
               href={theme.href}
-              className="group p-4 rounded-lg bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md hover:border-blue-500 dark:hover:border-blue-500 transition-all"
+              className="group p-4 rounded-lg card-bg border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all"
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -341,7 +341,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-4">
           <Link
             href="/publications"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm shadow-sm"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-sm"
           >
             All Publications
           </Link>

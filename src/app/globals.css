@@ -55,7 +55,7 @@ html {
 }
 
 .dark .text-dark {
-  color: #d1d5db;
+  color: #e5e7eb;
 }
 
 /* Card text colors */
@@ -72,7 +72,7 @@ html {
 }
 
 .dark .card-body {
-  color: #9ca3af;
+  color: #d1d5db;
 }
 
 .card-label {
@@ -88,7 +88,16 @@ html {
 }
 
 .dark .card-muted {
-  color: #6b7280;
+  color: #9ca3af;
+}
+
+/* Card backgrounds */
+.card-bg {
+  background-color: #ffffff;
+}
+
+.dark .card-bg {
+  background-color: #1f1f1f;
 }
 
 /* Tags */
