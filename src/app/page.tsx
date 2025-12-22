@@ -48,7 +48,7 @@ const selectedContributions = [
     year: 2020,
     pdf: "/papers/weight-distributions-polar-codes-2020.pdf",
     doi: "10.1109/TCOMM.2020.3014625",
-    patent: { name: "US Patent", url: "https://patents.google.com/patent/US11811528B2" },
+    adopted: { name: "5G", url: "https://patents.google.com/patent/US11811528B2" },
   },
 ];
 
@@ -132,12 +132,12 @@ export default function Home() {
         animate="animate"
         variants={fadeInUp}
         transition={{ duration: 0.5 }}
-        className="mb-16"
+        className="mb-10"
       >
-        {/* Profile Card - floats left */}
-        <div className="float-left mr-10 mb-4">
+        {/* Profile Card - full width on mobile, floats left on md+ */}
+        <div className="mb-6 md:float-left md:mr-10 md:mb-4 text-center md:text-left">
           {/* Photo */}
-          <div className="w-56 h-56 rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-4">
+          <div className="w-full max-w-[224px] mx-auto md:mx-0 aspect-square rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-4">
             <Image
               src="/photos/NPolianskii_small.jpg"
               alt="Nikita Polyanskii"
@@ -206,7 +206,7 @@ export default function Home() {
           </button>
 
           {/* Social Links */}
-          <div className={`items-center gap-2 ${showDetails ? 'flex' : 'hidden'} md:flex`}>
+          <div className={`items-center gap-2 justify-center md:justify-start ${showDetails ? 'flex' : 'hidden'} md:flex`}>
             <a
               href="https://scholar.google.com/citations?hl=en&user=4Y8b6l8AAAAJ&view_op=list_works&sortby=pubdate"
               target="_blank"
@@ -257,7 +257,8 @@ export default function Home() {
         {/* About text - wraps around profile card */}
         <h2 className="text-2xl font-bold heading-dark mb-4">About</h2>
         <p className="text-lg text-dark leading-relaxed">
-          Hey, I am Nikita! I work at the{" "}
+          Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering — though I still think in theorems and proofs when no one&apos;s looking.
+          Currently, I work at the{" "}
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
             IOTA Foundation
           </a>
@@ -268,6 +269,23 @@ export default function Home() {
           <a href="https://www.tum.de" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">TU Munich</a>, and worked on practical optimization of codes for the 5G standard at{" "}
           <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Huawei</a>.
         </p>
+        {/* Interests - inline as text links */}
+        <p className="text-lg text-dark leading-relaxed mt-4">
+          My research interests include{" "}
+          {researchTopics.map((topic, index) => (
+            <span key={topic.id}>
+              <Link
+                href={topic.href}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {topic.name.toLowerCase()}
+              </Link>
+              {index < researchTopics.length - 2 && ", "}
+              {index === researchTopics.length - 2 && ", and "}
+            </span>
+          ))}.
+        </p>
+
         <p className="text-lg text-dark leading-relaxed mt-4">
           Now I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
         </p>
@@ -276,62 +294,16 @@ export default function Home() {
         <div className="clear-both" />
       </motion.section>
 
-      {/* Interesting Facts Section */}
-      <motion.section
-        initial="initial"
-        animate="animate"
-        variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mb-16"
-      >
-        <h2 className="text-2xl font-bold heading-dark mb-4">Interesting Facts</h2>
-        <ul className="space-y-3 text-dark mb-6">
-          <li className="flex gap-2">
-            <span className="text-blue-600 dark:text-blue-400">→</span>
-            <span>
-              I&apos;ve ping-ponged between academia and industry three times now: Academia → Industry → Academia → Industry. Still not sure which side will win.
-            </span>
-          </li>
-          <li className="flex gap-2">
-            <span className="text-blue-600 dark:text-blue-400">→</span>
-            <span>
-              My brother{" "}
-              <a href="https://polyanskii.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-                Alexandr (Sasha) Polyanskii
-              </a>
-              {" "}is an Assistant Professor of Mathematics at Emory University, working on discrete and convex geometry.
-            </span>
-          </li>
-          <li className="flex gap-2">
-            <span className="text-blue-600 dark:text-blue-400">→</span>
-            <span>
-              I am an academic descendant of{" "}
-              <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Andrey Kolmogorov</a> — traced through PhD advisor paths: Andrey Kolmogorov → Roland Dobrushin → Arkady Dyachkov → me (
-              <a href="https://www.mathgenealogy.org/id.php?id=317644" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
-                Math Genealogy
-              </a>
-              ).
-            </span>
-          </li>
-        </ul>
-        <p className="text-dark">
-          For the formal stuff (education, work history), see my{" "}
-          <Link href="/about" className="text-blue-600 dark:text-blue-400 hover:underline">
-            bio
-          </Link>
-          .
-        </p>
-      </motion.section>
-
       {/* Selected Contributions Section */}
       <motion.section
         initial="initial"
         animate="animate"
         variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.15 }}
-        className="mb-16"
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-10"
       >
-        <h2 className="text-2xl font-bold heading-dark mb-6">Selected Contributions</h2>
+        <h2 className="text-2xl font-bold heading-dark mb-2">Selected Contributions</h2>
+        <p className="text-sm card-muted mb-6">Some highlights from my work:</p>
         <div className="space-y-4">
           {selectedContributions.map((item, index) => (
             <motion.div
@@ -378,16 +350,6 @@ export default function Home() {
                     </a>
                   </span>
                 )}
-                {item.patent && (
-                  <a
-                    href={item.patent.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-amber-600 dark:text-amber-400 hover:underline"
-                  >
-                    {item.patent.name}
-                  </a>
-                )}
                 {item.wiki && (
                   <a
                     href={item.wiki.url}
@@ -414,43 +376,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Research Topics */}
-      <motion.section
-        initial="initial"
-        animate="animate"
-        variants={fadeInUp}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="mb-16"
-      >
-        <h2 className="text-xl font-bold heading-dark mb-2">
-          Research Topics
-        </h2>
-        <p className="text-dark mb-6">
-          If you&apos;re here looking for a specific topic, these are my main research areas:
-        </p>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {researchTopics.map((topic) => (
-            <Link
-              key={topic.id}
-              href={topic.href}
-              className="group p-4 rounded-lg card-bg border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-all"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {topic.name}
-                </h3>
-                <span className="text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                  {topic.icon}
-                </span>
-              </div>
-              <p className="text-sm card-body">
-                {topic.description}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </motion.section>
     </div>
   );
 }

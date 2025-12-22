@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import publications from "@/data/publications.json";
 
@@ -59,11 +60,40 @@ const topicDescriptions: { [key: string]: { emoji: string; intro: string } } = {
 };
 
 export default function PublicationsPage() {
+  return (
+    <Suspense fallback={<PublicationsLoading />}>
+      <PublicationsContent />
+    </Suspense>
+  );
+}
+
+function PublicationsLoading() {
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="animate-pulse">
+        <div className="h-10 bg-neutral-200 dark:bg-neutral-800 rounded w-48 mb-4" />
+        <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-96 mb-8" />
+      </div>
+    </div>
+  );
+}
+
+function PublicationsContent() {
+  const searchParams = useSearchParams();
   const [viewMode, setViewMode] = useState<"topic" | "year">("topic");
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [expandedTopics, setExpandedTopics] = useState<Set<string>>(new Set());
   const [expandedYears, setExpandedYears] = useState<Set<number>>(new Set());
+
+  // Read category from URL on mount
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get("category");
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+      setExpandedTopics(new Set([categoryFromUrl]));
+    }
+  }, [searchParams]);
 
   const toggleTopic = (category: string) => {
     setExpandedTopics((prev) => {

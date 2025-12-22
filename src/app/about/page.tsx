@@ -26,7 +26,20 @@ const education = [
   },
 ];
 
-const industryExperience = [
+type ExperienceItem = {
+  organization: string;
+  logo: string;
+  role: string;
+  department: string;
+  period: string;
+  host?: {
+    label: string;
+    name: string;
+    url: string;
+  };
+};
+
+const industryExperience: ExperienceItem[] = [
   {
     organization: "IOTA Foundation",
     logo: "/logos/iota.png",
@@ -43,13 +56,18 @@ const industryExperience = [
   },
 ];
 
-const academiaExperience = [
+const academiaExperience: ExperienceItem[] = [
   {
     organization: "Technical University of Munich",
     logo: "/logos/tum.png",
     role: "Postdoc",
     department: "Institute for Communications Engineering",
     period: "2019 - 2021",
+    host: {
+      label: "Host",
+      name: "Prof. Antonia Wachter-Zeh",
+      url: "https://www.ce.cit.tum.de/en/lnt/people/professors/wachter-zeh/",
+    },
   },
   {
     organization: "Skolkovo Institute of Science and Technology",
@@ -57,6 +75,11 @@ const academiaExperience = [
     role: "Postdoc",
     department: "Center for Computational and Data-Intensive Science and Engineering",
     period: "2018 - 2021",
+    host: {
+      label: "Mentor",
+      name: "Prof. Grigory Kabatiansky",
+      url: "https://scholar.google.ru/citations?user=FF_BqSIAAAAJ&hl=en&oi=sra",
+    },
   },
   {
     organization: "Technion - Israel Institute of Technology",
@@ -64,6 +87,11 @@ const academiaExperience = [
     role: "Postdoc",
     department: "Faculty of Mathematics",
     period: "2017 - 2018",
+    host: {
+      label: "Host",
+      name: "Prof. Ron Aharoni",
+      url: "https://math.technion.ac.il/en/tg_members/ron-aharoni/",
+    },
   },
   {
     organization: "Institute for Information Transmission Problems (IITP)",
@@ -71,6 +99,11 @@ const academiaExperience = [
     role: "Researcher",
     department: "Dobrushin Mathematics Laboratory",
     period: "2015 - 2018",
+    host: {
+      label: "Head",
+      name: "Prof. Michael Blank",
+      url: "https://www.hse.ru/en/org/persons/97608865/",
+    },
   },
 ];
 
@@ -84,16 +117,53 @@ export default function AboutPage() {
           variants={fadeInUp}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-lg text-dark">
-            I was born and raised in <a href="https://en.wikipedia.org/wiki/Kaluga" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Kaluga</a>.
-          </p>
+          <h2 className="text-xl font-bold heading-dark mb-4">Informal Bio</h2>
+          <ul className="space-y-3 text-dark">
+            <li className="flex gap-2">
+              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span>
+                I was born and raised in{" "}
+                <a href="https://en.wikipedia.org/wiki/Kaluga" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Kaluga</a>
+                , the city where{" "}
+                <a href="https://en.wikipedia.org/wiki/Konstantin_Tsiolkovsky" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Konstantin Tsiolkovsky</a>
+                {" "}developed his rocket science theories.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span>
+                My brother{" "}
+                <a href="https://polyanskii.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Alexandr (Sasha) Polyanskii
+                </a>
+                {" "}is an Assistant Professor of Mathematics at Emory University, working on discrete and convex geometry.
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span>
+                I am an academic descendant of{" "}
+                <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Andrey Kolmogorov</a> — traced through PhD advisor paths: Andrey Kolmogorov → Roland Dobrushin → Arkady Dyachkov → me (
+                <a href="https://www.mathgenealogy.org/id.php?id=317644" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                  Math Genealogy
+                </a>
+                ).
+              </span>
+            </li>
+            <li className="flex gap-2">
+              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span>
+                I&apos;ve ping-ponged between academia and industry three times now: Academia → Industry → Academia → Industry. Still not sure which side will win.
+              </span>
+            </li>
+          </ul>
         </motion.section>
 
         <motion.section
           initial="initial"
           animate="animate"
           variants={fadeInUp}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
         >
           <h2 className="text-xl font-bold heading-dark mb-4">
             Education
@@ -143,7 +213,7 @@ function ExperienceSection() {
       initial="initial"
       animate="animate"
       variants={fadeInUp}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold heading-dark">
@@ -188,6 +258,19 @@ function ExperienceSection() {
               <p className="card-body text-sm">
                 {exp.role}, {exp.department}
               </p>
+              {exp.host && (
+                <p className="card-muted text-sm">
+                  {exp.host.label}:{" "}
+                  <a
+                    href={exp.host.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {exp.host.name}
+                  </a>
+                </p>
+              )}
             </div>
             <div className="flex-shrink-0 w-16 h-16 relative bg-white rounded-lg p-2 shadow-sm">
               <Image
