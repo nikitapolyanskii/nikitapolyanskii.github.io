@@ -22,11 +22,12 @@
   {
     "id": "44",
     "title": "Starfish: A Full-DAG BFT Protocol with Optimal Communication Complexity",
-    "authors": ["Nikita Polyanskii"],
+    "authors": ["Nikita Polyanskii", "Sebastian Mueller", "Ilya Vorobyev"],
     "venue": "Cryptology ePrint Archive",
     "year": 2025,
     "category": "Blockchain & Consensus",
     "eprint": "2025/567",
+    "pdf": "/papers/starfish-2025.pdf",
     "tags": ["Blockchain", "DAG", "BFT", "Consensus"]
   },
   {
@@ -127,6 +128,7 @@
     "year": 2021,
     "category": "Coding Theory",
     "doi": "10.1109/TIT.2021.3109898",
+    "pdf": "/papers/lifted-reed-solomon-codes-2021.pdf",
     "tags": ["Reed-Solomon", "Lifted Codes"],
     "conferenceVersion": {
       "title": "Lifted Reed-Solomon codes with application to batch codes",
@@ -168,11 +170,12 @@
   {
     "id": "14",
     "title": "Weight distributions for successive cancellation decoding of polar codes",
-    "authors": ["Mars Davletshin", "Rina Polyanskaya", "Nikita Polyanskii"],
+    "authors": ["Rina Polyanskaya", "Mars Davletshin", "Nikita Polyanskii"],
     "venue": "IEEE Transactions on Communications",
     "year": 2020,
     "category": "Coding Theory",
     "doi": "10.1109/TCOMM.2020.3020959",
+    "pdf": "/papers/weight-distributions-polar-codes-2020.pdf",
     "tags": ["Polar Codes", "Decoding"],
     "conferenceVersion": {
       "title": "Weight Distributions for Successive Cancellation Decoding of Polar Codes",

@@ -8,7 +8,7 @@ import { useTheme } from "./ThemeProvider";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/about", label: "About" },
+  { href: "/about", label: "Bio" },
   { href: "/publications", label: "Papers" },
 ];
 

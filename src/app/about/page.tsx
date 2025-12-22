@@ -16,7 +16,6 @@ const education = [
     degree: "Ph.D. in Mathematics",
     period: "2013 - 2016",
     advisor: "Prof. Arkady Dyachkov",
-    note: "Awarded by the Russian Academy of Sciences",
   },
   {
     institution: "Moscow State University",
@@ -66,21 +65,30 @@ const academiaExperience = [
     department: "Faculty of Mathematics",
     period: "2017 - 2018",
   },
+  {
+    organization: "Institute for Information Transmission Problems (IITP)",
+    logo: "/logos/iitp.png",
+    role: "Researcher",
+    department: "Dobrushin Mathematics Laboratory",
+    period: "2015 - 2018",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <motion.div
-        initial="initial"
-        animate="animate"
-        variants={fadeInUp}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="text-3xl font-bold heading-dark mb-8">Background</h1>
-      </motion.div>
-
       <div className="space-y-12">
+        <motion.section
+          initial="initial"
+          animate="animate"
+          variants={fadeInUp}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="text-lg text-dark">
+            Born in Kaluga, Russia. Married, one kid.
+          </p>
+        </motion.section>
+
         <motion.section
           initial="initial"
           animate="animate"
@@ -105,18 +113,13 @@ export default function AboutPage() {
                       Advisor: {edu.advisor}
                     </p>
                   )}
-                  {edu.note && (
-                    <p className="card-muted text-sm italic">
-                      {edu.note}
-                    </p>
-                  )}
                 </div>
-                <div className="flex-shrink-0 w-12 h-12 relative">
+                <div className="flex-shrink-0 w-16 h-16 relative bg-white rounded-lg p-2 shadow-sm">
                   <Image
                     src={edu.logo}
                     alt={edu.institution}
                     fill
-                    className="object-contain"
+                    className="object-contain p-1"
                   />
                 </div>
               </div>
@@ -186,12 +189,12 @@ function ExperienceSection() {
                 {exp.role}, {exp.department}
               </p>
             </div>
-            <div className="flex-shrink-0 w-12 h-12 relative">
+            <div className="flex-shrink-0 w-16 h-16 relative bg-white rounded-lg p-2 shadow-sm">
               <Image
                 src={exp.logo}
                 alt={exp.organization}
                 fill
-                className="object-contain"
+                className="object-contain p-1"
               />
             </div>
           </motion.div>
