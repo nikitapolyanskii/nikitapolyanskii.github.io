@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -11,7 +12,7 @@ const fadeInUp = {
 
 const selectedContributions = [
   {
-    title: "Starfish: A high throughput BFT protocol on uncertified DAG with linear amortized communication complexity",
+    title: "Starfish: A high-throughput BFT protocol on uncertified DAG with linear amortized communication complexity",
     description: "Designed and implemented a high-performance DAG-based protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.",
     authors: "N. Polyanskii, S. Mueller, I. Vorobyev",
     venue: "Preprint",
@@ -41,7 +42,7 @@ const selectedContributions = [
   },
   {
     title: "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
-    description: "Developed methods to compute weight distributions of polar codes — behind encoding bits for data transmission — influenced our contribution to 5G networks.",
+    description: "Developed methods to compute weight distributions of polar codes — the codes used for encoding bits in data transmission — which influenced our contribution to 5G networks.",
     authors: "R. Polyanskaya, M. Davletshin, N. Polyanskii",
     venue: "IEEE Transactions on Communications",
     year: 2020,
@@ -121,6 +122,8 @@ const researchTopics = [
 ];
 
 export default function Home() {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       {/* Header Section */}
@@ -132,22 +135,22 @@ export default function Home() {
         className="mb-16"
       >
         {/* Profile Card - floats left */}
-        <div className="float-left mr-8 mb-4">
+        <div className="float-left mr-10 mb-4">
           {/* Photo */}
-          <div className="w-44 h-44 rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-4">
+          <div className="w-56 h-56 rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 mb-4">
             <Image
               src="/photos/NPolianskii_small.jpg"
               alt="Nikita Polyanskii"
-              width={176}
-              height={176}
+              width={224}
+              height={224}
               className="object-cover w-full h-full"
               priority
             />
           </div>
 
           {/* Name & Role */}
-          <h1 className="text-xl font-bold heading-dark mb-0.5">Nikita Polyanskii</h1>
-          <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-3">Research Scientist and Engineer</p>
+          <h1 className="text-2xl font-bold heading-dark mb-1">Nikita Polyanskii</h1>
+          <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-4">Research Scientist and Engineer</p>
 
           {/* Info */}
           <div className="space-y-1 text-sm text-neutral-600 dark:text-neutral-400 mb-3">
@@ -164,26 +167,46 @@ export default function Home() {
               </svg>
               <span>Munich, Germany</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <a href="mailto:nikita.polyansky@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                nikita.polyansky@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <a href="mailto:nikita.polianskii@iota.org" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                nikita.polianskii@iota.org
-              </a>
+
+            {/* Collapsible on mobile */}
+            <div className={`space-y-1 ${showDetails ? 'block' : 'hidden'} md:block`}>
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:nikita.polyansky@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  nikita.polyansky@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:nikita.polianskii@iota.org" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  nikita.polianskii@iota.org
+                </a>
+              </div>
             </div>
           </div>
 
+          {/* Toggle button - mobile only */}
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="md:hidden text-sm text-blue-600 dark:text-blue-400 mb-3 flex items-center gap-1"
+          >
+            {showDetails ? 'Hide details' : 'Show details'}
+            <svg
+              className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-180' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
           {/* Social Links */}
-          <div className="flex items-center gap-2">
+          <div className={`items-center gap-2 ${showDetails ? 'flex' : 'hidden'} md:flex`}>
             <a
               href="https://scholar.google.com/citations?hl=en&user=4Y8b6l8AAAAJ&view_op=list_works&sortby=pubdate"
               target="_blank"
@@ -238,11 +261,15 @@ export default function Home() {
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
             IOTA Foundation
           </a>
-          {" "}where I design, analyze and implement high-perfomance consensus protocols.
-          Before this, I explored the intersection of fun combinatorics and error-correcting codes at Technion, Skoltech and TU Munich, and worked on practical optimization of codes for 5G standard at Huawei.
+          {" "}where I design, analyze and implement consensus protocols.
+          Before this, I explored the intersection of fun combinatorics and error-correcting codes at{" "}
+          <a href="https://www.technion.ac.il" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Technion</a>,{" "}
+          <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Skoltech</a> and{" "}
+          <a href="https://www.tum.de" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">TU Munich</a>, and worked on practical optimization of codes for the 5G standard at{" "}
+          <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Huawei</a>.
         </p>
         <p className="text-lg text-dark leading-relaxed mt-4">
-          I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
+          Now I&apos;m fascinated by problems at the intersection of theory and practice — taking mathematical ideas and turning them into systems that actually work.
         </p>
 
         {/* Clear float */}

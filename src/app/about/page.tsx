@@ -85,7 +85,7 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-lg text-dark">
-            Born in Kaluga, Russia. Married, one kid.
+            I was born and raised in <a href="https://en.wikipedia.org/wiki/Kaluga" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Kaluga</a>.
           </p>
         </motion.section>
 
