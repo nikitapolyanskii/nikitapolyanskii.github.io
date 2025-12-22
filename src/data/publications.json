@@ -76,7 +76,7 @@
     "authors": ["Daniil Goshkoder", "Nikita Polyanskii", "Ilya Vorobyev"],
     "venue": "IEEE Transactions on Molecular, Biological, and Multi-Scale Communications",
     "year": 2024,
-    "category": "DNA & Molecular",
+    "category": "DNA-based Storage",
     "doi": "10.1109/TMBMC.2024.3403755",
     "tags": ["DNA Codes", "Duplication Errors"]
   },
@@ -86,7 +86,7 @@
     "authors": ["Nikita Polyanskii", "Yonatan Yehezkeally"],
     "venue": "IEEE Transactions on Molecular, Biological, and Multi-Scale Communications",
     "year": 2024,
-    "category": "DNA & Molecular",
+    "category": "DNA-based Storage",
     "doi": "10.1109/TMBMC.2024.3403755",
     "tags": ["DNA Codes", "Substring Channel"]
   },
@@ -326,7 +326,7 @@
     "authors": ["Arkady Dyachkov", "Anna Kuzina", "Anthony Macula", "Nikita Polyanskii", "Vladimir Rykov"],
     "venue": "Problems of Information Transmission",
     "year": 2014,
-    "category": "DNA & Molecular",
+    "category": "DNA-based Storage",
     "doi": "10.1134/S0032946014030041",
     "pdf": "/papers/dna-codes-nonadditive-2014.pdf",
     "tags": ["DNA Codes", "Stem Similarity"]

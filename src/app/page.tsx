@@ -1,9 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+// Obfuscated email component - renders only on client to prevent bot scraping
+function ObfuscatedEmail({ user, domain, className }: { user: string; domain: string; className?: string }) {
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Construct email only on client side
+    setEmail(`${user}@${domain}`);
+  }, [user, domain]);
+
+  if (!email) return <span className={className}>loading...</span>;
+
+  return (
+    <a href={`mailto:${email}`} className={className}>
+      {email}
+    </a>
+  );
+}
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -110,9 +128,9 @@ const researchTopics = [
   },
   {
     id: "dna-molecular",
-    name: "DNA & Molecular",
+    name: "DNA-based Storage",
     description: "Storing and processing data using molecules.",
-    href: "/publications?category=DNA%20%26%20Molecular",
+    href: "/publications?category=DNA-based%20Storage",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -174,17 +192,21 @@ export default function Home() {
                 <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:nikita.polyansky@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  nikita.polyansky@gmail.com
-                </a>
+                <ObfuscatedEmail
+                  user="nikita.polyansky"
+                  domain="gmail.com"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                />
               </div>
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:nikita.polianskii@iota.org" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  nikita.polianskii@iota.org
-                </a>
+                <ObfuscatedEmail
+                  user="nikita.polianskii"
+                  domain="iota.org"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                />
               </div>
             </div>
           </div>
@@ -257,7 +279,7 @@ export default function Home() {
         {/* About text - wraps around profile card */}
         <h2 className="text-2xl font-bold heading-dark mb-4">About</h2>
         <p className="text-lg text-dark leading-relaxed">
-          Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering — though I still think in theorems and proofs when no one&apos;s looking.
+          Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering — though I still think in theorems and proofs when implementing things.
           Currently, I work at the{" "}
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
             IOTA Foundation

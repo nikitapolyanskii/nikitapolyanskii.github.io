@@ -53,7 +53,7 @@ const topicDescriptions: { [key: string]: { emoji: string; intro: string } } = {
     emoji: "📊",
     intro: "The science of information — how much can we compress, transmit, and store?",
   },
-  "DNA & Molecular": {
+  "DNA-based Storage": {
     emoji: "🧬",
     intro: "Storing and processing data using molecules. Where biology meets information theory.",
   },
