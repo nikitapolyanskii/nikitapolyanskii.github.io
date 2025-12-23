@@ -94,8 +94,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             transition={{ duration: 0.2 }}
             className="fixed top-24 left-1/2 -translate-x-1/2 w-full max-w-xl z-50 px-4"
           >
-            <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-              <div className="p-4 border-b border-neutral-200 dark:border-neutral-700">
+            <div className="modal-bg rounded-2xl shadow-2xl border overflow-hidden">
+              <div className="p-4 border-b modal-bg">
                 <div className="flex items-center gap-3">
                   <svg
                     className="w-5 h-5 text-neutral-400"
@@ -118,7 +118,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     className="flex-1 bg-transparent text-neutral-900 dark:text-white placeholder-neutral-400 outline-none text-lg"
                     autoFocus
                   />
-                  <kbd className="hidden sm:inline-flex items-center px-2 py-1 text-xs font-medium text-neutral-400 bg-neutral-100 dark:bg-neutral-800 rounded">
+                  <kbd className="hidden sm:inline-flex items-center px-2 py-1 text-xs font-medium text-neutral-400 kbd-bg rounded">
                     ESC
                   </kbd>
                 </div>
@@ -131,7 +131,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       key={result.id}
                       href={`/publications?search=${encodeURIComponent(result.title)}`}
                       onClick={onClose}
-                      className="block p-4 hover:bg-neutral-50 dark:hover:bg-neutral-800 border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors"
+                      className="block p-4 modal-item border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors"
                     >
                       <h4 className="font-medium text-neutral-900 dark:text-white text-sm line-clamp-1">
                         {result.title}

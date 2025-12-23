@@ -22,15 +22,15 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#fafafa]/50 dark:bg-[#0a0a0a]/50 backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
+      className="fixed top-0 left-0 right-0 z-50 header-bg backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
     >
-      <nav className="max-w-4xl mx-auto px-6 py-2.5 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold tracking-widest text-neutral-900 dark:text-white uppercase">
+      <nav className="max-w-4xl mx-auto px-6 py-1.5 flex items-center justify-between">
+        <Link href="/" className="text-sm font-semibold tracking-widest header-title uppercase">
           NIKITA POLYANSKII
         </Link>
 
         <div className="flex items-center gap-2">
-          <ul className="flex items-center p-1 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50">
+          <ul className="flex items-center p-1 rounded-full nav-pill-bg">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -40,14 +40,12 @@ export default function Header() {
                   {pathname === link.href && (
                     <motion.div
                       layoutId="activeNav"
-                      className="absolute inset-0 bg-[#fafafa] dark:bg-[#0a0a0a] rounded-full shadow-sm"
+                      className="absolute inset-0 nav-pill-active rounded-full shadow-sm"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
                   <span className={`relative z-10 ${
-                    pathname === link.href
-                      ? "text-neutral-900 dark:text-white"
-                      : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                    pathname === link.href ? "nav-link-active" : "nav-link"
                   }`}>
                     {link.label}
                   </span>
@@ -58,11 +56,11 @@ export default function Header() {
 
           <button
             onClick={toggleTheme}
-            className="p-2.5 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-300/50 dark:hover:bg-neutral-600/50 transition-all duration-200"
+            className="p-1.5 rounded-full icon-btn transition-all duration-200"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -71,7 +69,7 @@ export default function Header() {
                 />
               </svg>
             ) : (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -84,10 +82,10 @@ export default function Header() {
 
           <button
             onClick={() => setIsSearchOpen(true)}
-            className="p-2.5 rounded-full bg-neutral-200/50 dark:bg-neutral-700/50 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-300/50 dark:hover:bg-neutral-600/50 transition-all duration-200"
+            className="p-1.5 rounded-full icon-btn transition-all duration-200"
             aria-label="Search"
           >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

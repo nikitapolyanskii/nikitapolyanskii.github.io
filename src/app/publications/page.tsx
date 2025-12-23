@@ -218,13 +218,11 @@ function PublicationsContent() {
       >
         <div className="flex flex-wrap items-center gap-4">
           {/* View mode toggle */}
-          <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+          <div className="flex items-center gap-1 p-1 toggle-container rounded-lg">
             <button
               onClick={() => setViewMode("topic")}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === "topic"
-                  ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
-                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                viewMode === "topic" ? "toggle-btn-active" : "toggle-btn-inactive"
               }`}
             >
               By Topic
@@ -232,22 +230,20 @@ function PublicationsContent() {
             <button
               onClick={() => setViewMode("year")}
               className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                viewMode === "year"
-                  ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
-                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                viewMode === "year" ? "toggle-btn-active" : "toggle-btn-inactive"
               }`}
             >
               By Year
             </button>
           </div>
 
-          <div className="h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
+          <div className="h-6 w-px divider-vertical" />
 
           {/* Year filter */}
           <select
             value={selectedYear ?? ""}
             onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
-            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 text-sm rounded-lg border select-input"
           >
             <option value="">All Years</option>
             {years.map((year) => (
@@ -261,7 +257,7 @@ function PublicationsContent() {
           <select
             value={selectedCategory ?? ""}
             onChange={(e) => setSelectedCategory(e.target.value || null)}
-            className="px-3 py-2 text-sm rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 text-sm rounded-lg border select-input"
           >
             <option value="">All Topics</option>
             {categories.map((category) => (
@@ -280,7 +276,7 @@ function PublicationsContent() {
             </button>
           )}
 
-          <div className="h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
+          <div className="h-6 w-px divider-vertical" />
 
           <button
             onClick={expandAll}

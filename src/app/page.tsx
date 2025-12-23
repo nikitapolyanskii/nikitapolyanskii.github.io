@@ -34,19 +34,20 @@ const selectedContributions = [
     description: "Designed and implemented a high-performance DAG-based protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.",
     authors: "N. Polyanskii, S. Mueller, I. Vorobyev",
     venue: "Preprint",
+    venueShort: "Preprint",
     year: 2025,
     pdf: "/papers/starfish-2025.pdf",
     adopted: { name: "IOTA", url: "https://github.com/iotaledger/iota" },
   },
   {
     title: "On the metric dimension of Cartesian powers of a graph",
-    description: "Solved a 20-year-old conjecture on the Mastermind game — what is the asymptotic number of questions needed to find the hidden sequence of colorful pegs.",
+    description: <>Solved a 20-year-old conjecture on the <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noopener noreferrer" className="link-accent">Mastermind game</a> — what is the asymptotic number of questions needed to find the hidden sequence of colorful pegs.</>,
     authors: "Z. Jiang, N. Polyanskii",
     venue: "Journal of Combinatorial Theory, Series A",
+    venueShort: "JCTA",
     year: 2019,
     pdf: "/papers/metric-dimension-cartesian-2019.pdf",
     doi: "10.1016/j.jcta.2019.01.002",
-    wiki: { name: "Mastermind", url: "https://en.wikipedia.org/wiki/Mastermind_(board_game)" },
     soda: "/papers/guess-n-digit-number-soda-2019.pdf",
   },
   {
@@ -54,6 +55,7 @@ const selectedContributions = [
     description: "Showed how to build error-correcting codes that work better for recovering data stored across multiple servers.",
     authors: "L. Holzbaur, R. Polyanskaya, N. Polyanskii, I. Vorobyev, E. Yaakobi",
     venue: "IEEE Transactions on Information Theory",
+    venueShort: "IEEE TIT",
     year: 2021,
     pdf: "/papers/lifted-reed-solomon-codes-2021.pdf",
     doi: "10.1109/TIT.2021.3109898",
@@ -63,6 +65,7 @@ const selectedContributions = [
     description: "Developed methods to compute weight distributions of polar codes — the codes used for encoding bits in data transmission — which influenced our contribution to 5G networks.",
     authors: "R. Polyanskaya, M. Davletshin, N. Polyanskii",
     venue: "IEEE Transactions on Communications",
+    venueShort: "IEEE TCOM",
     year: 2020,
     pdf: "/papers/weight-distributions-polar-codes-2020.pdf",
     doi: "10.1109/TCOMM.2020.3014625",
@@ -170,8 +173,26 @@ export default function Home() {
           <h1 className="text-2xl font-bold heading-dark mb-1">Nikita Polyanskii</h1>
           <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-4">Research Scientist and Engineer</p>
 
-          {/* Info */}
-          <div className="space-y-1 text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+          {/* Toggle button - mobile only */}
+          <div className="md:hidden flex justify-center mb-3">
+            <button
+              onClick={() => setShowDetails(!showDetails)}
+              className="btn-fancy"
+            >
+              {showDetails ? 'Hide contacts' : 'Show contacts'}
+              <svg
+                className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-180' : ''}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Info - collapsible on mobile */}
+          <div className={`space-y-1 text-sm contact-info mb-3 ${showDetails ? 'block' : 'hidden'} md:block`}>
             <div className="flex items-center gap-2">
               <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -185,47 +206,27 @@ export default function Home() {
               </svg>
               <span>Munich, Germany</span>
             </div>
-
-            {/* Collapsible on mobile */}
-            <div className={`space-y-1 ${showDetails ? 'block' : 'hidden'} md:block`}>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <ObfuscatedEmail
-                  user="nikita.polyansky"
-                  domain="gmail.com"
-                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <ObfuscatedEmail
-                  user="nikita.polianskii"
-                  domain="iota.org"
-                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                />
-              </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <ObfuscatedEmail
+                user="nikita.polyansky"
+                domain="gmail.com"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <ObfuscatedEmail
+                user="nikita.polianskii"
+                domain="iota.org"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              />
             </div>
           </div>
-
-          {/* Toggle button - mobile only */}
-          <button
-            onClick={() => setShowDetails(!showDetails)}
-            className="md:hidden text-sm text-blue-600 dark:text-blue-400 mb-3 flex items-center gap-1"
-          >
-            {showDetails ? 'Hide details' : 'Show details'}
-            <svg
-              className={`w-4 h-4 transition-transform ${showDetails ? 'rotate-180' : ''}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
 
           {/* Social Links */}
           <div className={`items-center gap-2 justify-center md:justify-start ${showDetails ? 'flex' : 'hidden'} md:flex`}>
@@ -338,59 +339,61 @@ export default function Home() {
               <h3 className="font-semibold card-title mb-1">{item.title}</h3>
               <p className="text-sm text-dark mb-2">{item.description}</p>
               <p className="text-sm card-muted mb-2">{item.authors}</p>
-              <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-sm">
-                <span className="card-muted">{item.venue}, {item.year}</span>
+              <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-sm">
+                <span className="card-muted">{item.venueShort}, {item.year}</span>
                 {item.doi && (
-                  <a
-                    href={`https://doi.org/${item.doi}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    DOI
-                  </a>
-                )}
-                {item.pdf && (
-                  <a
-                    href={item.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    PDF
-                  </a>
-                )}
-                {item.adopted && (
-                  <span className="text-green-600 dark:text-green-400">
+                  <>
+                    <span className="card-muted">·</span>
                     <a
-                      href={item.adopted.url}
+                      href={`https://doi.org/${item.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
                     >
-                      Adopted by {item.adopted.name}
+                      DOI
                     </a>
-                  </span>
+                  </>
                 )}
-                {item.wiki && (
-                  <a
-                    href={item.wiki.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-600 dark:text-purple-400 hover:underline"
-                  >
-                    {item.wiki.name}
-                  </a>
+                {item.pdf && (
+                  <>
+                    <span className="card-muted">·</span>
+                    <a
+                      href={item.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      PDF
+                    </a>
+                  </>
+                )}
+                {item.adopted && (
+                  <>
+                    <span className="card-muted">·</span>
+                    <span className="text-green-600 dark:text-green-400">
+                      <a
+                        href={item.adopted.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                      >
+                        Adopted by {item.adopted.name}
+                      </a>
+                    </span>
+                  </>
                 )}
                 {item.soda && (
-                  <a
-                    href={item.soda}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
-                    SODA
-                  </a>
+                  <>
+                    <span className="card-muted">·</span>
+                    <a
+                      href={item.soda}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                    >
+                      SODA
+                    </a>
+                  </>
                 )}
               </div>
             </motion.div>

@@ -219,13 +219,11 @@ function ExperienceSection() {
         <h2 className="text-xl font-bold heading-dark">
           Experience
         </h2>
-        <div className="flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+        <div className="flex items-center gap-1 p-1 toggle-container rounded-lg">
           <button
             onClick={() => setViewMode("industry")}
             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-              viewMode === "industry"
-                ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
-                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              viewMode === "industry" ? "toggle-btn-active" : "toggle-btn-inactive"
             }`}
           >
             Industry
@@ -233,9 +231,7 @@ function ExperienceSection() {
           <button
             onClick={() => setViewMode("academia")}
             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-              viewMode === "academia"
-                ? "bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-sm"
-                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+              viewMode === "academia" ? "toggle-btn-active" : "toggle-btn-inactive"
             }`}
           >
             Academia
