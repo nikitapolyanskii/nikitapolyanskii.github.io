@@ -10,3 +10,5 @@ Disallow: /papers/
 
 User-agent: Googlebot-Image
 Disallow: /papers/
+
+Sitemap: https://nikitapolyanskii.com/sitemap.xml

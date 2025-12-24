@@ -78,9 +78,9 @@ const selectedContributions = [
 const researchTopics = [
   {
     id: "blockchain-consensus",
-    name: "Blockchain & Consensus",
+    name: "Blockchain",
     description: "How distributed systems agree on things without anyone being in charge.",
-    href: "/writings?category=Blockchain%20%26%20Consensus",
+    href: "/writings?category=Blockchain",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -133,9 +133,9 @@ const researchTopics = [
   },
   {
     id: "dna-molecular",
-    name: "DNA-based Storage",
+    name: "DNA Storage",
     description: "Storing and processing data using molecules.",
-    href: "/writings?category=DNA-based%20Storage",
+    href: "/writings?category=DNA%20Storage",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -192,8 +192,8 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            {/* Role - visible on mobile only, below button */}
-            <p className="link-primary font-medium text-sm mt-2">Research Scientist and Engineer</p>
+            {/* Role - visible on mobile only when expanded, below button */}
+            <p className={`link-primary font-medium text-sm mt-2 ${showDetails ? 'block' : 'hidden'}`}>Research Scientist and Engineer</p>
           </div>
 
           {/* Info - collapsible on mobile */}
@@ -289,10 +289,10 @@ export default function Home() {
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="link-primary">
             IOTA Foundation
           </a>
-          {" "}where I design, analyze and implement consensus protocols.
+          {" "}where I design, analyze, and implement consensus protocols.
           Before this, I explored the intersection of <a href="https://en.wikipedia.org/wiki/Extremal_combinatorics" target="_blank" rel="noopener noreferrer" className="link-primary">extremal combinatorics</a> and <a href="https://en.wikipedia.org/wiki/Error_correction_code" target="_blank" rel="noopener noreferrer" className="link-primary">error-correcting codes</a> at{" "}
           <a href="https://www.technion.ac.il" target="_blank" rel="noopener noreferrer" className="link-primary">Technion</a>,{" "}
-          <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="link-primary">Skoltech</a> and{" "}
+          <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="link-primary">Skoltech</a>, and{" "}
           <a href="https://www.tum.de" target="_blank" rel="noopener noreferrer" className="link-primary">TU Munich</a>, and worked on practical optimization of codes for the 5G standard at{" "}
           <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="link-primary">Huawei</a>.
         </p>
@@ -344,19 +344,17 @@ export default function Home() {
               <p className="text-sm text-dark mb-2">{item.description}</p>
               <p className="text-sm card-muted mb-2">{item.authors}</p>
               <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-sm">
-                <span className="card-muted">{item.venueShort}, {item.year}</span>
-                {item.doi && (
-                  <>
-                    <span className="card-muted">·</span>
-                    <a
-                      href={`https://doi.org/${item.doi}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-primary"
-                    >
-                      DOI
-                    </a>
-                  </>
+                {item.doi ? (
+                  <a
+                    href={`https://doi.org/${item.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-muted link-primary"
+                  >
+                    {item.venueShort}, {item.year}
+                  </a>
+                ) : (
+                  <span className="card-muted">{item.venueShort}, {item.year}</span>
                 )}
                 {item.pdf && (
                   <>

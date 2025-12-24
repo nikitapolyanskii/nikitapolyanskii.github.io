@@ -16,12 +16,40 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nikitapolyanskii.com"),
   title: {
     default: "Nikita Polyanskii",
     template: "%s | Nikita Polyanskii",
   },
-  description: "Personal academic website showcasing research, publications, and projects.",
-  keywords: ["research", "academic", "publications", "computer science"],
+  description: "Research Scientist and Engineer working on blockchain consensus, coding theory, and combinatorics.",
+  keywords: ["Nikita Polyanskii", "research", "blockchain", "consensus", "coding theory", "combinatorics", "IOTA"],
+  authors: [{ name: "Nikita Polyanskii" }],
+  creator: "Nikita Polyanskii",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nikitapolyanskii.com",
+    siteName: "Nikita Polyanskii",
+    title: "Nikita Polyanskii",
+    description: "Research Scientist and Engineer working on blockchain consensus, coding theory, and combinatorics.",
+    images: [
+      {
+        url: "/photos/NPolianskii_small.jpg",
+        width: 224,
+        height: 224,
+        alt: "Nikita Polyanskii",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Nikita Polyanskii",
+    description: "Research Scientist and Engineer working on blockchain consensus, coding theory, and combinatorics.",
+    images: ["/photos/NPolianskii_small.jpg"],
+  },
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },

@@ -6,7 +6,7 @@
     "venue": "Cryptology ePrint Archive",
     "venueShort": "ePrint",
     "year": 2025,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "eprint": "2025/567",
     "pdf": "/writings/2025-44-starfish/preprint.pdf",
     "slides": "/writings/2025-44-starfish/slides.pdf",
@@ -40,7 +40,7 @@
     "venue": "Preprint",
     "venueShort": "Preprint",
     "year": 2024,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "arxiv": "2410.14876",
     "tags": ["Blockchain", "Consensus", "Low Latency"]
   },
@@ -51,7 +51,7 @@
     "venue": "IEEE International Conference on Blockchain and Cryptocurrency (ICBC)",
     "venueShort": "ICBC",
     "year": 2024,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "doi": "10.1109/ICBC59979.2024.10634358",
     "tags": ["Blockchain", "DAG", "Consensus", "Survey"]
   },
@@ -62,7 +62,7 @@
     "venue": "IEEE Transactions on Molecular, Biological, and Multi-Scale Communications",
     "venueShort": "IEEE TMBMC",
     "year": 2024,
-    "categories": ["DNA-based Storage", "Coding Theory"],
+    "categories": ["DNA Storage", "Coding Theory"],
     "doi": "10.1109/TMBMC.2024.3403755",
     "tags": ["DNA Codes", "Duplication Errors"]
   },
@@ -73,7 +73,7 @@
     "venue": "IEEE Transactions on Molecular, Biological, and Multi-Scale Communications",
     "venueShort": "IEEE TMBMC",
     "year": 2024,
-    "categories": ["DNA-based Storage", "Coding Theory"],
+    "categories": ["DNA Storage", "Coding Theory"],
     "doi": "10.1109/TMBMC.2024.3382499",
     "tags": ["DNA Codes", "Substring Channel"],
     "conferenceVersion": {
@@ -101,7 +101,7 @@
     "venue": "ACM Distributed Ledger Technologies",
     "venueShort": "ACM DLT",
     "year": 2023,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "doi": "10.1145/3616022",
     "arxiv": "2205.01345",
     "tags": ["Blockchain", "UTXO", "Ledger"]
@@ -113,7 +113,7 @@
     "venue": "5th Conference on Blockchain Research & Applications for Innovative Networks and Services (BRAINS)",
     "venueShort": "BRAINS",
     "year": 2023,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "doi": "10.1109/BRAINS59668.2023.10316937",
     "tags": ["Blockchain", "DAG", "Fairness"]
   },
@@ -124,7 +124,7 @@
     "venue": "ACM Advances in Financial Technologies (AFT)",
     "venueShort": "AFT",
     "year": 2023,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "doi": "10.1145/3628354.3630969",
     "tags": ["Blockchain", "DAG", "Finality", "Availability"]
   },
@@ -163,7 +163,7 @@
     "venue": "IEEE Access",
     "venueShort": "IEEE Access",
     "year": 2022,
-    "categories": ["Blockchain & Consensus"],
+    "categories": ["Blockchain"],
     "doi": "10.1109/ACCESS.2022.3211422",
     "tags": ["Blockchain", "DAG", "Consensus"]
   },
@@ -174,7 +174,7 @@
     "venue": "IEEE Transactions on Information Theory",
     "venueShort": "IEEE TIT",
     "year": 2022,
-    "categories": ["Coding Theory", "DNA-based Storage"],
+    "categories": ["Coding Theory", "DNA Storage"],
     "doi": "10.1109/TIT.2022.3177169",
     "arxiv": "2006.11516",
     "tags": ["Deletion Codes", "Error Correction"],
@@ -274,7 +274,7 @@
     "venue": "Problems of Information Transmission",
     "venueShort": "PIT",
     "year": 2021,
-    "categories": ["Coding Theory", "DNA-based Storage"],
+    "categories": ["Coding Theory", "DNA Storage"],
     "doi": "10.1134/S0032946021030029",
     "tags": ["Insertion-Deletion", "Feedback Codes"]
   },
@@ -329,7 +329,7 @@
     "venue": "IEEE International Symposium on Information Theory (ISIT)",
     "venueShort": "ISIT",
     "year": 2021,
-    "categories": ["Coding Theory", "DNA-based Storage"],
+    "categories": ["Coding Theory", "DNA Storage"],
     "doi": "10.1109/ISIT45174.2021.9518196",
     "tags": ["Deletion Codes", "Localized Deletions"]
   },
@@ -436,7 +436,7 @@
     "venue": "IEEE International Symposium on Information Theory (ISIT)",
     "venueShort": "ISIT",
     "year": 2020,
-    "categories": ["Coding Theory", "DNA-based Storage"],
+    "categories": ["Coding Theory", "DNA Storage"],
     "doi": "10.1109/ISIT44484.2020.9174288",
     "tags": ["Deletion Codes", "Burst Errors"]
   },
@@ -447,7 +447,7 @@
     "venue": "IEEE International Symposium on Information Theory (ISIT)",
     "venueShort": "ISIT",
     "year": 2020,
-    "categories": ["DNA-based Storage"],
+    "categories": ["DNA Storage"],
     "doi": "10.1109/ISIT44484.2020.9174324",
     "tags": ["Duplication", "Transposition"]
   },
@@ -701,7 +701,7 @@
     "venue": "Problems of Information Transmission",
     "venueShort": "PIT",
     "year": 2014,
-    "categories": ["DNA-based Storage"],
+    "categories": ["DNA Storage"],
     "doi": "10.1134/S0032946014030041",
     "pdf": "/writings/2014-24-dna-codes-stem/paper.pdf",
     "tags": ["DNA Codes", "Stem Similarity"]
@@ -732,7 +732,7 @@
     "venue": "IEEE International Symposium on Information Theory (ISIT)",
     "venueShort": "ISIT",
     "year": 2011,
-    "categories": ["DNA-based Storage"],
+    "categories": ["DNA Storage"],
     "doi": "10.1109/ISIT.2011.6033807",
     "tags": ["DNA Codes", "Stem Similarity"]
   },
@@ -743,7 +743,7 @@
     "venue": "International Workshop on Coding and Cryptography (WCC)",
     "venueShort": "WCC",
     "year": 2011,
-    "categories": ["DNA-based Storage"],
+    "categories": ["DNA Storage"],
     "tags": ["DNA Codes", "Stem Similarity"]
   }
 ]
