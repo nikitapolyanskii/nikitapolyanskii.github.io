@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import publications from "@/data/publications.json";
+import authorLinks from "@/data/authors.json";
 
 type Publication = {
   id: string;
@@ -282,7 +283,25 @@ function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategor
         </span>
       </div>
       <p className="text-sm card-body mb-2">
-        {pub.authors.join(", ")}
+        {pub.authors.map((author, i) => (
+          <span key={author}>
+            {i > 0 && ", "}
+            {author === "Nikita Polyanskii" ? (
+              <span className="font-medium">{author}</span>
+            ) : (authorLinks as Record<string, string>)[author] ? (
+              <a
+                href={(authorLinks as Record<string, string>)[author]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                {author}
+              </a>
+            ) : (
+              author
+            )}
+          </span>
+        ))}
       </p>
 
       {/* Venue, Links, and Categories Row */}

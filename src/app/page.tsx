@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import authorLinks from "@/data/authors.json";
 
 // Obfuscated email component - renders only on client to prevent bot scraping
 function ObfuscatedEmail({ user, domain, className }: { user: string; domain: string; className?: string }) {
@@ -32,7 +33,7 @@ const selectedContributions = [
   {
     title: "Starfish: A Full-DAG BFT Protocol with Optimal Communication Complexity",
     description: <>Designed and implemented a high-performance DAG-based <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer" className="link-accent">consensus</a> protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.</>,
-    authors: "N. Polyanskii, S. Mueller, I. Vorobyev",
+    authors: ["Nikita Polyanskii", "Sebastian Müller", "Ilya Vorobyev"],
     venue: "Preprint",
     venueShort: "Preprint",
     year: 2025,
@@ -43,7 +44,7 @@ const selectedContributions = [
   {
     title: "Codes for the Z-Channel",
     description: <>Provided a tight characterization of binary codes above the <a href="https://en.wikipedia.org/wiki/Plotkin_bound" target="_blank" rel="noopener noreferrer" className="link-accent">Plotkin point</a> for the channel where only errors of type 1→0 occur.</>,
-    authors: "N. Polyanskii, Y. Zhang",
+    authors: ["Nikita Polyanskii", "Yihan Zhang"],
     venue: "IEEE Transactions on Information Theory",
     venueShort: "IEEE TIT",
     year: 2023,
@@ -53,7 +54,7 @@ const selectedContributions = [
   {
     title: "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
     description: <>Developed methods to compute weight distributions arising when decoding <a href="https://en.wikipedia.org/wiki/Polar_code_(coding_theory)" target="_blank" rel="noopener noreferrer" className="link-accent">polar codes</a> — this helped to improve the way to encode bits for data transmission in 5G networks.</>,
-    authors: "R. Polyanskaya, M. Davletshin, N. Polyanskii",
+    authors: ["Rina Polyanskaya", "Mars Davletshin", "Nikita Polyanskii"],
     venue: "IEEE Transactions on Communications",
     venueShort: "IEEE TCOM",
     year: 2020,
@@ -64,7 +65,7 @@ const selectedContributions = [
   {
     title: "On the metric dimension of Cartesian powers of a graph",
     description: <>Solved a 20-year-old conjecture on the <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noopener noreferrer" className="link-accent">Mastermind game</a> — how many questions are sufficient to guess an n-digit number.</>,
-    authors: "Z. Jiang, N. Polyanskii",
+    authors: ["Zilin Jiang", "Nikita Polyanskii"],
     venue: "Journal of Combinatorial Theory, Series A",
     venueShort: "JCTA",
     year: 2019,
@@ -285,6 +286,8 @@ export default function Home() {
         {/* About text - wraps around profile card */}
         <p className="text-lg text-dark leading-relaxed">
           Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering — though I still think in theorems and proofs when implementing things.
+        </p>
+        <p className="text-lg text-dark leading-relaxed mt-4">
           Currently, I work at the{" "}
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="link-primary">
             IOTA Foundation
@@ -342,7 +345,27 @@ export default function Home() {
             >
               <h3 className="font-semibold card-title mb-1">{item.title}</h3>
               <p className="text-sm text-dark mb-2">{item.description}</p>
-              <p className="text-sm card-muted mb-2">{item.authors}</p>
+              <p className="text-sm card-muted mb-2">
+                {item.authors.map((author, i) => (
+                  <span key={author}>
+                    {i > 0 && ", "}
+                    {author === "Nikita Polyanskii" ? (
+                      <span className="font-medium">{author}</span>
+                    ) : (authorLinks as Record<string, string>)[author] ? (
+                      <a
+                        href={(authorLinks as Record<string, string>)[author]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-accent transition-colors"
+                      >
+                        {author}
+                      </a>
+                    ) : (
+                      author
+                    )}
+                  </span>
+                ))}
+              </p>
               <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-sm">
                 {item.doi ? (
                   <a
