@@ -30,46 +30,48 @@ const fadeInUp = {
 
 const selectedContributions = [
   {
-    title: "Starfish: A high-throughput BFT protocol on uncertified DAG with linear amortized communication complexity",
-    description: "Designed and implemented a high-performance DAG-based protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.",
+    title: "Starfish: A Full-DAG BFT Protocol with Optimal Communication Complexity",
+    description: <>Designed and implemented a high-performance DAG-based <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer" className="link-accent">consensus</a> protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.</>,
     authors: "N. Polyanskii, S. Mueller, I. Vorobyev",
     venue: "Preprint",
     venueShort: "Preprint",
     year: 2025,
-    pdf: "/papers/starfish-2025.pdf",
-    adopted: { name: "IOTA", url: "https://github.com/iotaledger/iota" },
+    pdf: "/writings/2025-44-starfish/preprint.pdf",
+    slides: "/writings/2025-44-starfish/slides.pdf",
+    adopted: { label: "Adopted by", name: "IOTA", url: "https://github.com/iotaledger/iota" },
   },
   {
-    title: "On the metric dimension of Cartesian powers of a graph",
-    description: <>Solved a 20-year-old conjecture on the <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noopener noreferrer" className="link-accent">Mastermind game</a> — what is the asymptotic number of questions needed to find the hidden sequence of colorful pegs.</>,
-    authors: "Z. Jiang, N. Polyanskii",
-    venue: "Journal of Combinatorial Theory, Series A",
-    venueShort: "JCTA",
-    year: 2019,
-    pdf: "/papers/metric-dimension-cartesian-2019.pdf",
-    doi: "10.1016/j.jcta.2019.01.002",
-    soda: "/papers/guess-n-digit-number-soda-2019.pdf",
-  },
-  {
-    title: "Lifted Reed-Solomon codes and lifted multiplicity codes",
-    description: "Showed how to build error-correcting codes that work better for recovering data stored across multiple servers.",
-    authors: "L. Holzbaur, R. Polyanskaya, N. Polyanskii, I. Vorobyev, E. Yaakobi",
+    title: "Codes for the Z-Channel",
+    description: <>Provided a tight characterization of binary codes above the <a href="https://en.wikipedia.org/wiki/Plotkin_bound" target="_blank" rel="noopener noreferrer" className="link-accent">Plotkin point</a> for the channel where only errors of type 1→0 occur.</>,
+    authors: "N. Polyanskii, Y. Zhang",
     venue: "IEEE Transactions on Information Theory",
     venueShort: "IEEE TIT",
-    year: 2021,
-    pdf: "/papers/lifted-reed-solomon-codes-2021.pdf",
-    doi: "10.1109/TIT.2021.3109898",
+    year: 2023,
+    doi: "10.1109/TIT.2023.3292219",
+    isit: "/writings/2023-4-z-channel/isit-slides.pdf",
   },
   {
     title: "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
-    description: "Developed methods to compute weight distributions of polar codes — the codes used for encoding bits in data transmission — which influenced our contribution to 5G networks.",
+    description: <>Developed methods to compute weight distributions arising when decoding <a href="https://en.wikipedia.org/wiki/Polar_code_(coding_theory)" target="_blank" rel="noopener noreferrer" className="link-accent">polar codes</a> — this helped to improve the way to encode bits for data transmission in 5G networks.</>,
     authors: "R. Polyanskaya, M. Davletshin, N. Polyanskii",
     venue: "IEEE Transactions on Communications",
     venueShort: "IEEE TCOM",
     year: 2020,
-    pdf: "/papers/weight-distributions-polar-codes-2020.pdf",
+    pdf: "/writings/2020-14-polar-codes-weight/paper.pdf",
     doi: "10.1109/TCOMM.2020.3014625",
-    adopted: { name: "5G", url: "https://patents.google.com/patent/US11811528B2" },
+    adopted: { label: "Contributed to", name: "5G", url: "https://patents.google.com/patent/US11811528B2" },
+  },
+  {
+    title: "On the metric dimension of Cartesian powers of a graph",
+    description: <>Solved a 20-year-old conjecture on the <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank" rel="noopener noreferrer" className="link-accent">Mastermind game</a> — how many questions are sufficient to guess an n-digit number.</>,
+    authors: "Z. Jiang, N. Polyanskii",
+    venue: "Journal of Combinatorial Theory, Series A",
+    venueShort: "JCTA",
+    year: 2019,
+    pdf: "/writings/2019-17-metric-dimension/paper.pdf",
+    doi: "10.1016/j.jcta.2019.01.002",
+    slides: "/writings/2019-17-metric-dimension/slides.pdf",
+    soda: "/writings/2019-17-metric-dimension/soda-2019.pdf",
   },
 ];
 
@@ -78,7 +80,7 @@ const researchTopics = [
     id: "blockchain-consensus",
     name: "Blockchain & Consensus",
     description: "How distributed systems agree on things without anyone being in charge.",
-    href: "/publications?category=Blockchain%20%26%20Consensus",
+    href: "/writings?category=Blockchain%20%26%20Consensus",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -89,7 +91,7 @@ const researchTopics = [
     id: "coding-theory",
     name: "Coding Theory",
     description: "The mathematics of reliable communication and error correction.",
-    href: "/publications?category=Coding%20Theory",
+    href: "/writings?category=Coding%20Theory",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -100,7 +102,7 @@ const researchTopics = [
     id: "group-testing",
     name: "Group Testing",
     description: "Finding needles in haystacks efficiently by testing groups.",
-    href: "/publications?category=Group%20Testing",
+    href: "/writings?category=Group%20Testing",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -111,7 +113,7 @@ const researchTopics = [
     id: "combinatorics",
     name: "Combinatorics",
     description: "Counting, arranging, and understanding discrete structures.",
-    href: "/publications?category=Combinatorics",
+    href: "/writings?category=Combinatorics",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -122,7 +124,7 @@ const researchTopics = [
     id: "information-theory",
     name: "Information Theory",
     description: "The science of quantifying and transmitting information.",
-    href: "/publications?category=Information%20Theory",
+    href: "/writings?category=Information%20Theory",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -133,7 +135,7 @@ const researchTopics = [
     id: "dna-molecular",
     name: "DNA-based Storage",
     description: "Storing and processing data using molecules.",
-    href: "/publications?category=DNA-based%20Storage",
+    href: "/writings?category=DNA-based%20Storage",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -171,10 +173,11 @@ export default function Home() {
 
           {/* Name & Role */}
           <h1 className="text-2xl font-bold heading-dark mb-1">Nikita Polyanskii</h1>
-          <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-4">Research Scientist and Engineer</p>
+          {/* Role - visible on desktop only */}
+          <p className="hidden md:block link-primary font-medium text-sm mb-4">Research Scientist and Engineer</p>
 
           {/* Toggle button - mobile only */}
-          <div className="md:hidden flex justify-center mb-3">
+          <div className="md:hidden flex flex-col items-center mb-3">
             <button
               onClick={() => setShowDetails(!showDetails)}
               className="btn-fancy"
@@ -189,6 +192,8 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
+            {/* Role - visible on mobile only, below button */}
+            <p className="link-primary font-medium text-sm mt-2">Research Scientist and Engineer</p>
           </div>
 
           {/* Info - collapsible on mobile */}
@@ -213,7 +218,7 @@ export default function Home() {
               <ObfuscatedEmail
                 user="nikita.polyansky"
                 domain="gmail.com"
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="hover:link-primary transition-colors"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -223,7 +228,7 @@ export default function Home() {
               <ObfuscatedEmail
                 user="nikita.polianskii"
                 domain="iota.org"
-                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="hover:link-primary transition-colors"
               />
             </div>
           </div>
@@ -234,7 +239,7 @@ export default function Home() {
               href="https://scholar.google.com/citations?hl=en&user=4Y8b6l8AAAAJ&view_op=list_works&sortby=pubdate"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+              className="social-icon-btn"
               aria-label="Google Scholar"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -245,7 +250,7 @@ export default function Home() {
               href="https://github.com/polinikita"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+              className="social-icon-btn"
               aria-label="GitHub"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -256,7 +261,7 @@ export default function Home() {
               href="https://linkedin.com/in/nikita-polianskii-770b707b"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+              className="social-icon-btn"
               aria-label="LinkedIn"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -267,7 +272,7 @@ export default function Home() {
               href="https://www.researchgate.net/profile/Nikita-Polyanskii"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+              className="social-icon-btn"
               aria-label="ResearchGate"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -278,19 +283,18 @@ export default function Home() {
         </div>
 
         {/* About text - wraps around profile card */}
-        <h2 className="text-2xl font-bold heading-dark mb-4">About</h2>
         <p className="text-lg text-dark leading-relaxed">
           Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering — though I still think in theorems and proofs when implementing things.
           Currently, I work at the{" "}
-          <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+          <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="link-primary">
             IOTA Foundation
           </a>
           {" "}where I design, analyze and implement consensus protocols.
-          Before this, I explored the intersection of fun combinatorics and error-correcting codes at{" "}
-          <a href="https://www.technion.ac.il" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Technion</a>,{" "}
-          <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Skoltech</a> and{" "}
-          <a href="https://www.tum.de" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">TU Munich</a>, and worked on practical optimization of codes for the 5G standard at{" "}
-          <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Huawei</a>.
+          Before this, I explored the intersection of <a href="https://en.wikipedia.org/wiki/Extremal_combinatorics" target="_blank" rel="noopener noreferrer" className="link-primary">extremal combinatorics</a> and <a href="https://en.wikipedia.org/wiki/Error_correction_code" target="_blank" rel="noopener noreferrer" className="link-primary">error-correcting codes</a> at{" "}
+          <a href="https://www.technion.ac.il" target="_blank" rel="noopener noreferrer" className="link-primary">Technion</a>,{" "}
+          <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="link-primary">Skoltech</a> and{" "}
+          <a href="https://www.tum.de" target="_blank" rel="noopener noreferrer" className="link-primary">TU Munich</a>, and worked on practical optimization of codes for the 5G standard at{" "}
+          <a href="https://www.huawei.com" target="_blank" rel="noopener noreferrer" className="link-primary">Huawei</a>.
         </p>
         {/* Interests - inline as text links */}
         <p className="text-lg text-dark leading-relaxed mt-4">
@@ -299,7 +303,7 @@ export default function Home() {
             <span key={topic.id}>
               <Link
                 href={topic.href}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
+                className="link-primary"
               >
                 {topic.name.toLowerCase()}
               </Link>
@@ -348,7 +352,7 @@ export default function Home() {
                       href={`https://doi.org/${item.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="link-primary"
                     >
                       DOI
                     </a>
@@ -361,25 +365,49 @@ export default function Home() {
                       href={item.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="link-primary"
                     >
                       PDF
+                    </a>
+                  </>
+                )}
+                {item.slides && (
+                  <>
+                    <span className="card-muted">·</span>
+                    <a
+                      href={item.slides}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-primary"
+                    >
+                      Slides
+                    </a>
+                  </>
+                )}
+                {item.isit && (
+                  <>
+                    <span className="card-muted">·</span>
+                    <a
+                      href={item.isit}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-primary"
+                    >
+                      ISIT Slides
                     </a>
                   </>
                 )}
                 {item.adopted && (
                   <>
                     <span className="card-muted">·</span>
-                    <span className="text-green-600 dark:text-green-400">
-                      <a
-                        href={item.adopted.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                      >
-                        Adopted by {item.adopted.name}
-                      </a>
-                    </span>
+                    <a
+                      href={item.adopted.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-success"
+                    >
+                      {item.adopted.label} {item.adopted.name}
+                    </a>
                   </>
                 )}
                 {item.soda && (
@@ -389,7 +417,7 @@ export default function Home() {
                       href={item.soda}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="link-primary"
                     >
                       SODA
                     </a>

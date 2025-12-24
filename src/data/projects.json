@@ -9,7 +9,7 @@
     "image": null,
     "links": {
       "github": "https://github.com/username/project",
-      "paper": "/publications",
+      "paper": "/writings",
       "demo": null
     }
   },
@@ -23,7 +23,7 @@
     "image": null,
     "links": {
       "github": null,
-      "paper": "/publications",
+      "paper": "/writings",
       "demo": null
     }
   },

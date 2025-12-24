@@ -9,7 +9,7 @@ import SearchModal from "./SearchModal";
 
 const navLinks = [
   { href: "/about", label: "Bio" },
-  { href: "/publications", label: "Papers" },
+  { href: "/writings", label: "Writings" },
 ];
 
 export default function Header() {
@@ -24,8 +24,8 @@ export default function Header() {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 header-bg backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
     >
-      <nav className="max-w-4xl mx-auto px-6 py-1.5 flex items-center justify-between">
-        <Link href="/" className="text-sm font-semibold tracking-widest header-title uppercase">
+      <nav className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
+        <Link href="/" className="text-base font-semibold tracking-widest header-title uppercase">
           NIKITA POLYANSKII
         </Link>
 
@@ -56,11 +56,11 @@ export default function Header() {
 
           <button
             onClick={toggleTheme}
-            className="p-1.5 rounded-full icon-btn transition-all duration-200"
+            className="p-2 rounded-full icon-btn transition-all duration-200"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -69,7 +69,7 @@ export default function Header() {
                 />
               </svg>
             ) : (
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -82,10 +82,10 @@ export default function Header() {
 
           <button
             onClick={() => setIsSearchOpen(true)}
-            className="p-1.5 rounded-full icon-btn transition-all duration-200"
+            className="p-2 rounded-full icon-btn transition-all duration-200"
             aria-label="Search"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

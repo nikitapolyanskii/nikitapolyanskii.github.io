@@ -255,15 +255,65 @@ html {
 
 /* Accent links */
 .link-accent {
-  color: #6d28d9;
+  color: #2563eb;
 }
 
 .dark .link-accent {
-  color: #a78bfa;
+  color: #5eadb8;
 }
 
 .link-accent:hover {
   text-decoration: underline;
+}
+
+/* Primary links - blue in light, teal in dark */
+.link-primary {
+  color: #2563eb;
+}
+
+.dark .link-primary {
+  color: #5eadb8;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+/* Adopted/success links */
+.link-success {
+  color: #059669;
+}
+
+.dark .link-success {
+  color: #34d399;
+}
+
+.link-success:hover {
+  text-decoration: underline;
+}
+
+/* Social icon buttons */
+.social-icon-btn {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background-color: #f5f5f5;
+  color: #404040;
+  transition: all 0.2s ease;
+}
+
+.dark .social-icon-btn {
+  background-color: #262626;
+  color: #d4d4d4;
+}
+
+.social-icon-btn:hover {
+  background-color: #e5e5e5;
+  color: #2563eb;
+}
+
+.dark .social-icon-btn:hover {
+  background-color: #404040;
+  color: #5eadb8;
 }
 
 /* Nav links */

@@ -120,38 +120,38 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold heading-dark mb-4">Informal Bio</h2>
           <ul className="space-y-3 text-dark">
             <li className="flex gap-2">
-              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span className="link-primary">→</span>
               <span>
                 I was born and raised in{" "}
-                <a href="https://en.wikipedia.org/wiki/Kaluga" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Kaluga</a>
+                <a href="https://en.wikipedia.org/wiki/Kaluga" target="_blank" rel="noopener noreferrer" className="link-primary">Kaluga</a>
                 , the city where{" "}
-                <a href="https://en.wikipedia.org/wiki/Konstantin_Tsiolkovsky" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Konstantin Tsiolkovsky</a>
+                <a href="https://en.wikipedia.org/wiki/Konstantin_Tsiolkovsky" target="_blank" rel="noopener noreferrer" className="link-primary">Konstantin Tsiolkovsky</a>
                 {" "}developed his rocket science theories.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span className="link-primary">→</span>
               <span>
                 My brother{" "}
-                <a href="https://polyanskii.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                <a href="https://polyanskii.com/" target="_blank" rel="noopener noreferrer" className="link-primary">
                   Alexandr (Sasha) Polyanskii
                 </a>
                 {" "}is an Assistant Professor of Mathematics at Emory University, working on discrete and convex geometry.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span className="link-primary">→</span>
               <span>
                 I am an academic descendant of{" "}
-                <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Andrey Kolmogorov</a> — traced through PhD advisor paths: Andrey Kolmogorov → Roland Dobrushin → Arkady Dyachkov → me (
-                <a href="https://www.mathgenealogy.org/id.php?id=317644" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+                <a href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov" target="_blank" rel="noopener noreferrer" className="link-primary">Andrey Kolmogorov</a> — traced through PhD advisor paths: Andrey Kolmogorov → Roland Dobrushin → Arkady Dyachkov → me (
+                <a href="https://www.mathgenealogy.org/id.php?id=317644" target="_blank" rel="noopener noreferrer" className="link-primary">
                   Math Genealogy
                 </a>
                 ).
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-blue-600 dark:text-blue-400">→</span>
+              <span className="link-primary">→</span>
               <span>
                 I&apos;ve ping-ponged between academia and industry three times now: Academia → Industry → Academia → Industry. Still not sure which side will win.
               </span>
@@ -261,7 +261,7 @@ function ExperienceSection() {
                     href={exp.host.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="link-primary"
                   >
                     {exp.host.name}
                   </a>

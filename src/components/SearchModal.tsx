@@ -11,8 +11,12 @@ interface SearchResult {
   authors: string[];
   venue: string;
   year: number;
-  category: string;
+  categories: string[];
   tags: string[];
+  pdf?: string;
+  arxiv?: string;
+  doi?: string;
+  eprint?: string;
 }
 
 interface SearchModalProps {
@@ -40,7 +44,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       const tagMatch = pub.tags?.some((tag) =>
         tag.toLowerCase().includes(lowerQuery)
       );
-      const categoryMatch = pub.category.toLowerCase().includes(lowerQuery);
+      const categoryMatch = pub.categories?.some((cat) =>
+        cat.toLowerCase().includes(lowerQuery)
+      );
 
       return titleMatch || authorMatch || venueMatch || tagMatch || categoryMatch;
     });
@@ -126,30 +132,61 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
               {results.length > 0 && (
                 <div className="max-h-96 overflow-y-auto">
-                  {results.map((result) => (
-                    <Link
-                      key={result.id}
-                      href={`/publications?search=${encodeURIComponent(result.title)}`}
-                      onClick={onClose}
-                      className="block p-4 modal-item border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors"
-                    >
-                      <h4 className="font-medium text-neutral-900 dark:text-white text-sm line-clamp-1">
-                        {result.title}
-                      </h4>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-                        {result.authors.slice(0, 3).join(", ")}
-                        {result.authors.length > 3 && " et al."}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="text-xs text-blue-600 dark:text-blue-400">
-                          {result.venue}
-                        </span>
-                        <span className="text-xs text-neutral-400">
-                          {result.year}
-                        </span>
+                  {results.map((result) => {
+                    const getPdfUrl = () => {
+                      if (result.pdf) return result.pdf;
+                      if (result.arxiv) return `https://arxiv.org/pdf/${result.arxiv}.pdf`;
+                      if (result.eprint) return `https://eprint.iacr.org/${result.eprint}.pdf`;
+                      if (result.doi) return `https://doi.org/${result.doi}`;
+                      return null;
+                    };
+                    const pdfUrl = getPdfUrl();
+
+                    return (
+                      <div
+                        key={result.id}
+                        className="p-4 modal-item border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors"
+                      >
+                        <Link
+                          href={`/writings?search=${encodeURIComponent(result.title)}`}
+                          onClick={onClose}
+                          className="block"
+                        >
+                          <h4 className="font-medium text-neutral-900 dark:text-white text-sm line-clamp-1">
+                            {result.title}
+                          </h4>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
+                            {result.authors.slice(0, 3).join(", ")}
+                            {result.authors.length > 3 && " et al."}
+                          </p>
+                        </Link>
+                        <div className="flex items-center justify-between mt-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs link-primary">
+                              {result.venue}
+                            </span>
+                            <span className="text-xs text-neutral-400">
+                              {result.year}
+                            </span>
+                          </div>
+                          {pdfUrl && (
+                            <a
+                              href={pdfUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="btn-fancy text-xs"
+                            >
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
+                              PDF
+                            </a>
+                          )}
+                        </div>
                       </div>
-                    </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
 
