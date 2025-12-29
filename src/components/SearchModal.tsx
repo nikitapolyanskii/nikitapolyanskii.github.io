@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import publications from "@/data/publications.json";
 
 interface SearchResult {
@@ -147,10 +146,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         key={result.id}
                         className="p-4 modal-item border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors"
                       >
-                        <Link
-                          href={`/writings?search=${encodeURIComponent(result.title)}`}
-                          onClick={onClose}
-                          className="block"
+                        <a
+                          href={`#pub-${result.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            onClose();
+                            setTimeout(() => {
+                              document.getElementById(`pub-${result.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 100);
+                          }}
+                          className="block cursor-pointer"
                         >
                           <h4 className="font-medium text-neutral-900 dark:text-white text-sm line-clamp-1">
                             {result.title}
@@ -159,7 +164,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             {result.authors.slice(0, 3).join(", ")}
                             {result.authors.length > 3 && " et al."}
                           </p>
-                        </Link>
+                        </a>
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2">
                             <span className="text-xs link-primary">

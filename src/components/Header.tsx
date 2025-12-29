@@ -1,21 +1,69 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import SearchModal from "./SearchModal";
 
 const navLinks = [
-  { href: "/about", label: "Bio" },
-  { href: "/writings", label: "Writings" },
+  { href: "#about", label: "About" },
+  { href: "#bio", label: "Bio" },
+  { href: "#people", label: "People" },
+  { href: "#writings", label: "Writings" },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      const scrollPosition = window.scrollY + 100; // Account for header height
+
+      let currentSection = "";
+      sections.forEach((section) => {
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSection = `#${section.id}`;
+        }
+      });
+
+      // If we're at the very top, default to first section
+      if (window.scrollY < 50) {
+        currentSection = "#about";
+      }
+
+      if (currentSection && currentSection !== activeSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeSection]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // If not on home page, navigate to home with the hash
+    if (pathname !== "/") {
+      window.location.href = "/" + href;
+      return;
+    }
+
+    // On home page, smooth scroll to section
+    const element = document.querySelector(href);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <motion.header
@@ -25,19 +73,24 @@ export default function Header() {
       className="fixed top-0 left-0 right-0 z-50 header-bg backdrop-blur-xl border-b border-neutral-200/30 dark:border-neutral-800/30"
     >
       <nav className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
-        <Link href="/" className="text-base font-semibold tracking-widest header-title uppercase">
+        <a
+          href="#about"
+          onClick={(e) => handleNavClick(e, "#about")}
+          className="text-base font-semibold tracking-widest header-title uppercase"
+        >
           NIKITA POLYANSKII
-        </Link>
+        </a>
 
         <div className="flex items-center gap-2">
-          <ul className="flex items-center p-1 rounded-full nav-pill-bg">
+          <ul className="grid grid-cols-2 md:flex md:items-center p-1 rounded-2xl md:rounded-full nav-pill-bg gap-0.5 md:gap-0">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
-                  className="relative px-3 py-2 text-sm font-semibold rounded-full transition-all duration-200"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="relative px-3 py-1.5 md:py-2 text-xs md:text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer block text-center"
                 >
-                  {pathname === link.href && (
+                  {activeSection === link.href && (
                     <motion.div
                       layoutId="activeNav"
                       className="absolute inset-0 nav-pill-active rounded-full shadow-sm"
@@ -45,11 +98,11 @@ export default function Header() {
                     />
                   )}
                   <span className={`relative z-10 ${
-                    pathname === link.href ? "nav-link-active" : "nav-link"
+                    activeSection === link.href ? "nav-link-active" : "nav-link"
                   }`}>
                     {link.label}
                   </span>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

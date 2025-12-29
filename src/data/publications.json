@@ -2,7 +2,7 @@
   {
     "id": "44",
     "title": "Starfish: A High Throughput BFT Protocol on Uncertified DAG with Linear Amortized Communication Complexity",
-    "authors": ["Nikita Polyanskii", "Sebastian Mueller", "Ilya Vorobyev"],
+    "authors": ["Nikita Polyanskii", "Sebastian Müller", "Ilya Vorobyev"],
     "venue": "Cryptology ePrint Archive",
     "venueShort": "ePrint",
     "year": 2025,
@@ -36,13 +36,24 @@
   {
     "id": "43",
     "title": "Slipstream: Ebb-and-Flow Consensus on a DAG with Fast Confirmation for UTXO Transactions",
-    "authors": ["Nikita Polyanskii", "Sebastian Mueller", "Mayank Raikwar"],
-    "venue": "Preprint",
-    "venueShort": "Preprint",
+    "authors": ["Nikita Polyanskii", "Sebastian Müller", "Mayank Raikwar"],
+    "venue": "arXiv preprint",
+    "venueShort": "arXiv",
     "year": 2024,
     "categories": ["Blockchain"],
     "arxiv": "2410.14876",
     "tags": ["Blockchain", "Consensus", "Low Latency"]
+  },
+  {
+    "id": "71",
+    "title": "Fair and Decentralized Committee Selection: Deterministic Bounds for Scalable Distributed Ledgers",
+    "authors": ["Grigorii Melnikov", "Sebastian Müller", "Nikita Polyanskii", "Yury Yanovich"],
+    "venue": "BCRA 2025",
+    "venueShort": "BCRA",
+    "year": 2025,
+    "categories": ["Blockchain"],
+    "arxiv": "2409.10727",
+    "tags": ["Blockchain", "Committee Selection", "Distributed Ledger"]
   },
   {
     "id": "45",
@@ -64,7 +75,15 @@
     "year": 2024,
     "categories": ["DNA Storage", "Coding Theory"],
     "doi": "10.1109/TMBMC.2024.3403755",
-    "tags": ["DNA Codes", "Duplication Errors"]
+    "tags": ["DNA Codes", "Duplication Errors"],
+    "conferenceVersions": [
+      {
+        "title": "Codes Correcting a Single Long Duplication Error",
+        "venue": "ISIT",
+        "year": 2023,
+        "doi": "10.1109/ISIT54713.2023.10206675"
+      }
+    ]
   },
   {
     "id": "6",
@@ -76,12 +95,14 @@
     "categories": ["DNA Storage", "Coding Theory"],
     "doi": "10.1109/TMBMC.2024.3382499",
     "tags": ["DNA Codes", "Substring Channel"],
-    "conferenceVersion": {
-      "title": "On Codes for the Noisy Substring Channel",
-      "venue": "ISIT",
-      "year": 2021,
-      "doi": "10.1109/ISIT45174.2021.9517943"
-    }
+    "conferenceVersions": [
+      {
+        "title": "On Codes for the Noisy Substring Channel",
+        "venue": "ISIT",
+        "year": 2021,
+        "doi": "10.1109/ISIT45174.2021.9517943"
+      }
+    ]
   },
   {
     "id": "47",
@@ -95,9 +116,20 @@
     "tags": ["Group Testing", "Disjunctive Codes"]
   },
   {
+    "id": "69",
+    "title": "Dynamically Available Consensus on a DAG with Fast Confirmation for UTXO Transactions",
+    "authors": ["Nikita Polyanskii"],
+    "venue": "IEEE International Conference on Blockchain and Cryptocurrency (ICBC), Poster",
+    "venueShort": "ICBC Poster",
+    "year": 2024,
+    "categories": ["Blockchain"],
+    "doi": "10.1109/ICBC59979.2024.10634510",
+    "tags": ["Blockchain", "DAG", "Consensus", "UTXO"]
+  },
+  {
     "id": "2",
     "title": "Reality-based UTXO Ledger",
-    "authors": ["Sebastian Muller", "Nikita Polyanskii", "Andreas Penzkofer", "Jonas Theis", "William Sanders", "Hans Moog"],
+    "authors": ["Sebastian Müller", "Nikita Polyanskii", "Andreas Penzkofer", "Jonas Theis", "William Sanders", "Hans Moog"],
     "venue": "ACM Distributed Ledger Technologies",
     "venueShort": "ACM DLT",
     "year": 2023,
@@ -109,7 +141,7 @@
   {
     "id": "3",
     "title": "Fairness Notions in DAG-based DLTs",
-    "authors": ["Mayank Raikwar", "Nikita Polyanskii", "Sebastian Muller"],
+    "authors": ["Mayank Raikwar", "Nikita Polyanskii", "Sebastian Müller"],
     "venue": "5th Conference on Blockchain Research & Applications for Innovative Networks and Services (BRAINS)",
     "venueShort": "BRAINS",
     "year": 2023,
@@ -138,12 +170,14 @@
     "categories": ["Information Theory", "Coding Theory"],
     "doi": "10.1109/TIT.2023.3292219",
     "tags": ["Z-channel", "Channel Coding"],
-    "conferenceVersion": {
-      "title": "List-Decodable Zero-Rate Codes for the Z-Channel",
-      "venue": "ISIT",
-      "year": 2022,
-      "slides": "/writings/2023-4-z-channel/isit-slides.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "List-Decodable Zero-Rate Codes for the Z-Channel",
+        "venue": "ISIT",
+        "year": 2022,
+        "slides": "/writings/2023-4-z-channel/isit-slides.pdf"
+      }
+    ]
   },
   {
     "id": "65",
@@ -159,7 +193,7 @@
   {
     "id": "1",
     "title": "Tangle 2.0 Leaderless Nakamoto Consensus on the Heaviest DAG",
-    "authors": ["Sebastian Muller", "Nikita Polyanskii", "Andreas Penzkofer", "Jonas Theis", "William Sanders", "Hans Moog"],
+    "authors": ["Sebastian Müller", "Nikita Polyanskii", "Andreas Penzkofer", "Jonas Theis", "William Sanders", "Hans Moog"],
     "venue": "IEEE Access",
     "venueShort": "IEEE Access",
     "year": 2022,
@@ -178,12 +212,14 @@
     "doi": "10.1109/TIT.2022.3177169",
     "arxiv": "2006.11516",
     "tags": ["Deletion Codes", "Error Correction"],
-    "conferenceVersion": {
-      "title": "On Multiple-Deletion Multiple-Substitution Correcting Codes",
-      "venue": "ISIT",
-      "year": 2021,
-      "doi": "10.1109/ISIT45174.2021.9517878"
-    }
+    "conferenceVersions": [
+      {
+        "title": "On Multiple-Deletion Multiple-Substitution Correcting Codes",
+        "venue": "ISIT",
+        "year": 2021,
+        "doi": "10.1109/ISIT45174.2021.9517878"
+      }
+    ]
   },
   {
     "id": "48",
@@ -228,7 +264,15 @@
     "categories": ["Information Theory", "Coding Theory"],
     "doi": "10.1109/TIT.2022.3148446",
     "arxiv": "2007.04026",
-    "tags": ["Z-channel", "Feedback Coding"]
+    "tags": ["Z-channel", "Feedback Coding"],
+    "conferenceVersions": [
+      {
+        "title": "Coding with Noiseless Feedback over the Z-Channel",
+        "venue": "COCOON",
+        "year": 2020,
+        "doi": "10.1007/978-3-030-58150-3_8"
+      }
+    ]
   },
   {
     "id": "9",
@@ -242,12 +286,14 @@
     "arxiv": "2010.16362",
     "slides": "/writings/2022-9-two-stage-z-channel/slides.pdf",
     "tags": ["Z-channel", "Two-stage Coding"],
-    "conferenceVersion": {
-      "title": "Two-Stage Coding over the Z-Channel",
-      "venue": "ISIT",
-      "year": 2021,
-      "doi": "10.1109/ISIT45174.2021.9518015"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Two-Stage Coding over the Z-Channel",
+        "venue": "ISIT",
+        "year": 2021,
+        "doi": "10.1109/ISIT45174.2021.9518015"
+      }
+    ]
   },
   {
     "id": "10",
@@ -260,12 +306,20 @@
     "doi": "10.1109/TIT.2021.3116520",
     "pdf": "/writings/2021-10-lifted-reed-solomon/paper.pdf",
     "tags": ["Reed-Solomon", "Lifted Codes"],
-    "conferenceVersion": {
-      "title": "Lifted Reed-Solomon Codes with Application to Batch Codes",
-      "venue": "ISIT",
-      "year": 2020,
-      "doi": "10.1109/ISIT44484.2020.9174402"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Lifted Reed-Solomon Codes with Application to Batch Codes",
+        "venue": "ISIT",
+        "year": 2020,
+        "doi": "10.1109/ISIT44484.2020.9174402"
+      },
+      {
+        "title": "On Lifted Multiplicity Codes",
+        "venue": "ITW",
+        "year": 2021,
+        "doi": "10.1109/ITW46852.2021.9457625"
+      }
+    ]
   },
   {
     "id": "11",
@@ -345,20 +399,9 @@
     "tags": ["Decoding", "Affine-Invariant Codes"]
   },
   {
-    "id": "55",
-    "title": "On Lifted Multiplicity Codes",
-    "authors": ["Lukas Holzbaur", "Rina Polyanskaya", "Nikita Polyanskii", "Ilya Vorobyev", "Eitan Yaakobi"],
-    "venue": "IEEE Information Theory Workshop (ITW)",
-    "venueShort": "ITW",
-    "year": 2021,
-    "categories": ["Coding Theory"],
-    "doi": "10.1109/ITW46852.2021.9457625",
-    "tags": ["Multiplicity Codes", "Lifted Codes"]
-  },
-  {
     "id": "60",
     "title": "Devices and Methods for Generating a Low Density Parity Check Code for an Incremental Redundancy HARQ Communication Apparatus",
-    "authors": ["Vasily Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev"],
+    "authors": ["Vasiliy Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev"],
     "venue": "US Patent 10,944,425",
     "venueShort": "Patent",
     "year": 2021,
@@ -369,7 +412,7 @@
   {
     "id": "61",
     "title": "Method and Apparatus for Encoding and Decoding of Variable Length Quasi-Cyclic Low-Density Parity-Check, QC-LDPC, Codes",
-    "authors": ["Vasily Usatyuk", "Ilya Vorobyev", "Nikita Polyanskii", "German Svistunov"],
+    "authors": ["Vasiliy Usatyuk", "Ilya Vorobyev", "Nikita Polyanskii", "German Svistunov"],
     "venue": "US Patent 10,931,310",
     "venueShort": "Patent",
     "year": 2021,
@@ -380,7 +423,7 @@
   {
     "id": "62",
     "title": "Generalized Low-Density Parity Check Codes (GLDPC)",
-    "authors": ["Vasily Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev", "Vladimir Gaev", "German Svistunov", "Mikhail Kamenev", "Yulia Kameneva"],
+    "authors": ["Vasiliy Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev", "Vladimir Gaev", "German Svistunov", "Mikhail Kamenev", "Yulia Kameneva"],
     "venue": "US Patent 11,075,651",
     "venueShort": "Patent",
     "year": 2021,
@@ -391,7 +434,7 @@
   {
     "id": "63",
     "title": "Generalized Low-Density Parity Check Codes in Digital Communication System",
-    "authors": ["Vasily Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev", "Vladimir Gaev", "German Svistunov", "Mikhail Kamenev", "Yulia Kameneva"],
+    "authors": ["Vasiliy Usatyuk", "Nikita Polyanskii", "Ilya Vorobyev", "Vladimir Gaev", "German Svistunov", "Mikhail Kamenev", "Yulia Kameneva"],
     "venue": "US Patent 11,057,049",
     "venueShort": "Patent",
     "year": 2021,
@@ -408,7 +451,22 @@
     "year": 2020,
     "categories": ["Coding Theory"],
     "doi": "10.1109/TIT.2020.3013603",
-    "tags": ["Batch Codes", "Binary Codes"]
+    "tags": ["Batch Codes", "Binary Codes"],
+    "conferenceVersions": [
+      {
+        "title": "Constructions of Batch Codes via Finite Geometry",
+        "venue": "ISIT",
+        "year": 2019,
+        "doi": "10.1109/ISIT.2019.8849736",
+        "pdf": "/writings/2019-30-batch-codes-geometry/paper.pdf"
+      },
+      {
+        "title": "Batch Codes Based on Lifted Multiplicity Codes",
+        "venue": "REDUNDANCY",
+        "year": 2019,
+        "pdf": "/writings/2019-41-batch-codes-multiplicity/paper.pdf"
+      }
+    ]
   },
   {
     "id": "14",
@@ -422,12 +480,14 @@
     "pdf": "/writings/2020-14-polar-codes-weight/paper.pdf",
     "slides": "/writings/2020-14-polar-codes-weight/slides.pdf",
     "tags": ["Polar Codes", "Decoding"],
-    "conferenceVersion": {
-      "title": "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
-      "venue": "ACCT",
-      "year": 2018,
-      "pdf": "/writings/2020-14-polar-codes-weight/acct-2018.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Weight Distributions for Successive Cancellation Decoding of Polar Codes",
+        "venue": "ACCT",
+        "year": 2018,
+        "pdf": "/writings/2020-14-polar-codes-weight/acct-2018.pdf"
+      }
+    ]
   },
   {
     "id": "28",
@@ -473,12 +533,20 @@
     "doi": "10.1109/TSP.2019.2940120",
     "pdf": "/writings/2019-15-hypothesis-test/paper.pdf",
     "tags": ["Group Testing", "Hypothesis Testing"],
-    "conferenceVersion": {
-      "title": "Hypothesis Test for Upper Bound on the Size of Random Defective Set",
-      "venue": "ISIT",
-      "year": 2017,
-      "pdf": "/writings/2019-15-hypothesis-test/isit-2017.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Hypothesis Test for Upper Bound on the Size of Random Defective Set",
+        "venue": "ISIT",
+        "year": 2017,
+        "pdf": "/writings/2019-15-hypothesis-test/isit-2017.pdf"
+      },
+      {
+        "title": "Threshold Decoding for Disjunctive Codes",
+        "venue": "ACCT",
+        "year": 2016,
+        "pdf": "/writings/2016-35-threshold-decoding/paper.pdf"
+      }
+    ]
   },
   {
     "id": "16",
@@ -491,12 +559,14 @@
     "doi": "10.1109/TIT.2019.2893234",
     "pdf": "/writings/2019-16-separable-codes-mac/paper.pdf",
     "tags": ["Multiple Access", "Separable Codes"],
-    "conferenceVersion": {
-      "title": "Separable Codes for the Symmetric Multiple Access Channel",
-      "venue": "ISIT",
-      "year": 2018,
-      "pdf": "/writings/2019-16-separable-codes-mac/isit-2018.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Separable Codes for the Symmetric Multiple Access Channel",
+        "venue": "ISIT",
+        "year": 2018,
+        "pdf": "/writings/2019-16-separable-codes-mac/isit-2018.pdf"
+      }
+    ]
   },
   {
     "id": "17",
@@ -510,13 +580,15 @@
     "pdf": "/writings/2019-17-metric-dimension/paper.pdf",
     "slides": "/writings/2019-17-metric-dimension/slides.pdf",
     "tags": ["Graph Theory", "Metric Dimension", "Mastermind"],
-    "conferenceVersion": {
-      "title": "How to guess an n-digit number",
-      "venue": "SODA",
-      "year": 2019,
-      "doi": "10.1137/1.9781611975482.74",
-      "pdf": "/writings/2019-17-metric-dimension/soda-2019.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "How to guess an n-digit number",
+        "venue": "SODA",
+        "year": 2019,
+        "doi": "10.1137/1.9781611975482.74",
+        "pdf": "/writings/2019-17-metric-dimension/soda-2019.pdf"
+      }
+    ]
   },
   {
     "id": "18",
@@ -529,35 +601,14 @@
     "doi": "10.1109/TIT.2018.2889250",
     "pdf": "/writings/2019-18-capacities-union/paper.pdf",
     "tags": ["Channel Capacity", "Union Channel", "Algorithms", "Searching"],
-    "conferenceVersion": {
-      "title": "A Near-Optimal Algorithm for Adaptive Searching of Two Counterfeit Coins",
-      "venue": "WCC",
-      "year": 2019,
-      "pdf": "/writings/2019-18-capacities-union/wcc-2019.pdf"
-    }
-  },
-  {
-    "id": "30",
-    "title": "Constructions of Batch Codes via Finite Geometry",
-    "authors": ["Nikita Polyanskii", "Ilya Vorobyev"],
-    "venue": "IEEE International Symposium on Information Theory (ISIT)",
-    "venueShort": "ISIT",
-    "year": 2019,
-    "categories": ["Coding Theory"],
-    "doi": "10.1109/ISIT.2019.8849736",
-    "pdf": "/writings/2019-30-batch-codes-geometry/paper.pdf",
-    "tags": ["Batch Codes", "Finite Geometry"]
-  },
-    {
-    "id": "41",
-    "title": "Batch Codes Based on Lifted Multiplicity Codes",
-    "authors": ["Rina Polyanskaya", "Nikita Polyanskii"],
-    "venue": "XVI International Symposium Problems of Redundancy in Information and Control Systems (REDUNDANCY)",
-    "venueShort": "REDUNDANCY",
-    "year": 2019,
-    "categories": ["Coding Theory"],
-    "pdf": "/writings/2019-41-batch-codes-multiplicity/paper.pdf",
-    "tags": ["Batch Codes", "Lifted Codes"]
+    "conferenceVersions": [
+      {
+        "title": "A Near-Optimal Algorithm for Adaptive Searching of Two Counterfeit Coins",
+        "venue": "WCC",
+        "year": 2019,
+        "pdf": "/writings/2019-18-capacities-union/wcc-2019.pdf"
+      }
+    ]
   },
   {
     "id": "42",
@@ -592,12 +643,14 @@
     "doi": "10.1007/s10623-016-0278-4",
     "pdf": "/writings/2017-19-symmetric-disjunctive/paper.pdf",
     "tags": ["Disjunctive Codes", "List Decoding"],
-    "conferenceVersion": {
-      "title": "Symmetric Disjunctive List-Decoding Codes",
-      "venue": "ISIT",
-      "year": 2015,
-      "pdf": "/writings/2017-19-symmetric-disjunctive/isit-2015.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Symmetric Disjunctive List-Decoding Codes",
+        "venue": "ISIT",
+        "year": 2015,
+        "pdf": "/writings/2017-19-symmetric-disjunctive/isit-2015.pdf"
+      }
+    ]
   },
   {
     "id": "20",
@@ -610,12 +663,14 @@
     "doi": "10.1007/s10623-016-0279-3",
     "pdf": "/writings/2017-20-almost-cover-free-designs/paper.pdf",
     "tags": ["Cover-Free Codes", "Combinatorial Designs"],
-    "conferenceVersion": {
-      "title": "Almost Cover-Free Codes and Designs",
-      "venue": "ISIT",
-      "year": 2015,
-      "pdf": "/writings/2017-20-almost-cover-free-designs/isit-2015.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Almost Cover-Free Codes and Designs",
+        "venue": "ISIT",
+        "year": 2015,
+        "pdf": "/writings/2017-20-almost-cover-free-designs/isit-2015.pdf"
+      }
+    ]
   },
   {
     "id": "21",
@@ -628,12 +683,14 @@
     "doi": "10.1007/s10623-016-0265-9",
     "pdf": "/writings/2017-21-cover-free-separating/paper.pdf",
     "tags": ["Cover-Free Codes", "Separating Systems"],
-    "conferenceVersion": {
-      "title": "Cover-Free and Separating Codes",
-      "venue": "ISIT",
-      "year": 2015,
-      "pdf": "/writings/2017-21-cover-free-separating/isit-2015.pdf"
-    }
+    "conferenceVersions": [
+      {
+        "title": "Cover-Free and Separating Codes",
+        "venue": "ISIT",
+        "year": 2015,
+        "pdf": "/writings/2017-21-cover-free-separating/isit-2015.pdf"
+      }
+    ]
   },
   {
     "id": "22",
@@ -672,15 +729,15 @@
     "tags": ["Hypergraph", "Group Testing"]
   },
   {
-    "id": "35",
-    "title": "Threshold Decoding for Disjunctive Codes",
-    "authors": ["Arkady Dyachkov", "Nikita Polyanskii", "Vladislav Shchukin", "Ilya Vorobyev"],
-    "venue": "International Workshop on Algebraic and Combinatorial Coding Theory (ACCT)",
-    "venueShort": "ACCT",
+    "id": "70",
+    "title": "A Simple Construction of Cover-Free (s,l)-Codes with Certain Constant Weight",
+    "authors": ["Arkady Dyachkov", "Ilya Vorobyev", "Nikita Polyanskii", "Vladislav Shchukin"],
+    "venue": "arXiv preprint",
+    "venueShort": "arXiv",
     "year": 2016,
     "categories": ["Group Testing"],
-    "pdf": "/writings/2016-35-threshold-decoding/paper.pdf",
-    "tags": ["Disjunctive Codes", "Threshold Decoding"]
+    "arxiv": "1605.06847",
+    "tags": ["Cover-Free Codes", "Combinatorics"]
   },
   {
     "id": "23",
@@ -717,12 +774,19 @@
     "doi": "10.1134/S0032946014010037",
     "pdf": "/writings/2014-25-bounds-disjunctive/paper.pdf",
     "tags": ["Disjunctive Codes", "Superimposed Codes", "Rate Bounds"],
-    "conferenceVersion": {
-      "title": "Bounds on the Rate of Superimposed Codes",
-      "venue": "ISIT",
-      "year": 2014,
-      "doi": "10.1109/ISIT.2014.6875252",
-      "pdf": "/writings/2014-25-bounds-disjunctive/isit-2014.pdf"
+    "conferenceVersions": [
+      {
+        "title": "Bounds on the Rate of Superimposed Codes",
+        "venue": "ISIT",
+        "year": 2014,
+        "doi": "10.1109/ISIT.2014.6875252",
+        "pdf": "/writings/2014-25-bounds-disjunctive/isit-2014.pdf"
+      }
+    ],
+    "erratum": {
+      "venue": "PIT",
+      "year": 2016,
+      "doi": "10.1134/S0032946016020083"
     }
   },
     {
