@@ -3,8 +3,8 @@ import publications from "@/data/publications.json";
 import { CoAuthor, Position, GraphDimensions, Publication } from "./types";
 
 const NIKITA_NAME = "Nikita Polyanskii";
-const MIN_RADIUS = 6;
-const MAX_RADIUS = 24;
+const MIN_RADIUS = 21;
+const MAX_RADIUS = 82;
 
 // Normalize author name variations to canonical form
 const NAME_ALIASES: Record<string, string> = {
@@ -74,12 +74,13 @@ function calculatePositions(
   const centerX = dimensions.width / 2;
   const centerY = dimensions.height / 2;
 
-  // Scale rings based on available space
-  const scaleFactor = Math.min(dimensions.width, dimensions.height) / 600;
+  // Scale rings based on available space - fill the whole area
+  // Spread big circles (frequent co-authors) to outer ring instead of concentrating in center
+  const maxRadius = Math.min(dimensions.width, dimensions.height) / 2 - 30;
   const rings = [
-    { minCount: 4, radius: 100 * scaleFactor },
-    { minCount: 2, radius: 170 * scaleFactor },
-    { minCount: 1, radius: 240 * scaleFactor },
+    { minCount: 4, radius: maxRadius * 0.65 },  // Frequent co-authors in middle-outer
+    { minCount: 2, radius: maxRadius * 0.4 },   // Medium co-authors closer to center
+    { minCount: 1, radius: maxRadius * 0.88 },  // Single-paper co-authors on outer edge
   ];
 
   // Assign authors to rings

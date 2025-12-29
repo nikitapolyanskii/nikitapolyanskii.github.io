@@ -98,9 +98,14 @@ export default function GraphNode({
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return;
-    hasDraggedRef.current = true;
+    if (!isDragging || !dragStartRef.current) return;
     const coords = getSVGCoordinates(e.clientX, e.clientY);
+    // Only count as drag if moved more than 5px (helps with mobile taps)
+    const dx = coords.x - dragStartRef.current.x;
+    const dy = coords.y - dragStartRef.current.y;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+      hasDraggedRef.current = true;
+    }
     onDrag(coords.x, coords.y);
   };
 

@@ -758,7 +758,7 @@ function HomeContent() {
             <li className="flex gap-2">
               <span className="link-primary">→</span>
               <span>
-                I&apos;ve ping-ponged between academia and industry three times now: Academia → Industry → Academia → Industry. These days, I see them less as opposing sides and more as complementary perspectives that converge in my work.
+                I&apos;ve ping-ponged between academia and industry three times now: Academia → Industry → Academia → Industry. These days, the boundary between them is blurring.
               </span>
             </li>
           </ul>
