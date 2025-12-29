@@ -232,6 +232,7 @@ const selectedContributions = [
     venue: "Preprint",
     venueShort: "Preprint",
     year: 2025,
+    eprint: "2025/567",
     pdf: "/writings/2025-44-starfish/preprint.pdf",
     slides: "/writings/2025-44-starfish/slides.pdf",
     adopted: { label: "Adopted by", name: "IOTA", url: "https://github.com/iotaledger/iota" },
@@ -637,6 +638,15 @@ function HomeContent() {
                       >
                         {item.venueShort}, {item.year}
                       </a>
+                    ) : item.eprint ? (
+                      <a
+                        href={`https://eprint.iacr.org/${item.eprint}.pdf`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-muted link-primary"
+                      >
+                        {item.venueShort}, {item.year}
+                      </a>
                     ) : (
                       <span className="card-muted">{item.venueShort}, {item.year}</span>
                     )}
@@ -1031,7 +1041,6 @@ function HomeContent() {
 
 function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategoryClick: (cat: string) => void }) {
   const isNew = pub.year === 2025;
-  const hasPoster = pub.conferenceVersions?.some(cv => cv.venue.toLowerCase().includes('poster'));
 
   const venueLink = pub.doi
     ? `https://doi.org/${pub.doi}`
@@ -1063,11 +1072,6 @@ function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategor
           {isNew && (
             <span className="shrink-0 px-2 py-0.5 text-xs font-semibold bg-accent text-white dark:text-[#061318] rounded">
               NEW
-            </span>
-          )}
-          {hasPoster && (
-            <span className="shrink-0 px-2 py-0.5 text-xs font-semibold bg-purple-500 text-white rounded">
-              POSTER
             </span>
           )}
           <h3 className="font-semibold card-title">
