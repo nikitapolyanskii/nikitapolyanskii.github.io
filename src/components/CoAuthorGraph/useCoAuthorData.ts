@@ -88,8 +88,8 @@ function calculatePositions(
   const cols = Math.ceil(Math.sqrt(n * aspectRatio));
   const rows = Math.ceil(n / cols);
 
-  // Calculate cell size with padding
-  const padding = 40;
+  // Calculate cell size with padding (accounts for max node radius + hover expansion)
+  const padding = 75;
   const cellWidth = (dimensions.width - padding * 2) / cols;
   const cellHeight = (dimensions.height - padding * 2) / rows;
 

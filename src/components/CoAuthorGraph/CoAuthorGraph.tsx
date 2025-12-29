@@ -44,6 +44,7 @@ export default function CoAuthorGraph() {
     coAuthors,
     positions,
     centerPosition,
+    dimensions,
   });
 
   // Convert screen coordinates to SVG coordinates
@@ -75,7 +76,7 @@ export default function CoAuthorGraph() {
       <svg
         ref={svgRef}
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-        className="w-full max-w-[2100px] h-auto"
+        className="w-full max-w-[2100px] h-auto touch-none"
         role="img"
         aria-label="Interactive graph showing co-author collaborations. Each node represents a co-author, with size indicating number of joint publications."
       >

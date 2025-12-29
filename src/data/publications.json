@@ -20,6 +20,7 @@
     "venueShort": "ISIT",
     "year": 2025,
     "categories": ["Group Testing"],
+    "arxiv": "2310.09613",
     "tags": ["Group Testing", "Adversarial", "Deletions"]
   },
   {
@@ -249,6 +250,7 @@
     "venueShort": "WCC",
     "year": 2022,
     "categories": ["Coding Theory"],
+    "arxiv": "2109.14478",
     "tags": ["Reed-Solomon", "Lifted Codes"]
   },
   {
@@ -348,6 +350,7 @@
     "venueShort": "NeurIPS",
     "year": 2021,
     "categories": ["Information Theory"],
+    "url": "https://proceedings.neurips.cc/paper/2021/hash/a5481cd6d7517aa3fc6476dc7d9019ab-Abstract.html",
     "pdf": "/writings/2021-26-sparse-vectors/paper.pdf",
     "tags": ["Machine Learning", "Sparse Recovery"]
   },
@@ -806,6 +809,7 @@
     "venueShort": "WCC",
     "year": 2011,
     "categories": ["DNA Storage"],
+    "url": "http://wcc2011.inria.fr/index5d95.html?page=accepted",
     "tags": ["DNA Codes", "Stem Similarity"]
   }
 ]

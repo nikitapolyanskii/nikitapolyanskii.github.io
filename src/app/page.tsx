@@ -99,6 +99,7 @@ type Publication = {
   pdf?: string;
   slides?: string;
   patent?: string;
+  url?: string;
   tags: string[];
   conferenceVersions?: Array<{
     title: string;
@@ -1050,9 +1051,11 @@ function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategor
     ? `https://eprint.iacr.org/${pub.eprint}.pdf`
     : pub.patent
     ? `https://patents.google.com/patent/${pub.patent}`
+    : pub.url
+    ? pub.url
     : null;
 
-  const venueLinkType = pub.doi ? 'doi' : pub.arxiv ? 'arxiv' : pub.eprint ? 'eprint' : pub.patent ? 'patent' : null;
+  const venueLinkType = pub.doi ? 'doi' : pub.arxiv ? 'arxiv' : pub.eprint ? 'eprint' : pub.patent ? 'patent' : pub.url ? 'url' : null;
 
   // Display just "US Patent" instead of "US Patent 10,931,310"
   const displayVenue = pub.venue.startsWith('US Patent') ? 'US Patent' : pub.venue;

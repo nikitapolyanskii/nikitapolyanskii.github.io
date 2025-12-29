@@ -8,12 +8,13 @@ import {
   forceY,
   Simulation,
 } from "d3-force";
-import { CoAuthor, Position, SimulationNode } from "./types";
+import { CoAuthor, Position, SimulationNode, GraphDimensions } from "./types";
 
 interface UsePhysicsSimulationProps {
   coAuthors: CoAuthor[];
   positions: Map<string, Position>;
   centerPosition: Position;
+  dimensions: GraphDimensions;
 }
 
 interface UsePhysicsSimulationResult {
@@ -27,6 +28,7 @@ export function usePhysicsSimulation({
   coAuthors,
   positions,
   centerPosition,
+  dimensions,
 }: UsePhysicsSimulationProps): UsePhysicsSimulationResult {
   const simulationRef = useRef<Simulation<SimulationNode, undefined> | null>(null);
   const nodesRef = useRef<SimulationNode[]>([]);
@@ -134,10 +136,20 @@ export function usePhysicsSimulation({
       .alpha(0.3)
       .velocityDecay(0.25);
 
-    // Update positions on each tick
+    // Update positions on each tick with boundary constraints
     simulation.on("tick", () => {
+      const padding = 75; // Account for max node radius + hover expansion
       const newPositions = new Map<string, Position>();
       nodesRef.current.forEach((node) => {
+        // Clamp positions to keep nodes within bounds
+        const minX = padding;
+        const maxX = dimensions.width - padding;
+        const minY = padding;
+        const maxY = dimensions.height - padding;
+
+        node.x = Math.max(minX, Math.min(maxX, node.x));
+        node.y = Math.max(minY, Math.min(maxY, node.y));
+
         newPositions.set(node.id, { x: node.x, y: node.y });
       });
       setNodePositions(newPositions);
@@ -148,7 +160,7 @@ export function usePhysicsSimulation({
     return () => {
       simulation.stop();
     };
-  }, [coAuthors, positions, centerPosition, isClient]);
+  }, [coAuthors, positions, centerPosition, dimensions, isClient]);
 
   // Drag handlers
   const startDrag = useCallback((nodeId: string) => {
