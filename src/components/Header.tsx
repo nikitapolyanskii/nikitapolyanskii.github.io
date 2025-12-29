@@ -56,21 +56,28 @@ export default function Header() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    // Close mobile menu if open
-    setIsMobileMenuOpen(false);
+    const performScroll = () => {
+      // If not on home page, navigate to home with the hash
+      if (pathname !== "/") {
+        window.location.href = "/" + href;
+        return;
+      }
 
-    // If not on home page, navigate to home with the hash
-    if (pathname !== "/") {
-      window.location.href = "/" + href;
-      return;
+      // Clear URL query params using Next.js router
+      router.replace("/" + href, { scroll: false });
+
+      // Smooth scroll to section
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    // If mobile menu is open, close it and wait for animation before scrolling
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+      setTimeout(performScroll, 220); // 200ms animation + 20ms buffer
+    } else {
+      performScroll();
     }
-
-    // Clear URL query params using Next.js router
-    router.replace("/" + href, { scroll: false });
-
-    // Smooth scroll to section
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

@@ -913,7 +913,7 @@ function HomeContent() {
         {/* Author Filter Chip */}
         {selectedAuthor && (
           <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-teal-900/30 text-blue-800 dark:text-teal-300">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-teal-900/30 text-blue-600 dark:text-teal-300">
               <span className="text-sm font-medium">
                 Showing publications with: <span className="font-bold">{selectedAuthor}</span>
               </span>
