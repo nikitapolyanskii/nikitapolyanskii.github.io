@@ -226,11 +226,11 @@ const academiaExperience: ExperienceItem[] = [
 
 const selectedContributions = [
   {
-    title: "Starfish: A Full-DAG BFT Protocol with Optimal Communication Complexity",
-    description: <>Designed and implemented a high-performance DAG-based <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer" className="link-accent">consensus</a> protocol that is provably live and safe and achieves optimal communication complexity using error-correcting codes and threshold signatures.</>,
+    title: "Starfish: A High Throughput BFT Protocol on Uncertified DAG with Linear Amortized Communication Complexity",
+    description: <>Designed and implemented a high-performance DAG-based <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)" target="_blank" rel="noopener noreferrer" className="link-accent">consensus</a> protocol that is provably live and safe and achieves linear amortized communication complexity using error-correcting codes and threshold signatures.</>,
     authors: ["Nikita Polyanskii", "Sebastian Müller", "Ilya Vorobyev"],
-    venue: "Cryptology ePrint Archive",
-    venueShort: "ePrint",
+    venue: "Preprint",
+    venueShort: "Preprint",
     year: 2025,
     pdf: "/writings/2025-44-starfish/preprint.pdf",
     slides: "/writings/2025-44-starfish/slides.pdf",
@@ -345,7 +345,7 @@ function HomeContent() {
   const [showMobileCategories, setShowMobileCategories] = useState(false);
   const [experienceViewMode, setExperienceViewMode] = useState<"industry" | "academia">("industry");
 
-  // Read author and category from URL params on mount
+  // Sync author and category from URL params
   useEffect(() => {
     const authorParam = searchParams.get("author");
     const categoryParam = searchParams.get("category");
@@ -357,6 +357,9 @@ function HomeContent() {
       setTimeout(() => {
         document.getElementById('writings')?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
+    } else {
+      // Clear author filter when URL param is removed
+      setSelectedAuthor(null);
     }
 
     if (categoryParam && CATEGORIES.some(c => c.id === categoryParam)) {
@@ -543,6 +546,7 @@ function HomeContent() {
         </div>
 
         {/* About text - wraps around profile card */}
+        <h2 className="hidden md:block text-2xl font-bold heading-dark mb-6">About</h2>
         <p className="text-lg text-dark leading-relaxed">
           Hey, I am Nikita! I&apos;m a mathematician by training who has gradually drifted into engineering.
         </p>
@@ -551,7 +555,7 @@ function HomeContent() {
           <a href="https://iota.org" target="_blank" rel="noopener noreferrer" className="link-primary">
             IOTA Foundation
           </a>
-          {" "}where I design, analyze, and implement consensus protocols.
+          {" "}where I mostly focus on consensus protocols.
           Before this, I explored the intersection of <a href="https://en.wikipedia.org/wiki/Extremal_combinatorics" target="_blank" rel="noopener noreferrer" className="link-primary">extremal combinatorics</a> and <a href="https://en.wikipedia.org/wiki/Error_correction_code" target="_blank" rel="noopener noreferrer" className="link-primary">error-correcting codes</a> at{" "}
           <a href="https://www.technion.ac.il" target="_blank" rel="noopener noreferrer" className="link-primary">Technion</a>,{" "}
           <a href="https://www.skoltech.ru" target="_blank" rel="noopener noreferrer" className="link-primary">Skoltech</a>, and{" "}
@@ -576,7 +580,7 @@ function HomeContent() {
         </p>
 
         <p className="text-lg text-dark leading-relaxed mt-4">
-          Now I&apos;m drawn to problems where mathematical rigor meets engineering constraints — I still think in theorems and proofs when writing code, and they negotiate.
+          Now I&apos;m drawn to problems where mathematical rigor meets engineering constraints — I still think in theorems and proofs when writing code.
         </p>
 
         {/* Clear float */}
@@ -708,9 +712,9 @@ function HomeContent() {
         </div>
       </motion.section>
 
-      {/* Bio Section */}
+      {/* Background Section */}
       <motion.section
-        id="bio"
+        id="background"
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, margin: "-100px" }}
@@ -718,7 +722,7 @@ function HomeContent() {
         transition={{ duration: 0.5 }}
         className="mb-10 pt-4"
       >
-        <h2 className="text-2xl font-bold heading-dark mb-6">Bio</h2>
+        <h2 className="text-2xl font-bold heading-dark mb-6">Background</h2>
 
         {/* Informal Bio */}
         <div className="mb-8">
@@ -1027,6 +1031,7 @@ function HomeContent() {
 
 function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategoryClick: (cat: string) => void }) {
   const isNew = pub.year === 2025;
+  const hasPoster = pub.conferenceVersions?.some(cv => cv.venue.toLowerCase().includes('poster'));
 
   const venueLink = pub.doi
     ? `https://doi.org/${pub.doi}`
@@ -1058,6 +1063,11 @@ function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategor
           {isNew && (
             <span className="shrink-0 px-2 py-0.5 text-xs font-semibold bg-accent text-white dark:text-[#061318] rounded">
               NEW
+            </span>
+          )}
+          {hasPoster && (
+            <span className="shrink-0 px-2 py-0.5 text-xs font-semibold bg-purple-500 text-white rounded">
+              POSTER
             </span>
           )}
           <h3 className="font-semibold card-title">

@@ -3,8 +3,15 @@ import publications from "@/data/publications.json";
 import { CoAuthor, Position, GraphDimensions, Publication } from "./types";
 
 const NIKITA_NAME = "Nikita Polyanskii";
-const MIN_RADIUS = 21;
-const MAX_RADIUS = 82;
+
+// Dynamic sizing based on screen width
+function getNodeSizes(width: number) {
+  const scaleFactor = Math.max(0.4, Math.min(width / 1200, 1));
+  return {
+    minRadius: 30 * scaleFactor,
+    maxRadius: 60 * scaleFactor,
+  };
+}
 
 // Normalize author name variations to canonical form
 const NAME_ALIASES: Record<string, string> = {
@@ -44,12 +51,15 @@ export function useCoAuthorData(dimensions: GraphDimensions): CoAuthorData {
     // Find max count for normalization
     const maxCount = Math.max(...Array.from(countMap.values()));
 
+    // Get dynamic sizes based on screen width
+    const { minRadius, maxRadius } = getNodeSizes(dimensions.width);
+
     // Convert to CoAuthor array with calculated radius
     const coAuthors: CoAuthor[] = Array.from(countMap.entries())
       .map(([name, count]) => {
         // Log scale for visual balance
         const normalized = Math.log(count + 1) / Math.log(maxCount + 1);
-        const radius = MIN_RADIUS + normalized * (MAX_RADIUS - MIN_RADIUS);
+        const radius = minRadius + normalized * (maxRadius - minRadius);
         return { name, count, radius };
       })
       .sort((a, b) => b.count - a.count);
@@ -71,44 +81,31 @@ function calculatePositions(
   dimensions: GraphDimensions
 ): Map<string, Position> {
   const positions = new Map<string, Position>();
-  const centerX = dimensions.width / 2;
-  const centerY = dimensions.height / 2;
+  const n = coAuthors.length;
 
-  // Scale rings based on available space - fill the whole area
-  // Spread big circles (frequent co-authors) to outer ring instead of concentrating in center
-  const maxRadius = Math.min(dimensions.width, dimensions.height) / 2 - 30;
-  const rings = [
-    { minCount: 4, radius: maxRadius * 0.65 },  // Frequent co-authors in middle-outer
-    { minCount: 2, radius: maxRadius * 0.4 },   // Medium co-authors closer to center
-    { minCount: 1, radius: maxRadius * 0.88 },  // Single-paper co-authors on outer edge
-  ];
+  // Calculate grid dimensions based on aspect ratio
+  const aspectRatio = dimensions.width / dimensions.height;
+  const cols = Math.ceil(Math.sqrt(n * aspectRatio));
+  const rows = Math.ceil(n / cols);
 
-  // Assign authors to rings
-  const ringAuthors: CoAuthor[][] = [[], [], []];
-  coAuthors.forEach((author) => {
-    if (author.count >= 4) {
-      ringAuthors[0].push(author);
-    } else if (author.count >= 2) {
-      ringAuthors[1].push(author);
-    } else {
-      ringAuthors[2].push(author);
-    }
-  });
+  // Calculate cell size with padding
+  const padding = 40;
+  const cellWidth = (dimensions.width - padding * 2) / cols;
+  const cellHeight = (dimensions.height - padding * 2) / rows;
 
-  // Position authors in each ring
-  ringAuthors.forEach((authors, ringIndex) => {
-    const ringRadius = rings[ringIndex].radius;
-    const angleStep = (2 * Math.PI) / Math.max(authors.length, 1);
-    // Start from top (-PI/2) with slight offset for visual interest
-    const startAngle = -Math.PI / 2 + (ringIndex * Math.PI) / 12;
+  // Center the grid vertically if not all rows are full
+  const actualRows = Math.ceil(n / cols);
+  const totalHeight = actualRows * cellHeight;
+  const yOffset = (dimensions.height - totalHeight) / 2;
 
-    authors.forEach((author, i) => {
-      const angle = startAngle + i * angleStep;
-      // Round to 2 decimal places to avoid floating point hydration mismatches
-      positions.set(author.name, {
-        x: Math.round((centerX + ringRadius * Math.cos(angle)) * 100) / 100,
-        y: Math.round((centerY + ringRadius * Math.sin(angle)) * 100) / 100,
-      });
+  coAuthors.forEach((author, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+
+    // Round to 2 decimal places to avoid floating point hydration mismatches
+    positions.set(author.name, {
+      x: Math.round((padding + cellWidth * (col + 0.5)) * 100) / 100,
+      y: Math.round((yOffset + cellHeight * (row + 0.5)) * 100) / 100,
     });
   });
 

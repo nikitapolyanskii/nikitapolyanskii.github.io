@@ -71,34 +71,15 @@ export function usePhysicsSimulation({
     // Time counter for chaotic motion
     let time = 0;
 
-    // Custom force for chaotic orbital motion
-    const orbitalForce = () => {
-      const chaosStrength = 0.07; // Stronger chaos
-      const orbitalStrength = 0.04; // Orbital/tangential velocity
+    // Custom force for gentle chaotic drifting (no orbital motion)
+    const driftForce = () => {
+      const chaosStrength = 0.05; // Gentle drifting
 
       return () => {
-        time += 0.055; // Faster time progression for more chaos
+        time += 0.04; // Slower time progression for calmer movement
         nodesRef.current.forEach((node, i) => {
           // Only apply to unfixed nodes
           if (node.fx !== null && node.fx !== undefined) return;
-
-          // Calculate vector from center to node
-          const dx = node.x - centerPosition.x;
-          const dy = node.y - centerPosition.y;
-          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-
-          // Normalized direction from center
-          const nx = dx / dist;
-          const ny = dy / dist;
-
-          // Tangential direction (perpendicular to radial) for orbital motion
-          // Alternate direction based on node index for variety
-          const direction = i % 2 === 0 ? 1 : -1;
-          const tx = -ny * direction;
-          const ty = nx * direction;
-
-          // Orbital velocity (varies with distance and node)
-          const orbitalSpeed = orbitalStrength * (1 + Math.sin(i * 1.7) * 0.5);
 
           // Use multiple overlapping sine waves for chaotic perturbations
           const phaseX1 = i * 0.7 + Math.sin(i * 0.3) * 2;
@@ -122,9 +103,9 @@ export function usePhysicsSimulation({
             Math.cos(time * 1.1 + phaseY1 * 2) * 0.15 +
             Math.sin(time * 0.55 + phaseY2 * 1.5) * 0.2;
 
-          // Apply orbital velocity + chaotic perturbations
-          node.vx = (node.vx || 0) + tx * orbitalSpeed + noiseX * chaosStrength;
-          node.vy = (node.vy || 0) + ty * orbitalSpeed + noiseY * chaosStrength;
+          // Apply only chaotic perturbations (no orbital motion)
+          node.vx = (node.vx || 0) + noiseX * chaosStrength;
+          node.vy = (node.vy || 0) + noiseY * chaosStrength;
         });
       };
     };
@@ -136,17 +117,17 @@ export function usePhysicsSimulation({
         "collide",
         forceCollide<SimulationNode>((d) => d.radius + 3).strength(1)
       )
-      // Central gravitational pull to keep nodes in orbit (weaker for more spread)
+      // Gentle central gravity to keep nodes roughly in place
       .force(
         "gravityX",
-        forceX<SimulationNode>(centerPosition.x).strength(0.008)
+        forceX<SimulationNode>(centerPosition.x).strength(0.003)
       )
       .force(
         "gravityY",
-        forceY<SimulationNode>(centerPosition.y).strength(0.008)
+        forceY<SimulationNode>(centerPosition.y).strength(0.003)
       )
-      // Chaotic orbital motion
-      .force("orbital", orbitalForce())
+      // Gentle chaotic drifting
+      .force("drift", driftForce())
       // Keep simulation running indefinitely
       .alphaDecay(0)
       .alphaMin(0)

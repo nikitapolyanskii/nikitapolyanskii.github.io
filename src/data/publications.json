@@ -3,8 +3,8 @@
     "id": "44",
     "title": "Starfish: A High Throughput BFT Protocol on Uncertified DAG with Linear Amortized Communication Complexity",
     "authors": ["Nikita Polyanskii", "Sebastian Müller", "Ilya Vorobyev"],
-    "venue": "Cryptology ePrint Archive",
-    "venueShort": "ePrint",
+    "venue": "Preprint",
+    "venueShort": "Preprint",
     "year": 2025,
     "categories": ["Blockchain"],
     "eprint": "2025/567",
@@ -37,12 +37,20 @@
     "id": "43",
     "title": "Slipstream: Ebb-and-Flow Consensus on a DAG with Fast Confirmation for UTXO Transactions",
     "authors": ["Nikita Polyanskii", "Sebastian Müller", "Mayank Raikwar"],
-    "venue": "arXiv preprint",
-    "venueShort": "arXiv",
+    "venue": "Preprint",
+    "venueShort": "Preprint",
     "year": 2024,
     "categories": ["Blockchain"],
     "arxiv": "2410.14876",
-    "tags": ["Blockchain", "Consensus", "Low Latency"]
+    "tags": ["Blockchain", "Consensus", "Low Latency"],
+    "conferenceVersions": [
+      {
+        "title": "Dynamically Available Consensus on a DAG with Fast Confirmation for UTXO Transactions",
+        "venue": "ICBC Poster",
+        "year": 2024,
+        "doi": "10.1109/ICBC59979.2024.10634510"
+      }
+    ]
   },
   {
     "id": "71",
@@ -108,23 +116,12 @@
     "id": "47",
     "title": "Efficient Combinatorial Group Testing: Bridging the Gap Between Union-Free and Disjunctive Codes",
     "authors": ["Daniil Goshkoder", "Nikita Polyanskii", "Ilya Vorobyev"],
-    "venue": "arXiv preprint",
-    "venueShort": "arXiv",
+    "venue": "Preprint",
+    "venueShort": "Preprint",
     "year": 2024,
     "categories": ["Group Testing"],
     "arxiv": "2401.16540",
     "tags": ["Group Testing", "Disjunctive Codes"]
-  },
-  {
-    "id": "69",
-    "title": "Dynamically Available Consensus on a DAG with Fast Confirmation for UTXO Transactions",
-    "authors": ["Nikita Polyanskii"],
-    "venue": "IEEE International Conference on Blockchain and Cryptocurrency (ICBC), Poster",
-    "venueShort": "ICBC Poster",
-    "year": 2024,
-    "categories": ["Blockchain"],
-    "doi": "10.1109/ICBC59979.2024.10634510",
-    "tags": ["Blockchain", "DAG", "Consensus", "UTXO"]
   },
   {
     "id": "2",
@@ -614,10 +611,11 @@
     "id": "42",
     "title": "Trivariate Lifted Codes with Disjoint Repair Groups",
     "authors": ["Nikita Polyanskii", "Ilya Vorobyev"],
-    "venue": "XVI International Symposium Problems of Redundancy in Information and Control Systems (REDUNDANCY)",
+    "venue": "Int. Symp. Problems of Redundancy (REDUNDANCY)",
     "venueShort": "REDUNDANCY",
     "year": 2019,
     "categories": ["Coding Theory"],
+    "doi": "10.1109/REDUNDANCY48165.2019.9003339",
     "pdf": "/writings/2019-42-trivariate-lifted/paper.pdf",
     "tags": ["Lifted Codes", "Repair Groups"]
   },
@@ -732,8 +730,8 @@
     "id": "70",
     "title": "A Simple Construction of Cover-Free (s,l)-Codes with Certain Constant Weight",
     "authors": ["Arkady Dyachkov", "Ilya Vorobyev", "Nikita Polyanskii", "Vladislav Shchukin"],
-    "venue": "arXiv preprint",
-    "venueShort": "arXiv",
+    "venue": "Preprint",
+    "venueShort": "Preprint",
     "year": 2016,
     "categories": ["Group Testing"],
     "arxiv": "1605.06847",

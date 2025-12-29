@@ -8,7 +8,7 @@ function BioRedirectContent() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/#bio");
+    router.replace("/#background");
   }, [router]);
 
   return null;
