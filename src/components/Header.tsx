@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
 import SearchModal from "./SearchModal";
 
@@ -19,6 +19,7 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,6 +56,9 @@ export default function Header() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
+    // Close mobile menu if open
+    setIsMobileMenuOpen(false);
+
     // If not on home page, navigate to home with the hash
     if (pathname !== "/") {
       window.location.href = "/" + href;
@@ -86,13 +90,14 @@ export default function Header() {
         </a>
 
         <div className="flex items-center gap-2">
-          <ul className="grid grid-cols-2 md:flex md:items-center p-1 rounded-2xl md:rounded-full nav-pill-bg gap-0.5 md:gap-0">
+          {/* Desktop nav pills - hidden on mobile */}
+          <ul className="hidden md:flex md:items-center p-1 rounded-full nav-pill-bg">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="relative px-3 py-1.5 md:py-2 text-xs md:text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer block text-center"
+                  className="relative px-3 py-2 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer block text-center"
                 >
                   {activeSection === link.href && (
                     <motion.div
@@ -153,8 +158,55 @@ export default function Header() {
               </svg>
             </button>
           </div>
+
+          {/* Mobile hamburger button - rightmost on mobile */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-full icon-btn transition-all duration-200"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile dropdown menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden overflow-hidden border-t border-neutral-200/30 dark:border-neutral-800/30"
+          >
+            <ul className="px-6 py-3 space-y-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`block px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                      activeSection === link.href
+                        ? "nav-pill-active nav-link-active"
+                        : "nav-link hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </motion.header>

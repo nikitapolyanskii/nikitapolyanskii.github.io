@@ -9,6 +9,7 @@ interface SearchResult {
   title: string;
   authors: string[];
   venue: string;
+  venueShort: string;
   year: number;
   categories: string[];
   tags: string[];
@@ -168,7 +169,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2">
                             <span className="text-xs link-primary">
-                              {result.venue}
+                              {result.venueShort}
                             </span>
                             <span className="text-xs text-neutral-400">
                               {result.year}

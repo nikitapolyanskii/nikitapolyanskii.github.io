@@ -7,21 +7,25 @@ import { usePhysicsSimulation } from "./usePhysicsSimulation";
 import GraphNode from "./GraphNode";
 import { GraphDimensions } from "./types";
 
-const ASPECT_RATIO = 0.75;
+const ASPECT_RATIO_DESKTOP = 0.75; // landscape
+const ASPECT_RATIO_MOBILE = 1.33; // portrait (4:3)
+const MOBILE_BREAKPOINT = 768;
 const MAX_WIDTH = 2100;
 
 function useGraphDimensions(): GraphDimensions {
   const [dimensions, setDimensions] = useState<GraphDimensions>({
     width: MAX_WIDTH,
-    height: MAX_WIDTH * ASPECT_RATIO,
+    height: MAX_WIDTH * ASPECT_RATIO_DESKTOP,
   });
 
   useEffect(() => {
     function updateDimensions() {
       const containerWidth = Math.min(window.innerWidth - 48, MAX_WIDTH);
+      const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      const aspectRatio = isMobile ? ASPECT_RATIO_MOBILE : ASPECT_RATIO_DESKTOP;
       setDimensions({
         width: containerWidth,
-        height: containerWidth * ASPECT_RATIO,
+        height: containerWidth * aspectRatio,
       });
     }
 
