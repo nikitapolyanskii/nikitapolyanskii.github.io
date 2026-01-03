@@ -98,9 +98,13 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 w-full max-w-xl z-50 px-4"
+            onClick={onClose}
+            className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4"
           >
-            <div className="modal-bg rounded-2xl shadow-2xl border overflow-hidden">
+            <div
+              className="modal-bg rounded-2xl shadow-2xl border overflow-hidden w-full max-w-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="p-4 border-b modal-bg">
                 <div className="flex items-center gap-3">
                   <svg
