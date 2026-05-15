@@ -1,5 +1,17 @@
 [
   {
+    "id": "72",
+    "title": "Bluestreak: Scaling DAG BFT by Sparsifying Metadata",
+    "authors": ["Nikita Polyanskii", "Ilya Vorobyev", "Sebastian Müller"],
+    "venue": "Preprint",
+    "venueShort": "Preprint",
+    "year": 2026,
+    "categories": ["Blockchain"],
+    "eprint": "2026/898",
+    "pdf": "/writings/2026-72-bluestreak/preprint.pdf",
+    "tags": ["Blockchain", "DAG", "BFT", "Consensus"]
+  },
+  {
     "id": "44",
     "title": "Starfish: A High Throughput BFT Protocol on Uncertified DAG with Linear Amortized Communication Complexity",
     "authors": ["Nikita Polyanskii", "Sebastian Müller", "Ilya Vorobyev"],

@@ -1051,7 +1051,7 @@ function safeHttpUrl(u: string | undefined | null): string | null {
 }
 
 function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategoryClick: (cat: string) => void }) {
-  const isNew = pub.year === 2025;
+  const isNew = pub.year >= 2025;
 
   const venueLink = pub.doi
     ? `https://doi.org/${pub.doi}`
