@@ -1040,6 +1040,16 @@ function HomeContent() {
   );
 }
 
+function safeHttpUrl(u: string | undefined | null): string | null {
+  if (!u) return null;
+  try {
+    const { protocol } = new URL(u);
+    return protocol === "https:" || protocol === "http:" ? u : null;
+  } catch {
+    return null;
+  }
+}
+
 function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategoryClick: (cat: string) => void }) {
   const isNew = pub.year === 2025;
 
@@ -1051,9 +1061,7 @@ function PublicationCard({ pub, onCategoryClick }: { pub: Publication; onCategor
     ? `https://eprint.iacr.org/${pub.eprint}.pdf`
     : pub.patent
     ? `https://patents.google.com/patent/${pub.patent}`
-    : pub.url
-    ? pub.url
-    : null;
+    : safeHttpUrl(pub.url);
 
   const venueLinkType = pub.doi ? 'doi' : pub.arxiv ? 'arxiv' : pub.eprint ? 'eprint' : pub.patent ? 'patent' : pub.url ? 'url' : null;
 

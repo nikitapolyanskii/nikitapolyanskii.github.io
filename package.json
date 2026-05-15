@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "find out -name '*.map' -type f -delete 2>/dev/null || true",
     "start": "next start",
     "lint": "eslint"
   },
@@ -12,7 +13,7 @@
     "@types/d3-force": "^3.0.10",
     "d3-force": "^3.0.0",
     "framer-motion": "^12.23.26",
-    "next": "16.1.0",
+    "next": "16.2.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -22,7 +23,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.0",
+    "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
